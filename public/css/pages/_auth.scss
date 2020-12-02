@@ -1,0 +1,80 @@
+// Pages d'authentification
+// ==================
+.auth-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    width: 465px;
+    background-color: var(--white);
+    border-radius: size(20)+rem;
+    padding: size(45)+rem size(45)+rem;
+
+    hr {
+        background-color: var(--line-gray);
+        border: initial;
+        margin-top: size(40)+rem;
+        margin-bottom: size(40)+rem;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: size(25)+rem;
+        font-weight: 700;
+        margin-bottom: size(35)+rem;
+    }
+
+    .header-logo {
+        background-color: var(--primary);
+        position: relative;
+        width: 100%;
+        height: 55px;
+        border-radius: size(15)+rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        img {
+            position: absolute;
+            top: size(5)+rem;
+            left: size(6)+rem;
+            width: 46px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        h2 {
+            color: var(--white);
+            font-size: size(16)+rem;
+            font-weight: 700;
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: size(25)+rem;
+
+        label {
+            font-size: size(14)+rem;
+            font-weight: 500;
+            margin-bottom: size(15)+rem;
+        }
+
+        input {
+            height: size(50)+rem;
+            padding: size(17)+rem size(19)+rem;
+            font-size: size(12)+rem;
+            color: rgba(0, 0, 0, .3);
+            border-radius: size(15)+rem;
+            border: none;
+            background-color: var(--light-grey);
+            outline: 0;
+        }
+    }
+}
