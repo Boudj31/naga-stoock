@@ -10,64 +10,9 @@
         {% endblock %}
     </head>
     <body>
-    <div class="wb-home">
-         <aside class="sidebar">
-            <div class="sidebar-col">
-                <div class="sidebar-items">
-                    <nav>
-                        <ul class="nav-list">
-                            <li class="nav-logo">
-                                <img src="{{asset('assets/img/logo.svg')}}" alt="Logo">
-                                <strong>Stock Manager</strong>
-                            </li>
-                            <li class="nav-items-list">
-                                <a href="#">
-                                    <i class="fas fa-home"></i>
-                                    <span>Adhésions</span>
-                                </a>
-                            </li>
-                            <li class="nav-items-list">
-                                <a href="#">
-                                    <i class="fas fa-desktop"></i>
-                                    <span>Ordinateurs</span>
-                                </a>
-                            </li>
-                            <li class="nav-items-list">
-                                <a href="#">
-                                    <i class="far fa-address-book"></i>
-                                    <span>Contact</span>
-                                </a>
-                            </li>
-                            <li class="nav-items-list">
-                                <a href="#">
-                                    <i class="far fa-building"></i>
-                                    <span>Société</span>
-                                </a>
-                            </li>
-                            <li class="nav-items-list">
-                                <a href="#">
-                                    <i class="fas fa-signal"></i>
-                                    <span>Stats</span>
-                                </a>
-                            </li>
-                            <li class="nav-items-list">
-                                <a href="#">
-                                    <i class="fas fa-calculator"></i>
-                                    <span>Compta</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </aside>
-
         {% block body %} 
 
-
         {% endblock %}
-
-        </div>
 
         {% block javascripts %}{% endblock %}
     </body>
