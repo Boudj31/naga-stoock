@@ -13,6 +13,6 @@ class DefaultController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('home/index.html.twig');
+        return $this->render('default/index.html.twig');
     }
 }
