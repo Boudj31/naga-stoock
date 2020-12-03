@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact
 {
+    public const TITLES = ['mr' => 'MR', 'ms' => 'MS'];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
