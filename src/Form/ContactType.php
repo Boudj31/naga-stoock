@@ -27,7 +27,7 @@ class ContactType extends AbstractType
             ])
             ->add('title', ChoiceType::class, [
                 'choices' => Contact::TITLES,
-                'label' => "Sexe"
+                'label' => "Genre"
             ])
             ->add('lastname', TextType::class, [
                 'label' => "Nom",
