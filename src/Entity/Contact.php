@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact
 {
-    public const TITLES = ['mr' => 'MR', 'ms' => 'MS'];
+    public const TITLES = ['mr' => 'Monsieur', 'ms' => 'Madame'];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -58,6 +58,16 @@ class Contact
      */
     private $adress;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+   
+    public function __construct()
+    {
+        $this->adress = new Adress();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,9 +85,9 @@ class Contact
         return $this;
     }
 
-    public function getGender(): ?int
+    public function getGender()
     {
-        return $this->gender;
+        return self::TITLES;
     }
 
     public function setGender(?int $gender): self
@@ -155,6 +165,18 @@ class Contact
     public function setAdress(?Adress $adress): self
     {
         $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

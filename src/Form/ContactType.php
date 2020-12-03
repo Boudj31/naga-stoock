@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
@@ -17,22 +19,47 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('reason', TextType::class, [
-                'label' => "Motif"
+                'label' => "Motif",
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Saisissez le motif'
+                ]
             ])
-            ->add('gender', ChoiceType::class, [
+            ->add('title', ChoiceType::class, [
                 'choices' => Contact::TITLES,
                 'label' => "Sexe"
             ])
             ->add('lastname', TextType::class, [
                 'label' => "Nom",
-                'attr' => [ 'placeholder' => 'Saisissez le Nom']
+                'attr' => [ 'placeholder' => 'Saisissez le Nom'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champs ne peut pas être vide.',
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Le nom doit faire au moins 3 caractères.',
+                        'max' => 4096,
+                    ]),
+                ],
             ])
             ->add('firstname', TextType::class, [
                 'label' => "Prénom",
-                'attr' => [ 'placeholder' => 'Saisissez le Prénom']
+                'attr' => [ 'placeholder' => 'Saisissez le Prénom'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champs ne peut pas être vide.',
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Le prénom doit faire au moins 3 caractères.',
+                        'max' => 4096,
+                    ]),
+                ],
             ])
             ->add('mail', EmailType::class, [
                 "label" => 'Email',
+                'required' => false,
                 'attr' => ['placeholder' => "Saisissez l'adresse email"]
             ])
             ->add('phone', TextType::class, [
@@ -41,6 +68,7 @@ class ContactType extends AbstractType
             ])
             ->add('comment', TextareaType::class, [
                 'label' => "Commentaire",
+                'required' => false,
                 'attr' => [ 
                     'placeholder' => 'Saisissez un commentaire',
                     'rows' => 20,
@@ -48,7 +76,8 @@ class ContactType extends AbstractType
                     ]
             ])
             ->add('adress', AdressType::class,[
-                'label' => false
+                'label' => false,
+                'required' => false
             ] )
         ;
     }
