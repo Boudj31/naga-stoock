@@ -4,9 +4,9 @@
                     <nav>
                         <ul class="nav-list">
                             <li class="nav-logo">
-                                <img src="{{asset('assets/img/logo.svg')}}" alt="Logo">
+                                <a href="{{path('app_logout')}}"><img src="{{asset('assets/img/logo.svg')}}" alt="Logo"></a>
                                 <strong>Stock Manager</strong>
-                            </li>
+                            </li>  
                             <li class="nav-items-list">
                                 <a href="#">
                                     <i class="fas fa-home"></i>
@@ -43,26 +43,33 @@
                                     <span>Compta</span>
                                 </a>
                             </li>
-
-                            <li class="nav-items-list">
-                                <a href="{{path('app_register')}}">
-                                    <i class="fas fa-calculator"></i>
-                                    <span>Inscription</span>
-                                </a>
-                            </li>
-
-                             <li class="nav-items-list">
-                                <a href="{{path('app_login')}}">
-                                    <i class="fas fa-calculator"></i>
-                                    <span>Connexion</span>
-                                </a>
-                            </li>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            
                              <li class="nav-items-list">
                                 <a href="{{path('app_logout')}}">
-                                    <i class="fas fa-calculator"></i>
+                                    <i class="fas fa-door-open"></i>
                                     <span>Deconnexion</span>
                                 </a>
                             </li>
+                            {% if app.user %}
+                              <small>({{app.user.email}})</small> 
+                            {% endif %}
+                            
+                             {% else %}
+                            <li class="nav-items-list">
+                                <a href="{{path('app_register')}}">
+                                    <i class="fas fa-file-signature"></i>
+                                    <span>Inscription</span>
+                                </a>
+                            </li>
+                             <li class="nav-items-list">
+                                <a href="{{path('app_login')}}">
+                                    <i class="fas fa-fingerprint"></i>
+                                    <span>Connexion</span>
+                                </a>
+                            </li>
+                            {% endif %}
+
                         </ul>
                     </nav>
                 </div>
