@@ -1,0 +1,85 @@
+// Navbar
+// ==================
+.sidebar {
+    display: block;
+    width: size(255)+rem;
+    z-index: 100;
+
+    .sidebar-col {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        width: size(255)+rem;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+
+.nav-list {
+    padding-top: size(40)+rem;
+    padding-left: size(50)+rem;
+    position: relative;
+
+    .nav-logo {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        font-weight: 700;
+        font-size: size(20)+rem;
+        margin-bottom: size(46)+rem;
+
+        img {
+            width: size(80)+rem;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: size(20)+rem;
+        }
+    }
+
+    .nav-items-list {
+        font-weight: 600;
+        margin-bottom: size(15)+rem;
+        padding: size(18)+rem 0;
+
+        a {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: size(-50)+rem;
+                top: -80%;
+                width: 300%;
+                height: size(56)+rem;
+                transition: all .3s ease-out;
+                z-index: -1;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: size(-50)+rem;
+                top: -80%;
+                width: 4%;
+                height: size(56)+rem;
+                transition: all .3s ease-out;
+                z-index: -1;
+            }
+
+
+            &:hover::before {
+                background-color: #CBD5E0;
+            }
+
+            &:hover::after {
+                background-color: #CBD5E0;
+                background-color: #73AAD6;
+            }
+        }
+
+        i {
+            margin-right: size(24)+rem;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+// Variables
+// ==================
+:root {
+    --primary: #2E3B58;
+    --secondary: #20C997;
+    --dark: #111111;
+    --white: #fff;
+    --light-grey: #F2F3F5;
+    --line-gray: #E0E2E1;
+    --input-header: #e2E8F0;
+    --font-family: 'Open Sans', sans-serif;
+    --font-size: 15px;
+}
+
+
+// Outils
+// ==================
+@import 'tools/reset';
+@import 'tools/functions';
+@import 'tools/media-queries';
+@import 'tools/typography';
+
+
+// Generic
+// ==================
+body {
+    background-color: var(--light-grey);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--dark);
+    min-height: 100vh;
+}
+
+.wb-home {
+    position: relative;
+    display: flex;
+    transition: flex-grow 200ms ease-in-out, -webkit-box-flex 200ms ease-in-out, -webkit-flex-grow 200ms ease-in-out;
+    transition: flex-grow 200ms ease-in-out;
+    transition: flex-grow 200ms ease-in-out, -webkit-box-flex 200ms ease-in-out, -webkit-flex-grow 200ms ease-in-out, -ms-flex-positive 200ms ease-in-out;
+
+    #main {
+        flex: 1;
+        transition: flex-grow 200ms ease-in-out, -webkit-flex-shrink 200ms ease-in-out, -webkit-flex-shrink 200ms ease-in-out, -webkit-box-flex 200ms ease-in-out, -webkit-flex-grow 200ms ease-in-out;
+        transition: flex-shrink 200ms ease-in-out, flex-grow 200ms ease-in-out;
+        transition: flex-shrink 200ms ease-in-out, flex-grow 200ms ease-in-out, -webkit-flex-shrink 200ms ease-in-out, -webkit-flex-shrink 200ms ease-in-out, -ms-flex-negative 200ms ease-in-out, -webkit-box-flex 200ms ease-in-out, -webkit-flex-grow 200ms ease-in-out, -ms-flex-positive 200ms ease-in-out;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+// Modules
+// ==================
+@import 'modules/btn';
+@import 'modules/navbar';
+@import 'modules/header';
+
+
+// Pages
+// ==================
+@import 'pages/auth';
+@import 'pages/main';
