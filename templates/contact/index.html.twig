@@ -10,7 +10,7 @@
 	<div class="card card-padding">
 
 		<div class="contact-header margin-b">
-			<a href="{{ path('contact_new') }}" class="btn btn-danger btn-radius">
+			<a href="{{ path('contact_new') }}" class="btn btn-secondary btn-radius">
 				<i class="fas fa-plus"></i> Ajouter
 			</a>
 			<form action="">
@@ -36,11 +36,7 @@
 					<tr>
 						<td>{{ contact.reason }}</td>
 						<td>
-							{% if contact.gender %}
-								Mr
-							{% else %}
-								Mme
-							{% endif %}
+							{{ contact.title }}
 						</td>
 						<td>{{ contact.lastname }}</td>
 						<td>{{ contact.firstname }}</td>

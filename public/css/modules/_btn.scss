@@ -12,21 +12,35 @@
     transition: all .3s ease-in-out;
     background-color: transparent;
 
-    &-success {
-        background-color: var(--btn-success);
-        border-color: var(--btn-success);
+
+    // Btn color
+    &-primary {
+        background-color: var(--btn-primary);
+        border-color: var(--btn-primary);
         color: var(--btn-color);
     }
 
-    &-danger {
-        background-color: var(--btn-danger);
-        border-color: var(--btn-danger);
-        box-shadow: 0 2px 6px var(--btn-danger-shadow);
+    &-secondary {
+        background-color: var(--btn-secondary);
+        border-color: var(--btn-secondary);
+        box-shadow: 0 2px 6px var(--btn-secondary-shadow);
         color: var(--btn-color);
     }
 
-    &-danger:hover {
-        background-color: var(--btn-danger-hover);
+    &-third {
+        background-color: var(--btn-third);
+        border-color: var(--btn-third);
+        box-shadow: 0 2px 6px var(--btn-third-shadow);
+        color: var(--btn-color);
+    }
+
+    // Btn hover
+    &-secondary:hover {
+        background-color: var(--btn-secondary-hover);
+    }
+
+    &-third:hover {
+        background-color: var(--btn-third-hover);
     }
 
     &-radius {

@@ -27,7 +27,10 @@ class ContactType extends AbstractType
             ])
             ->add('title', ChoiceType::class, [
                 'choices' => Contact::TITLES,
-                'label' => "Genre"
+                'label' => "Genre", 
+                'attr' => [
+                    'class' => 'form-select'
+                ]
             ])
             ->add('lastname', TextType::class, [
                 'label' => "Nom",
@@ -71,8 +74,8 @@ class ContactType extends AbstractType
                 'required' => false,
                 'attr' => [ 
                     'placeholder' => 'Saisissez un commentaire',
-                    'rows' => 20,
-                    'cols' => 50
+                    'rows' => 10,
+                    'cols' => 40
                     ]
             ])
             ->add('adress', AdressType::class,[
