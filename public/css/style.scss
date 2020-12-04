@@ -65,8 +65,8 @@ body {
     min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    padding-top: size(50)+rem;
-    padding-bottom: size(50)+rem;
+    padding: size(50)+rem size(20)+rem;
+    overflow: hidden;
 }
 
 
@@ -80,7 +80,7 @@ body {
 @import 'modules/table';
 @import 'modules/card';
 @import 'modules/margin';
-@import 'modules/input';
+@import 'modules/form';
 @import 'modules/radius';
 @import 'modules/pagination';
 

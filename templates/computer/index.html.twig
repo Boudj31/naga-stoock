@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Computer index{% endblock %}
+
+{% block body %}
+    <h1>Computer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ReceivedAt</th>
+                <th>Serial</th>
+                <th>Status</th>
+                <th>Comment</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for computer in computers %}
+            <tr>
+                <td>{{ computer.id }}</td>
+                <td>{{ computer.receivedAt ? computer.receivedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ computer.serial }}</td>
+                <td>{{ computer.status }}</td>
+                <td>{{ computer.comment }}</td>
+                <td>{{ computer.type }}</td>
+                <td>
+                    <a href="{{ path('computer_show', {'id': computer.id}) }}">show</a>
+                    <a href="{{ path('computer_edit', {'id': computer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('computer_new') }}">Create new</a>
+{% endblock %}
