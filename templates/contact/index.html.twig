@@ -1,72 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index{% endblock %}
+{% block title %}Contact index
+{% endblock %}
 
 {% block body %}
+	<h1 class="title margin-b">Contact</h1>
 
-<style>
-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+	<!--==== Card ====-->
+	<div class="card card-padding">
 
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-table tr:nth-child(even){background-color: #f2f2f2;}
-
-table tr:hover {background-color: #ddd;}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
-    <h1>Contact index</h1> 
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Reason</th>
-                <th>Gender</th>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Mail</th>
-                <th>Phone</th>
-                <th>Comment</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contact in contacts %}
-            <tr>
-                <td>{{ contact.id }}</td>
-                <td>{{ contact.reason }}</td>
-                <td>{{ contact.title }}</td>
-                <td>{{ contact.lastname }}</td>
-                <td>{{ contact.firstname }}</td>
-                <td>{{ contact.mail }}</td>
-                <td>{{ contact.phone }}</td>
-                <td>{{ contact.comment }}</td>
-                <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('contact_new') }}">Create new</a>
+		<div class="contact-header margin-b">
+			<a href="{{ path('contact_new') }}" class="btn btn-danger btn-radius">
+				<i class="fas fa-plus"></i> Ajouter
+			</a>
+			<form action="">
+				<input type="search" id="" placeholder="Search user..." class="radius">
+			</form>
+		</div>
+    
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Motif</th>
+					<th>Gender</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Courriel</th>
+					<th>Téléphone</th>
+					<th>Commentaires</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for contact in contacts %}
+					<tr>
+						<td>{{ contact.reason }}</td>
+						<td>
+							{% if contact.gender %}
+								Mr
+							{% else %}
+								Mme
+							{% endif %}
+						</td>
+						<td>{{ contact.lastname }}</td>
+						<td>{{ contact.firstname }}</td>
+						<td>{{ contact.mail }}</td>
+						<td>{{ contact.phone }}</td>
+						<td>{{ contact.comment }}</td>
+						<td class="actions">
+							<a href="{{ path('contact_show', {'id': contact.id}) }}"><i class="far fa-eye"></i></a>
+							<a href="{{ path('contact_edit', {'id': contact.id}) }}"><i class="far fa-edit"></i></a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

@@ -10,21 +10,13 @@
         {% endblock %}
     </head>
     <body>
-       <div class="wb-home">
-        {% include "menu.html.twig" %}
-      
-        {% for label, flashes in app.session.flashbag.all %}
-          {% for flash in flashes %}
-          <div class="alert alert-{{ label }}">
-            {{ flash }}
-         </div>
-          {% endfor %}
-      {% endfor %}
+        <div class="wb-home">
+            {% include "menu.html.twig" %}
+            <div class="container">
+            {% block body %} 
 
-        {% block body %} 
-
-
-        {% endblock %}
+            {% endblock %}
+            </div>
         </div>
 
         {% block javascripts %}{% endblock %}

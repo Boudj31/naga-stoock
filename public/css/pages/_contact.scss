@@ -1,0 +1,16 @@
+// Pages contact
+// ==================
+.contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+        margin-right: size(15)+rem;
+    }
+}

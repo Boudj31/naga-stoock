@@ -1,4 +1,4 @@
-@function size($nb) {
+@function size($nb) { // Valeur nb en pixel
     $resultat : $nb / 16;
     @return $resultat;
 }
