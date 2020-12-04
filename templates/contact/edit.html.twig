@@ -3,12 +3,21 @@
 {% block title %}Edit Contact{% endblock %}
 
 {% block body %}
-    <h1>Edit Contact</h1>
-  
 
-    {{ include('contact/_form.html.twig', {'button_label': 'Update'}) }}
+    <h1 class="title margin-b">Modifier un nouveau contact</h1> 
 
-    <a href="{{ path('contact_index') }}">back to list</a>
+    <!--==== Formulaire ====-->
+    <div class="card card-padding">
 
-    {{ include('contact/_delete_form.html.twig') }}
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary btn-radius">
+                {{ button_label|default('Mettre à jour!') }}
+            </button>
+            <a href="{{ path('contact_index') }}" class="btn btn-third btn-radius">Retour</a>
+        {{ form_end(form) }}
+
+    </div>
+
 {% endblock %}

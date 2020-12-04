@@ -3,7 +3,20 @@
 {% block title %}Computer index{% endblock %}
 
 {% block body %}
-    <h1>Computer index</h1>
+    <h1 class="title margin-b">Ordinateur</h1>
+
+	<!--==== Card ====-->
+	<div class="card card-padding">
+
+		<div class="contact-header margin-b">
+			<a href="{{ path('computer_new') }}" class="btn btn-secondary btn-radius">
+				<i class="fas fa-plus"></i> Ajouter
+			</a>
+			<form action="">
+				<input type="search" id="" placeholder="Search computer..." class="radius">
+			</form>
+		</div>
+    
 
     <table class="table">
         <thead>
@@ -21,15 +34,15 @@
         {% for computer in computers %}
             <tr>
                 <td>{{ computer.id }}</td>
-                <td>{{ computer.receivedAt ? computer.receivedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ computer.receivedAt ? computer.receivedAt|date('Y-m-d') : '' }}</td>
                 <td>{{ computer.serial }}</td>
                 <td>{{ computer.status }}</td>
                 <td>{{ computer.comment }}</td>
                 <td>{{ computer.type }}</td>
-                <td>
-                    <a href="{{ path('computer_show', {'id': computer.id}) }}">show</a>
-                    <a href="{{ path('computer_edit', {'id': computer.id}) }}">edit</a>
-                </td>
+                	<td class="actions">
+                            <a href="{{ path('computer_edit', {'id': computer.id}) }}"><i class="far fa-edit"></i></a>
+                            {{ include('computer/_delete_form.html.twig') }}
+						</td>
             </tr>
         {% else %}
             <tr>
@@ -38,6 +51,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('computer_new') }}">Create new</a>
+    </div>
 {% endblock %}

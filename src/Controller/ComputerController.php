@@ -49,16 +49,6 @@ class ComputerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="computer_show", methods={"GET"})
-     */
-    public function show(Computer $computer): Response
-    {
-        return $this->render('computer/show.html.twig', [
-            'computer' => $computer,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="computer_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Computer $computer): Response

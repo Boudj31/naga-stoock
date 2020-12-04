@@ -22,6 +22,7 @@ class ComputerType extends AbstractType
                 'input' => 'datetime',
                 'html5' => true,
                 'widget' => 'single_text',
+                'label' => 'Date de réception'
             ])
             ->add('serial', TextType::class, [
                 'label' => 'Numéro de série',
@@ -32,10 +33,15 @@ class ComputerType extends AbstractType
             ->add('status', ChoiceType::class, [
                 'choices' => Computer::TYPE_STATUS
             ])
-            ->add('comment', TextareaType::class)
+            ->add('comment', TextareaType::class, [
+                'label' => 'Commentaires',
+                'attr' => [
+                   'placeholder' => "Entrer un commentaire..."
+                ]
+            ])
             ->add('type', ChoiceType::class, [
                 'choices' => Computer::TYPE_VALUES,
-                'label' => 'Commentaires',
+                'label' => 'Types',
                 'attr' => [
                     'placeholder' => 'Ajouter un commentaire'
                 ]
@@ -43,6 +49,7 @@ class ComputerType extends AbstractType
             ->add('donor', EntityType::class, [
                 'class' => Society::class,
                 'choice_label' => 'name',
+                'label' => 'Donateur'
             ] )
         ;
     }

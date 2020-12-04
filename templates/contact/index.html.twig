@@ -27,6 +27,9 @@
 					<th>Prénom</th>
 					<th>Courriel</th>
 					<th>Téléphone</th>
+					<th>Adresse</th>
+					<th>Ville</th>
+					<th>Code postal</th>
 					<th>Commentaires</th>
 					<th>Actions</th>
 		
@@ -43,11 +46,15 @@
 						<td>{{ contact.firstname }}</td>
 						<td>{{ contact.mail }}</td>
 						<td>{{ contact.phone }}</td>
+						<td>{{ contact.adress.adressLine1 }}</td>
+						<td>{{ contact.adress.city }}</td>
+						<td>{{ contact.adress.zipCode }}</td>
 						<td>{{ contact.comment }}</td>
 				
 
 						<td class="actions">
 							<a href="{{ path('contact_edit', {'id': contact.id}) }}"><i class="far fa-edit"></i></a>
+							{{ include('contact/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}
