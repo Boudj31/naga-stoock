@@ -29,6 +29,7 @@
 					<th>Téléphone</th>
 					<th>Commentaires</th>
 					<th>Actions</th>
+		
 				</tr>
 			</thead>
 			<tbody>
@@ -41,8 +42,9 @@
 						<td>{{ contact.mail }}</td>
 						<td>{{ contact.phone }}</td>
 						<td>{{ contact.comment }}</td>
+				
+
 						<td class="actions">
-							<a href="{{ path('contact_show', {'id': contact.id}) }}"><i class="far fa-eye"></i></a>
 							<a href="{{ path('contact_edit', {'id': contact.id}) }}"><i class="far fa-edit"></i></a>
 						</td>
 					</tr>
