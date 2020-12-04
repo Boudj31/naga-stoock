@@ -57,5 +57,11 @@
 				{% endfor %}
 			</tbody>
 		</table>
+
+		{# display navigation #}
+		<div class="margin-tb">
+			{{ knp_pagination_render(contacts) }}
+		</div>
+
 	</div>
 {% endblock %}

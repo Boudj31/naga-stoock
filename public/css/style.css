@@ -252,8 +252,8 @@ body {
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 3.125rem;
-  padding-bottom: 3.125rem;
+  padding: 3.125rem 1.25rem;
+  overflow: hidden;
 }
 
 .btn {
@@ -493,6 +493,7 @@ body {
   -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
           box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
   border-radius: 0.3125rem;
+  overflow-x: hidden;
 }
 
 .margin-tb {
@@ -538,6 +539,19 @@ textarea {
 
 .radius {
   border-radius: 0.3125rem;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.pagination-btn {
+  border: 1px solid #e3ebf6;
+  padding: .6rem 1.2rem;
 }
 
 .auth-wrapper {
