@@ -42,6 +42,11 @@ class Adress
      */
     private $contact;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Society::class, mappedBy="adress", cascade={"persist", "remove"})
+     */
+    private $society;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +113,24 @@ class Adress
         $newAdress = null === $contact ? null : $this;
         if ($contact->getAdress() !== $newAdress) {
             $contact->setAdress($newAdress);
+        }
+
+        return $this;
+    }
+
+    public function getSociety(): ?Society
+    {
+        return $this->society;
+    }
+
+    public function setSociety(?Society $society): self
+    {
+        $this->society = $society;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newAdress = null === $society ? null : $this;
+        if ($society->getAdress() !== $newAdress) {
+            $society->setAdress($newAdress);
         }
 
         return $this;
