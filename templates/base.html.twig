@@ -10,11 +10,13 @@
         {% endblock %}
     </head>
     <body>
-       <div class="wb-home">
-        {% include "menu.html.twig" %}
-        {% block body %} 
+        <div class="wb-home">
+            {% include "menu.html.twig" %}
+            <div class="container">
+            {% block body %} 
 
-        {% endblock %}
+            {% endblock %}
+            </div>
         </div>
 
         {% block javascripts %}{% endblock %}

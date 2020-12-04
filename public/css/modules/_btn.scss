@@ -1,36 +1,35 @@
 // Btn
 // ==================
+
 .btn {
-    border: 0;
-    border-radius: 3px;
-    padding: 1rem 2rem;
-    font-weight: 700;
-    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-weight: 400;
+    vertical-align: middle;
+    border: none;
+    padding: size(10)+rem size(20)+rem;
+    font-size: var(--font-size);
+    transition: all .3s ease-in-out;
+    background-color: transparent;
 
-    // &:hover {
-    //   box-shadow: var(--box-shadow);
-    //   transition: box-shadow 0.2s;
-    // }
+    &-success {
+        background-color: var(--btn-success);
+        border-color: var(--btn-success);
+        color: var(--btn-color);
+    }
 
-    &-block {
-      width: 100%;
-      text-align: center;
+    &-danger {
+        background-color: var(--btn-danger);
+        border-color: var(--btn-danger);
+        box-shadow: 0 2px 6px var(--btn-danger-shadow);
+        color: var(--btn-color);
+    }
+
+    &-danger:hover {
+        background-color: var(--btn-danger-hover);
     }
 
     &-radius {
-      border-radius: size(15)+rem;
+        border-radius: size(5)+rem;
     }
-
-    &-primary {
-      background: var(--secondary);
-      box-shadow: 0 8px 18px rgba(32, 201, 151, .65);
-      color: white;
-    }
-
-    &-secondary {
-      border: 1px solid var(--primary);
-      background: white;
-      color: var(--primary);
-    }
-
 }

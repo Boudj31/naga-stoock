@@ -1,0 +1,13 @@
+// Card
+// ==================
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: size(24)+rem;
+    background-color: var(--white);
+    border-color: var(--white);
+    box-shadow: 0 .75rem 1.5rem rgba(18,38,63,.03);
+    border-radius: size(5)+rem;
+}
