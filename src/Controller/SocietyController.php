@@ -49,16 +49,6 @@ class SocietyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="society_show", methods={"GET"})
-     */
-    public function show(Society $society): Response
-    {
-        return $this->render('society/show.html.twig', [
-            'society' => $society,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="society_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Society $society): Response

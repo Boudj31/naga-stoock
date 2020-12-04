@@ -3,9 +3,19 @@
 {% block title %}New Computer{% endblock %}
 
 {% block body %}
-    <h1>Create new Computer</h1>
+     <h1 class="title margin-b">Ajouter un nouveau matériel</h1> 
 
-    {{ include('computer/_form.html.twig') }}
+    <!--==== Formulaire ====-->
+    <div class="card card-padding">
 
-    <a href="{{ path('computer_index') }}">back to list</a>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary btn-radius">
+                {{ button_label|default('Enregistrer !') }}
+            </button>
+            <a href="{{ path('computer_index') }}" class="btn btn-third btn-radius">Retour</a>
+        {{ form_end(form) }}
+
+    </div>
 {% endblock %}
