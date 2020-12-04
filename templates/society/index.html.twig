@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Society index{% endblock %}
+
+{% block body %}
+   	<h1 class="title margin-b">Contact</h1>
+
+	<!--==== Card ====-->
+	<div class="card card-padding">
+
+		<div class="contact-header margin-b">
+			<a href="{{ path('society_new') }}" class="btn btn-danger btn-radius">
+				<i class="fas fa-plus"></i> Ajouter
+			</a>
+			<form action="">
+				<input type="search" id="" placeholder="Search Society..." class="radius">
+			</form>
+		</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Identité</th>
+                <th>Raison sociale</th>
+                <th>RepresentativeMail</th>
+                <th>RepresentativePhone</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for society in societies %}
+            <tr>
+                <td>{{ society.id }}</td>
+                <td>{{ society.name }}</td>
+                <td>{{ society.representativeName }}</td>
+                <td>{{ society.representativeMail }}</td>
+                <td>{{ society.representativePhone }}</td>
+                <td>{{ society.comment }}</td>
+                <td>
+							<a href="{{ path('society_show', {'id': society.id}) }}"><i class="far fa-eye"></i></a>
+							<a href="{{ path('society_edit', {'id': society.id}) }}"><i class="far fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

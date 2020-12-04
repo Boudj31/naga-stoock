@@ -67,6 +67,7 @@ class ContactType extends AbstractType
             ])
             ->add('phone', TextType::class, [
                 'label' => "Téléphone",
+                'required' => false,
                 'attr' => [ 'placeholder' => 'Saisissez le Numero de téléphone']
             ])
             ->add('comment', TextareaType::class, [
