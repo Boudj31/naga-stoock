@@ -10,6 +10,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Computer
 {
+    public const TYPE_STATUS = [
+        'donné' => "Donné",
+        'asso' => 'Donné asso',
+        'dispo' => 'En stock',
+        'démonté' => 'Démonté'
+    ];
+    
+
+    public const TYPE_VALUES = [
+        'fixe' => 'PC Fixe',
+        'portable' => 'PC portable',
+        'serveur' => 'Serveur'
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

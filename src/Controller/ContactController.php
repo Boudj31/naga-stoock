@@ -48,15 +48,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="contact_show", methods={"GET"})
-     */
-    public function show(Contact $contact): Response
-    {
-        return $this->render('contact/show.html.twig', [
-            'contact' => $contact,
-        ]);
-    }
+
 
     /**
      * @Route("/{id}/edit", name="contact_edit", methods={"GET","POST"})
