@@ -9,11 +9,14 @@
   --font-family: 'Open Sans', sans-serif;
   --font-size: 15px;
   --btn-color: #fff;
-  --btn-success: #0acf97;
-  --btn-success-hover: #079b71;
-  --btn-danger: #fa5c7c;
-  --btn-danger-hover: #db516c;
-  --btn-danger-shadow: #db516dbe;
+  --btn-primary: #0acf97;
+  --btn-primary-hover: #079b71;
+  --btn-secondary: #fa5c7c;
+  --btn-secondary-hover: #db516c;
+  --btn-secondary-shadow: #db516dbe;
+  --btn-third: #3f80ea;
+  --btn-third-hover: #306bca;
+  --btn-third-shadow: #306bcaec;
 }
 
 *,
@@ -266,22 +269,34 @@ body {
   background-color: transparent;
 }
 
-.btn-success {
-  background-color: var(--btn-success);
-  border-color: var(--btn-success);
+.btn-primary {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
   color: var(--btn-color);
 }
 
-.btn-danger {
-  background-color: var(--btn-danger);
-  border-color: var(--btn-danger);
-  -webkit-box-shadow: 0 2px 6px var(--btn-danger-shadow);
-          box-shadow: 0 2px 6px var(--btn-danger-shadow);
+.btn-secondary {
+  background-color: var(--btn-secondary);
+  border-color: var(--btn-secondary);
+  -webkit-box-shadow: 0 2px 6px var(--btn-secondary-shadow);
+          box-shadow: 0 2px 6px var(--btn-secondary-shadow);
   color: var(--btn-color);
 }
 
-.btn-danger:hover {
-  background-color: var(--btn-danger-hover);
+.btn-third {
+  background-color: var(--btn-third);
+  border-color: var(--btn-third);
+  -webkit-box-shadow: 0 2px 6px var(--btn-third-shadow);
+          box-shadow: 0 2px 6px var(--btn-third-shadow);
+  color: var(--btn-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-secondary-hover);
+}
+
+.btn-third:hover {
+  background-color: var(--btn-third-hover);
 }
 
 .btn-radius {
@@ -492,13 +507,33 @@ body {
   margin-bottom: 1.0625rem;
 }
 
-input {
+.form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 0.9375rem;
+}
+
+.form-group > label {
+  padding: 0.9375rem 0;
+}
+
+input,
+textarea {
   padding: 0.625rem 0.9375rem;
   font-size: 0.75rem;
   color: var(--dark);
   border: none;
   background-color: var(--light-grey);
   outline: 0;
+}
+
+textarea {
+  padding: 1.25rem 0.9375rem !important;
 }
 
 .radius {
