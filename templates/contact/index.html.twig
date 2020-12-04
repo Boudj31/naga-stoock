@@ -35,13 +35,7 @@
 				{% for contact in contacts %}
 					<tr>
 						<td>{{ contact.reason }}</td>
-						<td>
-							{% if contact.gender %}
-								Mr
-							{% else %}
-								Mme
-							{% endif %}
-						</td>
+						<td>{{ contact.title }}</td>
 						<td>{{ contact.lastname }}</td>
 						<td>{{ contact.firstname }}</td>
 						<td>{{ contact.mail }}</td>
