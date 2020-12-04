@@ -22,7 +22,7 @@ class ContactType extends AbstractType
                 'label' => "Motif",
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Saisissez le motif'
+                    'placeholder' => 'Saisissez le motif...'
                 ]
             ])
             ->add('title', ChoiceType::class, [
@@ -34,7 +34,7 @@ class ContactType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'label' => "Nom",
-                'attr' => [ 'placeholder' => 'Saisissez le Nom'],
+                'attr' => [ 'placeholder' => 'Saisissez le Nom..'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champs ne peut pas être vide.',
