@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Computer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,13 @@ class ComputerRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Computer::class);
+    }
+
+    public function findAllPagination() : Query
+    {
+        return $this->createQueryBuilder('c')
+                ->orderBy('c.id', 'DESC')
+                ->getQuery();
     }
 
     // /**

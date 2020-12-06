@@ -34,7 +34,7 @@ class ContactType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'label' => "Nom",
-                'attr' => [ 'placeholder' => 'Saisissez le Nom..'],
+                'attr' => [ 'placeholder' => 'Saisissez le Nom..git'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champs ne peut pas être vide.',

@@ -49,6 +49,11 @@ class MemberShip
      */
     private $computer;
 
+    public function __construct()
+    {
+        $this->beginAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
