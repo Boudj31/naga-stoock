@@ -47,7 +47,7 @@
                 <td>{% if member_ship.computer %}
                         {{ member_ship.computer.serial }}
                     {% else %}
-                        Pas d'ordinateur
+                    {{ 'default.noComputer' | trans }}
                     {% endif %}</td>
                 <td>{{ member_ship.amount }} €</td>
                 <td>{{ member_ship.comment }}</td>
@@ -64,5 +64,10 @@
         {% endfor %}
         </tbody>
     </table>
+    		{# display navigation #}
+		<div class="margin-tb">
+			{{ knp_pagination_render(member_ships) }}
+		</div>
+
   </div>
 {% endblock %}

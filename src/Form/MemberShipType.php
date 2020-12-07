@@ -34,7 +34,8 @@ class MemberShipType extends AbstractType
             ])
             ->add('amount', MoneyType::class, [
                 'currency' => 'EUR',
-                'divisor' => 100
+                'divisor' => 100,
+              
             ] )
             ->add('member', EntityType::class, [
                 'class' => Contact::class,
@@ -48,6 +49,7 @@ class MemberShipType extends AbstractType
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Commentaire',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Entrer un commentaire'
                 ]

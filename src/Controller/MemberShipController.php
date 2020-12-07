@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\MemberShip;
 use App\Form\MemberShipType;
 use App\Repository\MemberShipRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,15 @@ class MemberShipController extends AbstractController
     /**
      * @Route("/", name="member_ship_index", methods={"GET"})
      */
-    public function index(MemberShipRepository $memberShipRepository): Response
+    public function index(MemberShipRepository $memberShipRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
+        $memberShips = $paginatorInterface->paginate(
+            $memberShipRepository->findAllPagination(),
+            $request->query->getInt('page', 1), /*page number*/
+            4 /*limit par page*/
+        );
         return $this->render('member_ship/index.html.twig', [
-            'member_ships' => $memberShipRepository->findAll(),
+            'member_ships' => $memberShips,
         ]);
     }
 
@@ -91,4 +97,5 @@ class MemberShipController extends AbstractController
 
         return $this->redirectToRoute('member_ship_index');
     }
+
 }
