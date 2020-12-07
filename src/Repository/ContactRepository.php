@@ -28,6 +28,18 @@ class ContactRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
+    public function findContact(string $mot)
+    {
+        return ($queryBuilder =  $this->createQueryBuilder('c'))
+        ->where($queryBuilder->expr()->like('c.lastname', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.firstname', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.mail', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.phone', ':mot'))
+        ->setParameter('mot', '%'.$mot.'%')
+        ->getQuery()
+        ->getResult();
+    }
+
     // /**
     //  * @return Contact[] Returns an array of Contact objects
     //  */

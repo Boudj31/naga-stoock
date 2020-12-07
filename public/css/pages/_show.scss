@@ -1,0 +1,74 @@
+// Pages show
+// ==================
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    em {
+        opacity: .7;
+        font-size: size(12)+rem;
+        margin-bottom: size(5)+rem;
+        display: block;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    .image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: contain;
+        margin-right: size(15)+rem;
+    }
+}
+
+.show {
+    &-card{
+        background-color: var(--secondary);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        padding: size(25)+rem;
+        border-radius: size(10)+rem;
+        font-weight: 600;
+    }
+
+    &-commentaire {
+        width: 100%;
+        flex: 1 1 100%;
+        border-bottom: 1px solid var(--light-grey);
+
+        p:last-child {
+            padding: size(15)+rem 0; 
+            opacity: .5;
+        }
+    }
+
+    &-content {
+        strong {
+            font-weight: 600;
+        }
+
+        p {
+            margin-top: size(15)+rem;
+        }
+
+        p:last-child {
+            margin-bottom: size(15)+rem; 
+        }
+    }
+}

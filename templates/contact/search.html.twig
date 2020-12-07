@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index
+{% block title %}Résultat des recherches
 {% endblock %}
 
 {% block body %}
-	<h1 class="title margin-b">Contact</h1>
+
+    <h1 class="title margin-b">Nombre de résultat de votre recherche : {{ search_contact | length }}</h1>
 
 	<!--==== Card ====-->
 	<div class="card card-padding">
@@ -13,10 +14,6 @@
 			<a href="{{ path('contact_new') }}" class="btn btn-secondary btn-radius">
 				<i class="fas fa-plus"></i> Ajouter
 			</a>
-			{{render(controller('App\\Controller\\ContactController::getSearchForm'))}}
-			{# <form action="">
-				<input type="search" id="" placeholder="Search user..." class="radius">
-			</form> #}
 		</div>
     
 		<table class="table">
@@ -34,7 +31,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for contact in contacts %}
+				{% for contact in search_contact %}
 					<tr>
 						<td>
 							{% if contact.title == "Monsieur" %}
@@ -65,11 +62,8 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
-		{# display navigation #}
-		<div class="margin-tb">
-			{{ knp_pagination_render(contacts) }}
-		</div>
-
 	</div>
+
+
+
 {% endblock %}
