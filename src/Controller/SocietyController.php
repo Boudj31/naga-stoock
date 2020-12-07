@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Society;
 use App\Form\SocietyType;
 use App\Repository\SocietyRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,16 @@ class SocietyController extends AbstractController
     /**
      * @Route("/", name="society_index", methods={"GET"})
      */
-    public function index(SocietyRepository $societyRepository): Response
+    public function index(SocietyRepository $societyRepository, PaginatorInterface $paginatorInterface, Request $request ): Response
     {
+
+        $societies = $paginatorInterface->paginate(
+            $societyRepository->findAllPagination(),
+            $request->query->getInt('page', 1), /*page number*/
+            2 /*limit par page*/
+        );
         return $this->render('society/index.html.twig', [
-            'societies' => $societyRepository->findAll(),
+            'societies' => $societies
         ]);
     }
 

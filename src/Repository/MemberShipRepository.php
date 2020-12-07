@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\MemberShip;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -18,6 +19,14 @@ class MemberShipRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, MemberShip::class);
     }
+
+    public function findAllPagination() : Query
+    {
+        return $this->createQueryBuilder('m')
+                ->orderBy('m.id', 'DESC')
+                ->getQuery();
+    }
+
 
     // /**
     //  * @return MemberShip[] Returns an array of MemberShip objects
