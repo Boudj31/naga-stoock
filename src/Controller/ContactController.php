@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Form\SearchContactType;
 use App\Repository\ContactRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,11 +29,21 @@ class ContactController extends AbstractController
         $contacts = $paginatorInterface->paginate(
             $contactRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            2 /*limit par page*/
+            4 /*limit par page*/
         );
 
         return $this->render('contact/index.html.twig', [
             'contacts' => $contacts,
+        ]);
+    }
+
+    /**
+     * @Route("/show/{id}", name="contact_show", methods={"GET"})
+     */
+    public function show(Contact $contact): Response
+    {
+        return $this->render('contact/show.html.twig', [
+            'contact' => $contact,
         ]);
     }
 
@@ -94,4 +105,34 @@ class ContactController extends AbstractController
 
         return $this->redirectToRoute('contact_index');
     }
+
+
+    public function getSearchForm()
+    {
+        $form = $this->createForm(SearchContactType::class, null, [
+            'method' => 'get',
+            'action' => $this->generateUrl('search_contact'),
+        ]);;
+        return $this->render('contact/_search_form.html.twig', [
+            'search_form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search_contact", methods={"GET"})
+     */
+    public function search(Request $request, ContactRepository $contactRepository): Response
+    {
+        $results = null;
+        if ('GET' === $request->getMethod()) {
+            $results = $contactRepository->findContact(
+                $request->query->get('search_contact')['mot']
+            );
+        }
+
+        return $this->render('/contact/search.html.twig', [
+            'search_contact' => $results ? $results : $contactRepository->findAll(),
+        ]);
+    }
+
 }
