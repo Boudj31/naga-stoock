@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Computer;
 use App\Form\ComputerType;
 use App\Repository\ComputerRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,16 @@ class ComputerController extends AbstractController
     /**
      * @Route("/", name="computer_index", methods={"GET"})
      */
-    public function index(ComputerRepository $computerRepository): Response
+    public function index(ComputerRepository $computerRepository, Request $request, PaginatorInterface $paginatorInterface): Response
     {
+
+        $computers = $paginatorInterface->paginate(
+            $computerRepository->findAllPagination(),
+            $request->query->getInt('page', 1), /*page number*/
+            2 /*limit par page*/
+        );
         return $this->render('computer/index.html.twig', [
-            'computers' => $computerRepository->findAll(),
+            'computers' => $computers,
         ]);
     }
 

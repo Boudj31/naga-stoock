@@ -35,6 +35,7 @@ class ComputerType extends AbstractType
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Commentaires',
+                'required' => false,
                 'attr' => [
                    'placeholder' => "Entrer un commentaire..."
                 ]

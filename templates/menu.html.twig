@@ -43,14 +43,14 @@
 							<span>Compta</span>
 						</a>
 					</li>
-					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-						<li class="nav-items-list">
-							<a href="{{path('app_logout')}}">
-								<i class="fas fa-door-open"></i>
-								<span>Deconnexion</span>
-							</a>
-						</li>
+					  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+              <li class="nav-items-list">
+                <a href="{{path('app_logout')}}">
+                  <i class="fas fa-door-open"></i>
+                  <span>Deconnexion</span>
+                </a>
+              </li>
+            {% endif %}
 				</ul>
 				{% if app.user %}
 					<div class="nav-items-profile">
