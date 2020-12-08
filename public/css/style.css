@@ -11,6 +11,7 @@
   --btn-color: #fff;
   --btn-primary: #0acf97;
   --btn-primary-hover: #079b71;
+  --btn-primary-shadow: #068d67ea;
   --btn-secondary: #fa5c7c;
   --btn-secondary-hover: #db516c;
   --btn-secondary-shadow: #db516dbe;
@@ -214,6 +215,32 @@ hr {
   font-weight: 600;
 }
 
+@-webkit-keyframes apparition {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 body {
   background-color: var(--light-grey);
   font-family: var(--font-family);
@@ -278,16 +305,12 @@ body {
 .btn-secondary {
   background-color: var(--btn-secondary);
   border-color: var(--btn-secondary);
-  -webkit-box-shadow: 0 2px 6px var(--btn-secondary-shadow);
-          box-shadow: 0 2px 6px var(--btn-secondary-shadow);
   color: var(--btn-color);
 }
 
 .btn-third {
   background-color: var(--btn-third);
   border-color: var(--btn-third);
-  -webkit-box-shadow: 0 2px 6px var(--btn-third-shadow);
-          box-shadow: 0 2px 6px var(--btn-third-shadow);
   color: var(--btn-color);
 }
 
@@ -597,6 +620,66 @@ textarea {
   border-radius: 0.3125rem;
 }
 
+.notification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  position: absolute;
+  top: 1.875rem;
+  right: 1.875rem;
+  width: 350px;
+  border-radius: 0.3125rem;
+  padding: 1rem 1.25rem;
+  -webkit-animation: apparition .5s ease-out;
+          animation: apparition .5s ease-out;
+  z-index: 9999;
+}
+
+.notification i {
+  width: 5%;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.notification .message {
+  width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  font-size: 0.8125rem;
+  margin: 0 0.625rem;
+}
+
+.notification .message strong {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.notification .message p {
+  margin-top: 0.5rem;
+}
+
+.notification .btn-close {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 1;
+          flex: 1 1 1;
+  cursor: pointer;
+}
+
+.notification-success {
+  background-color: #dceddd;
+  color: #132C14;
+}
+
 .auth-wrapper {
   width: 100%;
   min-height: 100vh;
@@ -616,6 +699,13 @@ textarea {
   background-color: var(--white);
   border-radius: 1.25rem;
   padding: 2.8125rem 2.8125rem;
+}
+
+.auth-container .alert {
+  padding: 1rem 1.25rem;
+  border-radius: 0.625rem;
+  background: #FDDCDA;
+  color: #43130F;
 }
 
 .auth-container hr {
@@ -694,81 +784,87 @@ textarea {
   outline: 0;
 }
 
-.baseline {
-  margin-top: 3.75rem;
-}
-
-.baseline h3 {
-  margin-bottom: 0.9375rem;
-  font-weight: 700;
-  font-size: 1.25rem;
-  opacity: .5;
-}
-
-.analyse-container {
+.section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2.5rem;
 }
 
-.analyse-container .box {
-  background-color: var(--white);
+.section-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 21.875rem;
-  border-radius: 1.25rem;
-  padding: 0.9375rem;
-  margin-right: 1.875rem;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  margin-bottom: 1.25rem;
 }
 
-.analyse-container .box-icon {
+.section-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.stats {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 3.125rem;
-  height: 3.125rem;
-  background-color: #11CDEF;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.stats-items {
+  background-color: var(--white);
+  width: calc(100% / 3);
+  margin: 0 0.5rem;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+}
+
+.stats-items:first-child {
+  margin-left: 0;
+}
+
+.stats-items:last-child {
+  margin-right: 0;
+}
+
+.stats .items-icons {
+  display: inline-block;
+  background-color: var(--primary);
   color: var(--white);
-  font-size: 1.5625rem;
-  border-radius: 0.625rem;
+  padding: 0.9375rem;
+  border-radius: 0.3125rem;
+  font-size: 1.25rem;
+}
+
+.stats .items-text {
+  margin-top: 0.9375rem;
+  font-weight: 600;
+}
+
+.stats .items-text p {
   margin-bottom: 0.9375rem;
 }
 
-.analyse-container .box strong {
-  margin-top: 0.9375rem;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #11CDEF;
-}
-
-.main-info {
-  background-color: var(--white);
-  padding: 1.875rem;
-  border-radius: 1.25rem;
-  margin-top: 1.25rem;
-  margin-bottom: 3.125rem;
-}
-
-.main-info .info-title {
+.stats .items-text strong {
+  font-size: 1.25rem;
   font-weight: 700;
-  font-size: 1.5625rem;
 }
 
 .contact-header {
@@ -893,5 +989,33 @@ textarea {
 
 .show-content p:last-child {
   margin-bottom: 0.9375rem;
+}
+
+.inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inner a {
+  margin-right: 0.3125rem;
+}
+
+.donne {
+  background-color: #1b212d;
+  color: var(--white);
+}
+
+.asso {
+  background-color: #ffbf00;
 }
 /*# sourceMappingURL=style.css.map */

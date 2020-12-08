@@ -27,6 +27,18 @@ class SocietyRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
+    public function findSociety(string $mot)
+    {
+        return ($queryBuilder =  $this->createQueryBuilder('c'))
+        ->where($queryBuilder->expr()->like('c.name', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.representativeName', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.representativeMail', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.representativePhone', ':mot'))
+        ->setParameter('mot', '%'.$mot.'%')
+        ->getQuery()
+        ->getResult();
+    }
+
     // /**
     //  * @return Society[] Returns an array of Society objects
     //  */

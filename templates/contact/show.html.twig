@@ -13,39 +13,55 @@
 
 		<div class="row margin-tb">
 			<div class="left">
-                <img src="{{asset('images/avatar.gif')}}" alt="{{contact.firstname}}" class="image">
-                <div class="show-baseline">
-                    <h4>
-                        <em>{{ contact.title }}</em>
-                        <strong>{{ contact.lastname }}</strong> {{ contact.firstname }}
-                    </h4>
-                </div>
-            </div>
-            <div class="right">
-                <div class="show-card">
-                    <p>Téléphone : {{ contact.phone }}</p>
-                </div>
-            </div>
+				<img src="{{asset('images/avatar.gif')}}" alt="{{contact.firstname}}" class="image">
+				<div class="show-baseline">
+					<h4>
+						<em>{{ contact.title }}</em>
+						<strong>{{ contact.lastname }}</strong>
+						{{ contact.firstname }}
+					</h4>
+				</div>
+			</div>
+			<div class="right">
+				<div class="show-card">
+					<p>Téléphone :
+						{{ contact.phone }}</p>
+				</div>
+			</div>
 		</div>
-        <div class="show-commentaire">
-            <p>Commentaire :</p>
-            <p>{{ contact.comment }}</p>
-        </div>
-        <div class="show-content">
-            <p><strong>Motif :</strong> {{ contact.reason }}</p>
-            <p><strong>Email :</strong> {{ contact.mail }}</p>
-            <p><strong>Adresse :</strong> {{ contact.adress ? contact.adress.adressLine1 : ""}}</p>
-            <p><strong>Complément d'adresse :</strong> {{ contact.adress ? contact.adress.adressLine2 : ""}}</p>
-            <p><strong>Code Postal :</strong> {{ contact.adress ? contact.adress.zipCode : ""}}</p>
-            <p><strong>Ville :</strong> {{ contact.adress ? contact.adress.city : ""}}</p>
-        </div>
+		<div class="show-commentaire">
+			<p>Commentaire :</p>
+			<p>{{ contact.comment }}</p>
+		</div>
+		<div class="show-content">
+			<p>
+				<strong>Motif :</strong>
+				{{ contact.reason }}</p>
+			<p>
+				<strong>Email :</strong>
+				{{ contact.mail }}</p>
+			<p>
+				<strong>Adresse :</strong>
+				{{ contact.adress ? contact.adress.adressLine1 : ""}}</p>
+			<p>
+				<strong>Complément d'adresse :</strong>
+				{{ contact.adress ? contact.adress.adressLine2 : ""}}</p>
+			<p>
+				<strong>Code Postal :</strong>
+				{{ contact.adress ? contact.adress.zipCode : ""}}</p>
+			<p>
+				<strong>Ville :</strong>
+				{{ contact.adress ? contact.adress.city : ""}}</p>
+		</div>
 
 
-		<a href="{{ path('contact_index') }}">back to list</a>
+		<div class="inner">
+			<a href="{{ path('contact_index') }}" class="btn btn-third btn-radius">Retour</a>
 
-		<a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+			<a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-primary btn-radius">edit</a>
 
-		{{ include('contact/_delete_form.html.twig') }}
+			<span class="btn btn-secondary btn-radius" style="padding: 8px;">{{ include('contact/_delete_form.html.twig') }}</span>
+		</div>
 	</div>
 
 {% endblock %}

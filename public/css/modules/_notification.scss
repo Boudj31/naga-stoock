@@ -1,0 +1,48 @@
+// Alert
+// ==================
+.notification {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: size(30)+rem;
+    right: size(30)+rem;
+    width: 350px;
+    border-radius: size(5)+rem;
+    padding: size(16)+rem size(20)+rem;
+    animation: apparition .5s ease-out;
+    z-index: 9999;
+
+    i {
+        width: 5%;
+        flex: none;
+        font-weight: 700;
+        font-size: size(18)+rem;
+    }
+
+    .message {
+        width: auto;
+        flex: 1 1 auto;
+        font-size: size(13)+rem;
+        margin: 0 size(10)+rem;
+
+        strong {
+            font-weight: 600;
+            font-size: size(16)+rem;
+        }
+        
+        p {
+            margin-top: size(8)+rem;
+        }
+    }
+
+    .btn-close {
+        flex: 1 1 1;
+        cursor: pointer;
+    }
+
+    &-success {
+        background-color: #dceddd;
+        color: #132C14;
+    }
+}

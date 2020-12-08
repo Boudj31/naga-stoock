@@ -6,7 +6,10 @@
 {% block body %}
 	<h1 class="title margin-b">Contact</h1>
 
-	<!--==== Card ====-->
+	{# Alert notification #}
+	{% include "notification.html.twig" %}
+
+	{# Contenue #}
 	<div class="card card-padding">
 
 		<div class="contact-header margin-b">
@@ -14,9 +17,6 @@
 				<i class="fas fa-plus"></i> Ajouter
 			</a>
 			{{render(controller('App\\Controller\\ContactController::getSearchForm'))}}
-			{# <form action="">
-				<input type="search" id="" placeholder="Search user..." class="radius">
-			</form> #}
 		</div>
     
 		<table class="table">
