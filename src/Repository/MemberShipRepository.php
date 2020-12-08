@@ -26,6 +26,19 @@ class MemberShipRepository extends ServiceEntityRepository
                 ->orderBy('m.id', 'DESC')
                 ->getQuery();
     }
+    public function selectSalesByMonth($year, $month)
+    {
+        $query = $this->createQueryBuilder('m')
+            ->select('sum(m.amount)')
+            ->where('m.beginAt >= :fromDate AND m.beginAt <= :toDate')
+            ->andWhere('m.type = :type')
+            ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
+            ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
+            ->setParameter('type', 'sale')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
 
 
     // /**

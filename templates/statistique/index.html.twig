@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatistiqueController!{% endblock %}
+
+{% block body %}
+
+<h1 class="title margin-b">Stats</h1> 
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Montant total</th>
+					<th>Total Restant</th>
+					<th>Nombre d'adhérents</th>
+					<th>Avec Ordinateur</th>
+					<th>Sans Ordinateur</th>
+		
+				</tr>
+            </thead>
+       			<tbody>
+					<tr>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>						
+			</tbody>
+        </table>   
+        		<table class="table">
+			<thead>
+				<tr>
+					<th>Montant prix d'Adhesions</th>
+					<th>Moyenne Adhesions</th>
+					<th>Nombre d'Ordinateur</th>
+					<th>En Stock</th>
+					<th>Donné</th>
+		
+				</tr>
+            </thead>
+       			<tbody>
+					<tr>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>						
+			</tbody>
+        </table>  
+        
+    <!--==== Formulaire ====-->
+    <div class="card card-padding">
+
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary btn-radius">
+                {{ button_label|default('Envoyer !') }}
+            </button>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
