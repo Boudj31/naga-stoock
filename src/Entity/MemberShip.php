@@ -51,6 +51,16 @@ class MemberShip
      */
     private $computer;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $residual;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mode;
+
 
 
 
@@ -132,6 +142,30 @@ class MemberShip
     public function setComputer(Computer $computer): self
     {
         $this->computer = $computer;
+
+        return $this;
+    }
+
+    public function getResidual(): ?int
+    {
+        return $this->residual;
+    }
+
+    public function setResidual(?int $residual): self
+    {
+        $this->residual = $residual;
+
+        return $this;
+    }
+
+    public function getMode(): ?string
+    {
+        return $this->mode;
+    }
+
+    public function setMode(?string $mode): self
+    {
+        $this->mode = $mode;
 
         return $this;
     }

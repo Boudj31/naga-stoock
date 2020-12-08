@@ -49,6 +49,18 @@ class MemberShipType extends AbstractType
                 'placeholder' => 'Sélectionner un ordinateur',
                 'required' => false
             ])
+            ->add('residual', MoneyType::class, [
+                'currency' => 'EUR',
+                'divisor' => 100
+            ])
+            ->add('mode', ChoiceType::class, [
+                'choices' => [
+                    'liquide' => 'Espece',
+                    'chèques' => 'Chèques',
+                    'remboursement' => 'Remboursement',
+                    'autres' => 'Virement'
+                ]
+            ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Commentaire',
                 'required' => false,
