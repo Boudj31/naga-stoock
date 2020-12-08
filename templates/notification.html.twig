@@ -1,0 +1,15 @@
+{# Alert notification #}
+{% for label, messages in app.flashes() %}
+	{% for message in messages %}
+		<div class="notification notification-{{label}}" role="alert">
+			<i class="far fa-bell"></i>
+			<div class="message">
+				<strong>{{ label|capitalize }}</strong>
+				<p>{{ message }}</p>
+			</div>
+			<div class="btn-close">
+				<i class="fas fa-times"></i>
+			</div>
+		</div>
+	{% endfor %}
+{% endfor %}

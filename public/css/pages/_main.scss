@@ -1,62 +1,67 @@
 // Pages d'accueil
 // ==================
-.baseline {
-    margin-top: size(60)+rem;
+.section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: size(40)+rem;
 
-    h3 {
-        margin-bottom: size(15)+rem;
+    &-header {
+        display: flex;
+        flex-flow: column wrap;
+        margin-bottom: size(20)+rem;
+    }
+
+    &-title {
         font-weight: 700;
         font-size: size(20)+rem;
-        opacity: .5;
+        margin-bottom: size(8)+rem;
     }
 }
 
-.analyse-container {
+.stats {
     display: flex;
+    justify-content: start;
     flex-direction: row;
-    flex-wrap: wrap;
 
-    .box {
+    &-items {
         background-color: var(--white);
-        display: flex;
-        flex-direction: column;
-        width: size(350)+rem;
-        border-radius: size(20)+rem;
-        padding: size(15)+rem;
-        margin-right: size(30)+rem;
+        width: calc(100% / 3);
+        margin: 0 size(8)+rem;
+        padding: size(20)+rem;
+        border-radius: size(5)+rem;
 
-
-        &-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: size(50)+rem;
-            height: size(50)+rem;
-            background-color: #11CDEF;
-            color: var(--white);
-            font-size: size(25)+rem;
-            border-radius: size(10)+rem;
-            margin-bottom: size(15)+rem;
+        &:first-child {
+            margin-left: 0;
         }
 
-        strong {
-            margin-top: size(15)+rem;
-            font-weight: 900;
-            font-size: size(40)+rem;
-            color: #11CDEF;
+        &:last-child {
+            margin-right: 0;
         }
     }
-}
 
-.main-info {
-    background-color: var(--white);
-    padding: size(30)+rem;
-    border-radius: size(20)+rem;
-    margin-top: size(20)+rem;
-    margin-bottom: size(50)+rem;
+    .items {
+        &-icons {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: size(15)+rem;
+            border-radius: size(5)+rem;
+            font-size: size(20)+rem;
+        }
 
-    .info-title {
-        font-weight: 700;
-        font-size: size(25)+rem;
+        &-text {
+            margin-top: size(15)+rem;
+            font-weight: 600;
+
+            p {
+                margin-bottom: size(15)+rem;
+            }
+
+            strong {
+                font-size: size(20)+rem;
+                font-weight: 700;
+            }
+        }
     }
 }

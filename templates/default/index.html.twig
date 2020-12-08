@@ -1,66 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home
+{% endblock %}
 
 {% block body %}
 
-   <main id="main">
-     <div class="container">
-         <header class="header">
-            <div class="header-search">
-                <input type="search" placeholder="Search members"/>
-            </div>
-         
-            </div>
-        </header>
-        <section class="baseline">
-            <h3>Dashbord Analys</h3>
-            <div class="analyse-container">
-                <div class="box">
-                    <div class="box-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <p>Number of Members</p>
-                    <strong>325</strong>
-                </div>
-                <div class="box">
-                    <div class="box-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <p>Number of Members</p>
-                    <strong>325</strong>
-                </div>
-                <div class="box">
-                    <div class="box-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <p>Number of Members</p>
-                    <strong>325</strong>
-                </div>
-            </div>
-        </section>
+	{# Statistique #}
+	<section class="section">
+		<header class="section-header">
+			<h2 class="section-title">Dashbord</h2>
+			<p>Lorem ipsum dolor sit amet.</p>
+		</header>
+		<ul class="stats">
+			<li class="stats-items">
+				<div class="items-icons">
+					<i class="fas fa-cash-register"></i>
+				</div>
+				<div class="items-text">
+					<p>Total Amount</p>
+					<strong>21 399</strong>
+				</div>
+			</li>
+			<li class="stats-items">
+				<div class="items-icons">
+					<i class="fas fa-chart-bar"></i>
+				</div>
+				<div class="items-text">
+					<p>Number of Members</p>
+					<strong>325</strong>
+				</div>
+			</li>
+			<li class="stats-items">
+				<div class="items-icons">
+					<i class="fas fa-desktop"></i>
+				</div>
+				<div class="items-text">
+					<p>Number of computers</p>
+					<strong>697</strong>
+				</div>
+			</li>
+		</ul>
+	</section>
 
-        <section class="main-info">
-            <h4 class="info-title">Stock Management System</h4>
-            <br/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, nobis excepturi. Voluptates laudantium nemo consequuntur similique et placeat illum non nobis. Dolores pariatur dicta accusantium et quo, nemo exercitationem quae?
-            Molestias, laudantium non consequuntur nostrum, perferendis suscipit sed harum illo dolores velit consectetur vel modi dolor, dignissimos perspiciatis doloremque ratione sequi iusto! Eaque rerum sed culpa ipsam nam maiores minus!
-            Magnam itaque officiis, id maiores saepe deleniti quo, fugit omnis molestias sit ipsa error minus impedit. Maiores, quasi laborum enim mollitia delectus temporibus rerum perspiciatis, consectetur harum molestias alias? Reiciendis.
-            Eaque deserunt asperiores exercitationem laudantium? Harum illum est debitis veniam iste vero ipsa deserunt sunt quaerat? Velit reiciendis doloremque, veritatis ipsum voluptatibus temporibus eos incidunt ex! Sint voluptatibus ex ad?
-            Consequuntur debitis odio voluptates provident blanditiis natus ullam impedit mollitia necessitatibus molestiae pariatur, ducimus ea, quisquam saepe qui sapiente corporis doloremque at. <br/><br/>Iusto nihil vero ullam fugit ipsam laudantium reiciendis!
-            Aspernatur commodi rerum a mollitia corporis tempora, eius soluta unde, repellendus culpa similique explicabo necessitatibus, tempore temporibus reiciendis? Ipsam id dolorem, aspernatur ipsa quasi quaerat praesentium. Qui voluptates architecto alias.
-            Sit ratione animi harum sed omnis accusamus numquam, cupiditate minima? Perspiciatis voluptates, modi delectus eos vitae nobis cupiditate provident asperiores a quisquam iste ut expedita dolore, ullam officia, quae possimus.
-            Neque saepe laboriosam vero doloremque aliquid ullam velit consequatur qui officiis? Numquam quaerat repellendus amet, facere quibusdam odit, rem dolore sit non nostrum, neque molestiae? Quisquam reprehenderit omnis iure minima.
-            Rerum commodi rem, aspernatur adipisci minima porro obcaecati ducimus beatae quae reprehenderit at provident, mollitia laudantium necessitatibus modi vitae recusandae dolorem assumenda. Fugit esse dolorem delectus praesentium repellendus a tempore.
-            Quibusdam soluta facilis fugiat voluptatem, quaerat iusto ducimus porro temporibus, sequi dolores, repellendus libero dicta a? Esse, dolor earum doloremque aliquam ab vero porro optio magni eius debitis dicta odio.<br/><br/>
-            Ad eum quod quasi temporibus excepturi aspernatur voluptatibus quos cum pariatur id, fuga tenetur explicabo odit illo aperiam magnam dolorum autem, ipsum dolor voluptates sit ea? Voluptatum sapiente dolorum quisquam.
-            Veritatis voluptates culpa delectus fuga sunt modi quae inventore sapiente. Recusandae earum nulla consequuntur iure assumenda, harum repellat dolorum magnam, fugiat sapiente similique dignissimos repudiandae placeat omnis necessitatibus unde voluptas?
-            Saepe consequatur inventore ratione rerum animi, obcaecati deserunt minus possimus accusamus ullam temporibus eius repellat sapiente fugit, unde voluptate doloribus assumenda vel cum voluptates velit quaerat nostrum! Itaque, laborum repudiandae!
-            Sit, nobis? Cupiditate mollitia reprehenderit libero repellendus dignissimos ab adipisci dolores quis consectetur quisquam et vero dicta commodi rerum optio, numquam quam nesciunt, corporis molestiae assumenda repudiandae. Recusandae, placeat nulla.
-            Rerum pariatur unde nobis, voluptate ipsa ipsum a architecto quam nisi id? Impedit reiciendis cupiditate est labore maxime corporis sit debitis at corrupti nobis expedita aut, illo fugiat natus perferendis.</p>
-        </section>
-    </div>
-</main>
-
+	{# Computers #}
+	<section class="section">
+		<header class="section-header">
+			<h2 class="section-title">Ordinateurs</h2>
+			<p>Lorem ipsum dolor sit amet.</p>
+		</header>
+	</section>
 
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Society;
+use App\Form\SearchSocietyType;
 use App\Form\SocietyType;
 use App\Repository\SocietyRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -88,4 +89,34 @@ class SocietyController extends AbstractController
 
         return $this->redirectToRoute('society_index');
     }
+
+    public function getSearchSocietyForm()
+    {
+        $form = $this->createForm(SearchSocietyType::class, null, [
+            'method' => 'get',
+            'action' => $this->generateUrl('search_society'),
+        ]);;
+
+        return $this->render('form/_search_form.html.twig', [
+            'search_form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search_society", methods={"GET"})
+     */
+    public function search(Request $request, SocietyRepository $societyRepository): Response
+    {
+        $results = null;
+        if ('GET' === $request->getMethod()) {
+            $results = $societyRepository->findSociety(
+                $request->query->get('search_society')['mot']
+            );
+        }
+
+        return $this->render('/society/search.html.twig', [
+            'search_society' => $results ? $results : $societyRepository->findAll(),
+        ]);
+    }
+
 }

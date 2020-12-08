@@ -45,6 +45,8 @@ class MemberShipController extends AbstractController
             $entityManager->persist($memberShip);
             $entityManager->flush();
 
+            $this->addFlash('success', 'L\'adhésion a bien été prise en compte.');
+
             return $this->redirectToRoute('member_ship_index');
         }
 

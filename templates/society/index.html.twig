@@ -5,45 +5,40 @@
 {% block body %}
    	<h1 class="title margin-b">Entreprise</h1>
 
-	<!--==== Card ====-->
+	{# Alert notification #}
+	{% include "notification.html.twig" %}
+
+	{# Contenue #}
 	<div class="card card-padding">
 
 		<div class="contact-header margin-b">
 			<a href="{{ path('society_new') }}" class="btn btn-secondary btn-radius">
 				<i class="fas fa-plus"></i> Ajouter
 			</a>
-			<form action="">
-				<input type="search" id="" placeholder="Search Society..." class="radius">
-			</form>
+            {{render(controller('App\\Controller\\SocietyController::getSearchSocietyForm'))}}
 		</div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Identité</th>
                 <th>Raison sociale</th>
-                <th>RepresentativeMail</th>
-                <th>RepresentativePhone</th>
+                <th>Email</th>
+                <th>Téléphone</th>
                 <th>Adresse</th>
-				<th>Ville</th>
-				<th>Code postal</th>
-                <th>Comment</th>
+				<th>CP - Ville</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for society in societies %}
             <tr>
-                <td>{{ society.id }}</td>
                 <td>{{ society.name }}</td>
                 <td>{{ society.representativeName }}</td>
                 <td>{{ society.representativeMail }}</td>
                 <td>{{ society.representativePhone }}</td>
                 <td>{{ society.adress.adressLine1 }}</td>
-				<td>{{ society.adress.city }}</td>
-				<td>{{ society.adress.zipCode }}</td>
-                <td>{{ society.comment }}</td>
+				<td>{{ society.adress.zipCode }} - {{ society.adress.city }}</td>
                 <td class="actions">
                     <a href="{{ path('society_edit', {'id': society.id}) }}"><i class="far fa-edit"></i></a>
                     {{ include('society/_delete_form.html.twig') }}

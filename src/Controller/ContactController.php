@@ -61,6 +61,8 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre contact à bien été enregistré');
+
             return $this->redirectToRoute('contact_index');
         }
 
@@ -82,6 +84,9 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Le contact '. $contact->getFirstname() .' à bien été modifié');
+
 
             return $this->redirectToRoute('contact_index');
         }
@@ -113,7 +118,7 @@ class ContactController extends AbstractController
             'method' => 'get',
             'action' => $this->generateUrl('search_contact'),
         ]);;
-        return $this->render('contact/_search_form.html.twig', [
+        return $this->render('form/_search_form.html.twig', [
             'search_form' => $form->createView(),
         ]);
     }
