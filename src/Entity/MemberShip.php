@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MemberShipRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,6 +50,19 @@ class MemberShip
      * @ORM\JoinColumn(nullable=false)
      */
     private $computer;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $residual;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mode;
+
+
+
 
     public function __construct()
     {
@@ -130,4 +145,30 @@ class MemberShip
 
         return $this;
     }
+
+    public function getResidual(): ?int
+    {
+        return $this->residual;
+    }
+
+    public function setResidual(?int $residual): self
+    {
+        $this->residual = $residual;
+
+        return $this;
+    }
+
+    public function getMode(): ?string
+    {
+        return $this->mode;
+    }
+
+    public function setMode(?string $mode): self
+    {
+        $this->mode = $mode;
+
+        return $this;
+    }
+
+    
 }

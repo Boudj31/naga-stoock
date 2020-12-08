@@ -28,7 +28,9 @@
                 <th>Mail</th>
                 <th>Téléphone</th>
                 <th>Ordinateur</th>
-                <th>Amount</th>
+                <th>Montant</th>
+                <th>Restant</th>
+                <th>Mode</th>
                 <th>Comment</th>
                 <th>actions</th>
             </tr>
@@ -50,6 +52,8 @@
                     {{ 'default.noComputer' | trans }}
                     {% endif %}</td>
                 <td>{{ member_ship.amount }} €</td>
+                <td>{{ member_ship.residual }} €</td>
+                <td>{{ member_ship.mode }} €</td>
                 <td>{{ member_ship.comment }}</td>
                 <td class="actions">
                     <a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}"><i class="far fa-edit"></i></a>

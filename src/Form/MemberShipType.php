@@ -5,10 +5,12 @@ namespace App\Form;
 use App\Entity\Computer;
 use App\Entity\Contact;
 use App\Entity\MemberShip;
+use App\Entity\Payement;
 use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -46,6 +48,18 @@ class MemberShipType extends AbstractType
                 'choice_label' => 'serial',
                 'placeholder' => 'Sélectionner un ordinateur',
                 'required' => false
+            ])
+            ->add('residual', MoneyType::class, [
+                'currency' => 'EUR',
+                'divisor' => 100
+            ])
+            ->add('mode', ChoiceType::class, [
+                'choices' => [
+                    'liquide' => 'Espece',
+                    'chèques' => 'Chèques',
+                    'remboursement' => 'Remboursement',
+                    'autres' => 'Virement'
+                ]
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Commentaire',
