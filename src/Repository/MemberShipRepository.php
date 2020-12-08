@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Computer;
 use App\Entity\MemberShip;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -26,20 +27,113 @@ class MemberShipRepository extends ServiceEntityRepository
                 ->orderBy('m.id', 'DESC')
                 ->getQuery();
     }
-    public function selectSalesByMonth($year, $month)
-    {
+    public function selectAmountSum() {
+        
         $query = $this->createQueryBuilder('m')
-            ->select('sum(m.amount)')
-            ->where('m.beginAt >= :fromDate AND m.beginAt <= :toDate')
-            ->andWhere('m.type = :type')
-            ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
-            ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
-            ->setParameter('type', 'sale')
+                ->select('Sum(m.amount)')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
+    public function selectMemberCount() {
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('count(m.id)')
+                ->getQuery();
+                
+        return $query->getOneOrNullResult();
+        
+    }
+
+    public function selectResidualSum() {
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('Sum(m.residual)')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
+    public function selectSumOfMembersWithComputer()
+    {
+        $em = $this->getEntityManager();
+
+        $expr = $em->getExpressionBuilder();
+        $query = $this->createQueryBuilder('m')
+            ->select('count(m)')
+            ->where('m.type = \'membership\'')
+            ->andWhere(
+                $expr->in(
+                    'm',
+                    $em->createQueryBuilder()
+                        ->select('(m.member)')
+                        ->from(Computer::class, 'c')
+                        ->getDQL()
+                )
+            )
             ->getQuery();
 
         return $query->getSingleScalarResult();
     }
 
+    public function selectTotalMembershipPrice() {
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('sum(m.amount)')
+                ->where('m.type = :type')
+                ->setParameter('type', 'Vente')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
+    public function selectAvgMembershipPrice() {
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('avg(m.amount)')
+                ->where('m.type = :type')
+                ->setParameter('type', 'Vente')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
+/*
+    public function selectSumOfMembersWithComputer() {
+        
+        $slug = '';
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('count(m.id)')
+                ->where('m.type = :type')
+                ->andWhere('m.computer != :slug')
+                ->setParameter('slug', $slug)
+                ->setParameter('type', 'member')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
+    */
+
+    public function selectSumOfMembersWithoutComputer() {
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('count(m.id)')
+                ->where('m.type = :type')
+                ->andWhere('m.computer IS NULL')
+                ->setParameter('type', "Pas D'ordinateur")
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
 
     // /**
     //  * @return MemberShip[] Returns an array of MemberShip objects

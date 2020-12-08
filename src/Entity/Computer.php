@@ -12,7 +12,7 @@ class Computer
 {
     public const TYPE_STATUS = [
         'donné' => "Donné",
-        'asso' => 'Donné asso',
+        'asso' => 'Donnée asso',
         'dispo' => 'En stock',
         'démonté' => 'Démonté'
     ];
