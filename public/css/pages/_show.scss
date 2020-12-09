@@ -1,9 +1,13 @@
 // Pages show
 // ==================
+.no-align-center {
+    align-items: initial !important;
+}
+
 .row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
 
@@ -12,6 +16,11 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
+
+        &-center {
+            text-align: center;
+            margin-right: 10%;
+        }
     }
 
     em {
@@ -31,6 +40,49 @@
         border-radius: 50%;
         object-fit: contain;
         margin-right: size(15)+rem;
+
+        &-computer {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+    }
+
+    .right {
+        width: 80%;
+
+        h2 {
+            font-size: size(20)+rem;
+            font-weight: 600;
+            padding-bottom: size(15)+rem;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        p {
+            margin-bottom: size(8)+rem;
+
+            b {
+                font-weight: 700;
+            }
+
+            span {
+                opacity: .7;
+            }
+        }
+
+        .info {
+            padding-bottom: size(15)+rem;
+            margin-bottom: size(15)+rem;
+            border-bottom: 1px solid var(--light-grey);
+
+            padding: size(17)+rem 0;
+
+            &-status {
+                display: inline-block;
+                padding: size(10)+rem;
+                font-size: size(13)+rem;
+            }
+        }
     }
 }
 
@@ -45,6 +97,10 @@
         padding: size(25)+rem;
         border-radius: size(10)+rem;
         font-weight: 600;
+
+        @include md {
+            padding: size(15)+rem;
+        }
     }
 
     &-commentaire {

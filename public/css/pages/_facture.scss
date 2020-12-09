@@ -1,0 +1,79 @@
+// Pages contact
+// ==================
+.facture {
+    width: 850px;
+    padding: size(60)+rem;
+    margin: size(15)+rem auto;
+    background-color: var(--white);
+    border: size(1)+rem solid #ccc;
+    border-radius: size(5)+rem;
+
+    h2,
+    h3,
+    strong,
+    b,
+    thead {
+        font-weight: 700;
+    }
+
+    address {
+        margin-top: size(8)+rem;
+        line-height: 1.6;
+    }
+
+    &-margin {
+        margin: size(15)+rem 0;
+    }
+
+    hr {
+        margin: size(15)+rem 0;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    &-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-flow: row wrap;
+    }
+
+    &-text {
+        display: flex;
+        flex-direction: row;
+
+        img {
+            width: size(80)+rem;
+            height: size(80)+rem;
+            object-fit: contain;
+        }
+
+        address {
+            margin-top: 0;
+            margin-left: size(15)+rem;
+            line-height: inherit;
+        }
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    &-margin,
+    &-p-pages,
+    .note p {
+        font-size: size(10)+rem;
+    }
+
+    .note p {
+        text-align: center;
+    }
+
+    &-p-pages {
+        line-height: 1.3;
+        
+        p:last-child {
+            text-align: right;
+        }
+    }
+}

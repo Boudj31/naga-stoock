@@ -8,3 +8,19 @@
 .asso {
     background-color: #ffbf00;
 }
+
+.stock {
+    background-color: #2ecc71;
+    color: var(--white);
+}
+
+.demonte {
+    background-color: #e74c3c;
+    color: var(--white);
+}
+
+.status {
+    font-size: size(11)+rem;
+    padding: size(5)+rem size(15)+rem;
+    border-radius: size(5)+rem;
+}

@@ -1,9 +1,55 @@
 // Pages contact
 // ==================
-.contact-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.contact{
+
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-info {
+        display: flex;
+        align-items: center;
+    }
+
+    &-user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: size(13)+rem;
+        font-weight: 600;
+        border-radius: 50%;
+        width: size(30)+rem;
+        height: size(30)+rem;
+    }
+
+    &-user-info {
+        text-align: left !important;
+        margin-left: size(8)+rem;
+
+        span {
+            display: block;
+
+            &:first-child {
+                font-weight: 600;
+            }
+
+            &:last-child {
+                font-size: size(10)+rem;
+            }
+        }
+    }
+}
+
+.table-contact th,
+.table-contact td {
+    vertical-align: middle !important;
+}
+
+.contact-m a,
+.contact-m button {
+    margin-top: size(8)+rem;
 }
 
 .actions {
@@ -13,4 +59,14 @@
     a {
         margin-right: size(15)+rem;
     }
+}
+
+.man {
+    background-color: #74b9ff;
+    color: #FFF;
+}
+
+.women {
+    background-color: #fd79a8;
+    color: #FFF;
 }

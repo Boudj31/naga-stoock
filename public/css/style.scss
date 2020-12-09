@@ -42,6 +42,11 @@ body {
     font-size: var(--font-size);
     color: var(--dark);
     min-height: 100vh;
+
+    @include md {
+        --font-size: 12px;
+        font-size: var(--font-size);
+    }
 }
 
 .wb-home {
@@ -85,6 +90,7 @@ body {
 @import 'modules/form';
 @import 'modules/radius';
 @import 'modules/notification';
+@import 'modules/infoBulle';
 
 
 // Pages
@@ -94,3 +100,4 @@ body {
 @import 'pages/contact';
 @import 'pages/show';
 @import 'pages/computer';
+@import 'pages/facture';

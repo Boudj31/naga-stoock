@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ComputerRepository;
 use App\Repository\MemberShipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
@@ -13,9 +14,11 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(ComputerRepository $computerRepository): Response
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('default/index.html.twig', [
+            'computers' => $computerRepository->findLast()
+        ]);
     }
 
 }
