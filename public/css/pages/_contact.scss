@@ -26,18 +26,12 @@
 
     &-user-info {
         text-align: left !important;
-        margin-left: size(8)+rem;
+        margin-left: size(10)+rem;
 
         span {
             display: block;
-
-            &:first-child {
-                font-weight: 600;
-            }
-
-            &:last-child {
-                font-size: size(10)+rem;
-            }
+            font-weight: 600;
+            margin-bottom: size(4)+rem;
         }
     }
 }

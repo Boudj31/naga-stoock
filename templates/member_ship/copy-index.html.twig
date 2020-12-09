@@ -61,8 +61,8 @@
 								{{ 'default.noComputer' | trans }}
 							{% endif %}
 						</td>
-						<td>{{ member_ship.amount }} €</td>
-						<td>{{ member_ship.residual }} €</td>
+						<td>{{ member_ship.amount/ 100 }} €</td>
+						<td>{{ member_ship.residual/ 100 }} €</td>
 						<td>{{ member_ship.mode }} €</td>
 						<td>{{ member_ship.comment }}</td>
 						<td class="actions">

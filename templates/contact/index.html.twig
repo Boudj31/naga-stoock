@@ -24,7 +24,6 @@
 			<thead>
 				<tr>
 					<th>Nom Prénom</th>
-					<th>Courriel</th>
 					<th>Téléphone</th>
 					<th>Adresse</th>
 					<th>Ville</th>
@@ -44,11 +43,10 @@
 								</div>
 								<div class="contact-user-info">
 									<span>{{ contact.lastname }} {{ contact.firstname }}</span>
-									<span>{{ contact.mail }}</span>
+									<a href="mailto:{{ contact.mail }}">{{ contact.mail }}</a>
 								</div>
 							</div>
 						</td>
-						<td>{{ contact.mail }}</td>
 						<td>{{ contact.phone }}</td>
 						<td>{{ contact.adress ? contact.adress.adressLine1 : ""}}</td>
 						<td>{{ contact.adress ? contact.adress.city : ""}}</td>

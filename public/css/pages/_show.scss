@@ -4,6 +4,12 @@
     align-items: initial !important;
 }
 
+hr {
+    margin: size(15)+rem 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -125,6 +131,14 @@
 
         p:last-child {
             margin-bottom: size(15)+rem; 
+        }
+    }
+
+    &-margin-b {
+        margin-bottom: size(20)+rem;
+
+        &:first-child {
+            margin-bottom: size(48)+rem;
         }
     }
 }

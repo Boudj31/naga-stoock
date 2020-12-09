@@ -671,6 +671,26 @@ textarea {
   padding: 1.25rem 0.9375rem !important;
 }
 
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: var(--light-grey) url(../../images/triangle.png) no-repeat right 0.9375rem center;
+  background-size: 0.5625rem;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+}
+
+select:focus {
+  color: black;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
 .radius {
   border-radius: 0.3125rem;
 }
@@ -1097,19 +1117,13 @@ textarea {
 
 .contact-user-info {
   text-align: left !important;
-  margin-left: 0.5rem;
+  margin-left: 0.625rem;
 }
 
 .contact-user-info span {
   display: block;
-}
-
-.contact-user-info span:first-child {
   font-weight: 600;
-}
-
-.contact-user-info span:last-child {
-  font-size: 0.625rem;
+  margin-bottom: 0.25rem;
 }
 
 .table-contact th,
@@ -1152,6 +1166,12 @@ textarea {
   -webkit-box-align: initial !important;
       -ms-flex-align: initial !important;
           align-items: initial !important;
+}
+
+hr {
+  margin: 0.9375rem 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .row {
@@ -1302,6 +1322,14 @@ textarea {
 
 .show-content p:last-child {
   margin-bottom: 0.9375rem;
+}
+
+.show-margin-b {
+  margin-bottom: 1.25rem;
+}
+
+.show-margin-b:first-child {
+  margin-bottom: 3rem;
 }
 
 .inner {
