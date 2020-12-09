@@ -46,12 +46,13 @@ class MemberShipType extends AbstractType
             ->add('computer', EntityType::class, [
                 'class' => Computer::class,
                 'choice_label' => 'serial',
-                'placeholder' => 'Sélectionner un ordinateur',
+                'placeholder' => "Pas D'ordinateur",
                 'required' => false
             ])
             ->add('residual', MoneyType::class, [
                 'currency' => 'EUR',
-                'divisor' => 100
+                'divisor' => 100,
+                'required' => false
             ])
             ->add('mode', ChoiceType::class, [
                 'choices' => [

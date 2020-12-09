@@ -62,6 +62,11 @@ class Computer
      */
     private $donor;
 
+    /**
+     * @ORM\OneToOne(targetEntity=MemberShip::class, cascade={"persist", "remove"})
+     */
+    private $member;
+
     public function __construct()
     {
         $this->receivedAt = new \DateTime();
@@ -140,6 +145,18 @@ class Computer
     public function setDonor(?Society $donor): self
     {
         $this->donor = $donor;
+
+        return $this;
+    }
+
+    public function getMember(): ?MemberShip
+    {
+        return $this->member;
+    }
+
+    public function setMember(?MemberShip $member): self
+    {
+        $this->member = $member;
 
         return $this;
     }

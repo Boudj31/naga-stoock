@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MemberShip
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -47,7 +48,7 @@ class MemberShip
 
     /**
      * @ORM\OneToOne(targetEntity=Computer::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $computer;
 
