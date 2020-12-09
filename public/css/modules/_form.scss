@@ -25,3 +25,21 @@ textarea {
 textarea {
     padding: size(20)+rem size(15)+rem !important;
 }
+
+select {
+    appearance: none;
+    background: var(--light-grey) url(../../images/triangle.png) no-repeat right size(15)+rem center;
+    background-size: size(9)+rem;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+
+    &:focus {
+      color: black;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+}
