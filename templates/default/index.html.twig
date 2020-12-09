@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home
-{% endblock %}
+{% block title %}{{parent()}} - Home{% endblock %}
 
 {% block body %}
 
@@ -9,7 +8,7 @@
 	<section class="section">
 		<header class="section-header">
 			<h2 class="section-title">Dashbord</h2>
-			<p>Lorem ipsum dolor sit amet.</p>
+			<p>Quelques statistiques.</p>
 		</header>
 		<ul class="stats">
 			<li class="stats-items">
@@ -45,9 +44,41 @@
 	{# Computers #}
 	<section class="section">
 		<header class="section-header">
-			<h2 class="section-title">Ordinateurs</h2>
-			<p>Lorem ipsum dolor sit amet.</p>
+			<div class="left">
+				<h2 class="section-title">Ordinateurs</h2>
+				<p>Les quatre dernières matérielles.</p>
+			</div>
 		</header>
+		<ul class="computers">
+			{% for computer in computers %}
+				<li class="computers-items">
+					<div class="computers-wrapper">
+						<div class="elements elements-logo">
+							{% if computer.type == "PC Fixe" %}
+								<i class="fas fa-desktop"></i>
+							{% elseif computer.type == "PC portable" %}
+								<i class="fas fa-laptop"></i>
+							{% else %}
+								<i class="fas fa-server"></i>
+							{% endif %}
+						</div>
+						<div class="elements elements-serial">
+							<span>{{computer.serial}}</span>
+							<p>Donnateur : {{computer.donor.representativeName}}</p>
+						</div>
+						<div class="elements elements-date">
+							<span>{{computer.receivedAt ? computer.receivedAt|date('Y-m-d') : '' }}</span>
+						</div>
+						<div class="elements elements-status">
+							<span class="items-status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }}">{{ computer.status }}</span>
+						</div>
+						<div class="elements">
+							<a href="{{ path('computer_show', {'id': computer.id}) }}">Voir</a>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
 	</section>
 
 {% endblock %}

@@ -4,10 +4,14 @@
     width: 100%;
     // margin: size(15)+rem 0;
     color: #12263f;
-    font-size: .8125rem;
+    font-size: size(12)+rem;
     text-align: center;
     border: 1px solid #e3ebf6;
     background-color: white;
+
+    @include md {
+        font-size: size(11)+rem;
+    }
 
 
     th,
@@ -27,6 +31,12 @@
 
     tbody tr:nth-child(2n) {
         background-color: var(--light-grey);
+    }
+
+    tbody {
+        @include md {
+            font-size: size(10)+rem;
+        }
     }
 
 }

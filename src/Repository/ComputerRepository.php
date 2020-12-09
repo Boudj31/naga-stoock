@@ -27,6 +27,15 @@ class ComputerRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
+    public function findLast()
+    {
+        return $this->createQueryBuilder('computer')
+                ->orderBy('computer.id', 'DESC')
+                ->setMaxResults(4)
+                ->getQuery()
+                ->getResult();
+    }
+
     // /**
     //  * @return Computer[] Returns an array of Computer objects
     //  */

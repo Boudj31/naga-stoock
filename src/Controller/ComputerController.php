@@ -33,6 +33,16 @@ class ComputerController extends AbstractController
     }
 
     /**
+     * @Route("/show/{id}", name="computer_show", methods={"GET"})
+     */
+    public function show(Computer $computer): Response
+    {
+        return $this->render('computer/show.html.twig', [
+            'computer' => $computer,
+        ]);
+    }
+
+    /**
      * @Route("/new", name="computer_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -45,6 +55,9 @@ class ComputerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($computer);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Le nouveau matériel a bien été enregistré');
+
 
             return $this->redirectToRoute('computer_index');
         }
@@ -65,6 +78,8 @@ class ComputerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Le matériel '. $computer->getSerial() .' a bien été modifié');
 
             return $this->redirectToRoute('computer_index');
         }

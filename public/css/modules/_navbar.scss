@@ -5,14 +5,23 @@
     width: size(255)+rem;
     z-index: 100;
 
-    .sidebar-col {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        width: size(255)+rem;
-        min-height: 100vh;
-        overflow: hidden;
+    @include md {
+        width: 4rem;
     }
+
+    // .sidebar-col {
+    //     position: fixed;
+    //     display: flex;
+    //     flex-direction: column;
+    //     width: size(255)+rem;
+    //     min-height: 100vh;
+    //     overflow: hidden;
+
+    //     @include md {
+    //         width: 4rem;
+    //         margin: 10px 5px;
+    //     }
+    // }
 }
 
 .sidebar-menu {
@@ -22,6 +31,11 @@
     min-height: 100vh;
     font-weight: 600;
     transition: all 200ms ease-out;
+
+    @include md {
+        border-radius: 5px;
+        width: 4.3rem;
+    }
 
     ul {
         position: absolute;
@@ -64,6 +78,10 @@
                     align-items: center;
                     justify-content: center;
                     white-space: nowrap;
+
+                    @include md {
+                        display: none;
+                    }
                 }
             }
         }
@@ -80,17 +98,31 @@
     font-size: size(20)+rem;
     margin-bottom: size(46)+rem;
 
+    @include md {
+        strong {
+            display: none;
+        }
+    }
+
     img {
         width: size(80)+rem;
         height: auto;
         object-fit: contain;
         margin-bottom: size(20)+rem;
+
+        @include md {
+            width: size(35)+rem;
+        }
     }
 }
 
 .nav-items-profile {
     position: absolute;
     bottom: 0;
+
+    @include md {
+        display: none;
+    }
 
     a {
         position: relative;
