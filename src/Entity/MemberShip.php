@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MemberShip
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

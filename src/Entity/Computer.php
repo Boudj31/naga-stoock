@@ -12,7 +12,7 @@ class Computer
 {
     public const TYPE_STATUS = [
         'donné' => "Donné",
-        'asso' => 'Donnée asso',
+        'asso' => 'Donné asso',
         'dispo' => 'En stock',
         'démonté' => 'Démonté'
     ];
@@ -61,6 +61,11 @@ class Computer
      * @ORM\JoinColumn(nullable=false)
      */
     private $donor;
+
+    /**
+     * @ORM\OneToOne(targetEntity=MemberShip::class, cascade={"persist", "remove"})
+     */
+    private $member;
 
     public function __construct()
     {
@@ -140,6 +145,18 @@ class Computer
     public function setDonor(?Society $donor): self
     {
         $this->donor = $donor;
+
+        return $this;
+    }
+
+    public function getMember(): ?MemberShip
+    {
+        return $this->member;
+    }
+
+    public function setMember(?MemberShip $member): self
+    {
+        $this->member = $member;
 
         return $this;
     }

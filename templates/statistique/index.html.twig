@@ -6,11 +6,84 @@
 
 <h1 class="title margin-b">Stats</h1> 
 
+      		<table class="table">
+			<thead>
+				<tr>
+					<th>Type d'adhésion</th>
+					<th>Nombre</th>
+                    <th>Montant total</th>
+                    <th>Montant Moyen</th>
+		
+				</tr>
+            </thead>
+       			<tbody>
+                    <tr>
+						<td> Adhésions 3 mois GEM </td>
+						<td>{{ totalMemberGem }}</td>
+                        <td>{{totalPriceGem / 100}} €</td>
+                        <td>{{avgPriceGem / 100}} €</td>
+					</tr>	
+
+					<tr>
+						<td>Adhésion RSA</td>
+						<td>{{ totalMemberRSA }}</td>
+                        <td>{{totalPriceRSA / 100}} €</td>
+                        <td>{{avgPriceRSA / 100}} €</td>
+					</tr>	
+					
+			  		<tr>
+						<td>Adhésion SMIC</td>
+						<td>{{ totalMemberSMIC }}</td>
+                        <td>{{totalPriceSMIC / 100}} €</td>
+                        <td>{{avgPriceSMIC / 100}} €</td>
+					</tr>
+
+					<tr>
+						<td>Adhésion bénevole</td>
+						<td>{{ totalMemberBenevole }}</td>
+                        <td>{{ totalPriceBenevole / 100}} €</td>
+                        <td> {{avgPriceBenevole / 100 }}€</td>
+					</tr>
+					<tr>
+						<td>Adhésion installation Linux</td>
+						<td>{{ totalMemberLinux }}</td>
+                        <td>{{totalPriceLinux / 100}} €</td>
+                        <td>{{avgPriceLinux / 100}} €</td>
+					</tr>	
+	
+					<tr>
+						<td>Adhésion sup SMIC</td>
+						<td>{{ totalMemberSup }}</td>
+                        <td>{{totalPriceSup / 100}} €</td>
+                        <td>{{avgPriceSup / 100}} €</td>
+					</tr>	
+					<tr>
+						<td>Don</td>
+						<td>{{ totalMemberDon }}</td>
+                        <td>{{totalPriceDon / 100}} €</td>
+                        <td>{{avgPriceDon / 100}} €</td>
+					</tr>
+					<tr>
+						<td>Vente</td>
+						<td>{{ totalMemberSales }}</td>
+                        <td>{{totalPriceSales / 100}} €</td>
+                        <td>{{avgPriceSales / 100}} €</td>
+					</tr>		
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>Total</td>
+					<td>{{ member }}</td>
+					<td>{{ sumAmount / 100}} €</td>
+					<td>{{avgPrice/ 100}} €</td>
+				</tr>	
+
+			</tfoot>
+        </table>   <br><br>
+
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Montant total</th>
-					<th>Total Restant</th>
 					<th>Nombre d'adhérents</th>
 					<th>Avec Ordinateur</th>
 					<th>Sans Ordinateur</th>
@@ -19,35 +92,34 @@
             </thead>
        			<tbody>
 					<tr>
-						<td>{{sumAmount/ 100}} €</td>
-						<td>{{sumResidual / 100}} €</td>
-						<td>{{member}}</td>
+						<td>{{ member }}</td>
 						<td>{{memberWComputer}}</td>
 						<td>{{memberWoComputer}}</td>
 					</tr>						
 			</tbody>
-        </table>   
+        </table>    <br><br>
+    
         		<table class="table">
 			<thead>
 				<tr>
-					<th>Montant prix d'Adhesions</th>
-					<th>Moyenne Adhesions</th>
 					<th>Nombre d'Ordinateur</th>
 					<th>En Stock</th>
-					<th>Donné</th>
+                    <th>Donné</th>
+                    <th>Donné Asso</th>
+					<th>Démonté</th>
 		
 				</tr>
             </thead>
        			<tbody>
 					<tr>
-						<td>{{totalPrice / 100 }} €</td>
-						<td>{{avgPrice / 100 }} €</td>
-						<td>{{sumComputer}}</td>
-						<td>{{computerInStock}}</td>
-						<td>{{computerGiven}}</td>
+						<td>{{ sumComputer }}</td>
+						<td>{{ computerInStock }}</td>
+                        <td>{{ computerGiven }}</td>
+                        <td>{{ computerAsso }}</td>
+						<td>{{ computerBreak }}</td>
 					</tr>						
 			</tbody>
-        </table>  
+        </table>  <br><br>
         
     <!--==== Formulaire ====-->
     <div class="card card-padding">
