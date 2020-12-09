@@ -89,6 +89,21 @@ class ComputerRepository extends ServiceEntityRepository
                 ->getResult();
     }
 
+    public function selectComputerByMonth($year, $month) {
+         
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
+                ->andWhere('c.type = :type')
+                ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
+                ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
+                ->setParameter('type', 'Donné')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
     // /**
     //  * @return Computer[] Returns an array of Computer objects
     //  */

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} - Home{% endblock %}
+
+{% block body %}
+
+    <h1 class="title">Données</h1>
+	<p class="desc">Montant par adhésions</p>
+
+    <table class="table">
+			<thead>
+				<tr>
+					<th>Type d'adhésion</th>
+                    <th>Montant</th>
+				</tr>
+          </thead>
+
+          <tbody>
+    		<tr>
+			  <th> Adhésions 3 mois GEM </th>
+              <th> 20 €</th>
+             </tr>
+
+    		<tr>
+			  <th> Adhésions RSA </th>
+              <th> 60 €</th>
+             </tr>
+
+    		<tr>
+			  <th> Adhésions SMIC </th>
+              <th> 80  €</th>
+             </tr>
+
+    		<tr>
+			  <th> Adhésions bénevole </th>
+              <th> 5 €</th>
+             </tr>
+
+    		<tr>
+			  <th> Adhésions sup SMIC </th>
+              <th> 20 €</th>
+		 	</tr>             
+          </tbody>
+   </table>
+   <br><br>
+
+   <table class="table">
+       <thead>
+           <tr>
+               <th>Provenance</th>
+           </tr>
+       </thead>
+       <tbody>
+        <tr>
+            <th>Entreprise</th>
+        </tr>
+        <tr>
+            <th>Association</th>
+        </tr>
+        <tr>
+            <th>Institution</th>
+        </tr>
+        <tr>
+            <th>Particulier</th>
+        </tr>
+        <tr>
+            <th>Mairie</th>
+        </tr>
+        <tr>
+            <th>Ecole</th>
+        </tr>
+       </tbody>
+   </table>
+
+{% endblock %}

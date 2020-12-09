@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+ <h4> Vente pour la période {{data.month}} {{data.year}}</h4>
+<br>
+  <h3> {{ sales ? sales : 'Pas de vente'}} </h3>
+  <br><br><br>
+
+   <h4> Ordinateur Donnés pour {{data.month}} {{data.year}}</h4>
+  <h3> {{ computerGive ? ComputerGive : "Pas d'ordinateur donnés!"}} </h3>
+
+  <a href="{{ path('statistique') }}">Retour</a>
+ 
+{% endblock %}

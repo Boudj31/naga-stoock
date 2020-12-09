@@ -78,4 +78,5 @@ class MemberShipType extends AbstractType
             'data_class' => MemberShip::class,
         ]);
     }
+
 }

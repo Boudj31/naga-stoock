@@ -410,6 +410,37 @@ class MemberShipRepository extends ServiceEntityRepository
         
     }
 
+    public function selectMembershipsByMonth($year, $month) {
+         
+        $query = $this->createQueryBuilder('m')
+                ->select('sum(m.amount)')
+                ->where('m.beginAt >= :fromDate AND m.beginAt <= :toDate')
+                ->andWhere('u.type = :type')
+                ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
+                ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
+                ->setParameter('type', 'membership')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
+    
+    public function selectSalesByMonth($year, $month) {
+        
+        $query = $this->createQueryBuilder('m')
+                ->select('sum(m.amount)')
+                ->where('m.beginAt >= :fromDate AND m.beginAt <= :toDate')
+                ->andWhere('m.type = :type')
+                ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
+                ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
+                ->setParameter('type', 'Vente')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+
 
     // /**
     //  * @return MemberShip[] Returns an array of MemberShip objects

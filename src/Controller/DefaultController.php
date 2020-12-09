@@ -21,4 +21,13 @@ class DefaultController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/data", name="data")
+     */
+    public function data(): Response
+    
+    {
+        return $this->render('default/data.html.twig');
+    }
+
 }
