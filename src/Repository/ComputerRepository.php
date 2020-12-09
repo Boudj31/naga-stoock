@@ -26,6 +26,59 @@ class ComputerRepository extends ServiceEntityRepository
                 ->orderBy('c.id', 'DESC')
                 ->getQuery();
     }
+    public function selectComputersCount() {
+        
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->getQuery();
+                
+        return $query->getOneOrNullResult();
+        
+    }
+    public function selectGivenComputers() {
+        
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->where('c.status = :status')
+                ->setParameter('status', 'Donné')
+                ->getQuery();
+        return $query->getOneOrNullResult();
+        
+    }
+
+    public function selectComputersInStock() {
+        
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->where('c.status = :status')
+                ->setParameter('status','En stock')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+    public function selectComputersAsso() {
+        
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->where('c.status = :status')
+                ->setParameter('status','Donné asso')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
+    public function selectComputersBreak() {
+        
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->where('c.status = :status')
+                ->setParameter('status','Démonté')
+                ->getQuery();
+        
+        return $query->getOneOrNullResult();
+        
+    }
 
     // /**
     //  * @return Computer[] Returns an array of Computer objects
