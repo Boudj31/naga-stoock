@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Computer index{% endblock %}
+{% block title %}{{parent()}} - Inventaire des ordinateurs{% endblock %}
 
 {% block body %}
-    <h1 class="title margin-b">Ordinateur</h1>
+    <h1 class="title">Ordinateur</h1>
+	<p class="desc">Inventaire des ordinateurs</p>
+
 
 	{# Alert notification #}
 	{% include "notification.html.twig" %}
@@ -37,13 +39,16 @@
             <tr>
                 <td>{{ computer.serial }}</td>
                 <td>{{ computer.receivedAt ? computer.receivedAt|date('Y-m-d') : '' }}</td>
-                <td class="{{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }}">{{ computer.status }}</td>
+                <td>
+                    <span class="status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }}">{{ computer.status }}</span>
+                </td>
                 <td>{{ computer.type }}</td>
-                <td>{{ computer.comment }}</td>
+                <td>{{ computer.comment|length > 25 ? computer.comment|slice(0, 25)~'...' : computer.comment }}</td>
                 	<td class="actions">
-                            <a href="{{ path('computer_edit', {'id': computer.id}) }}"><i class="far fa-edit"></i></a>
-                            {{ include('computer/_delete_form.html.twig') }}
-						</td>
+                        <a href="{{ path('computer_show', {'id': computer.id}) }}" data-infoBulle="Voir"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('computer_edit', {'id': computer.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
+                        {{ include('computer/_delete_form.html.twig') }}
+					</td>
             </tr>
         {% else %}
             <tr>

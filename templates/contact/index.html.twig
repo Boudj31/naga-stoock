@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index
-{% endblock %}
+{% block title %}{{parent()}} - Liste des contacts{% endblock %}
 
 {% block body %}
-	<h1 class="title margin-b">Contact</h1>
+	<h1 class="title">Contact</h1>
+	<p class="desc">Liste des conctats</p>
+
 
 	{# Alert notification #}
 	{% include "notification.html.twig" %}
@@ -19,7 +20,7 @@
 			{{render(controller('App\\Controller\\ContactController::getSearchForm'))}}
 		</div>
     
-		<table class="table">
+		<table class="table table-contact">
 			<thead>
 				<tr>
 					<th>Nom Prénom</th>
@@ -37,12 +38,15 @@
 				{% for contact in contacts %}
 					<tr>
 						<td>
-							{% if contact.title == "Monsieur" %}
-								Mr
-							{% else %}
-								Mme
-							{% endif %}
-							{{ contact.lastname }} {{ contact.firstname }}
+							<div class="contact-info">
+								<div class="contact-user {% if contact.title == "Monsieur" %} man {% else %} women {% endif %}">
+									<span>{{ contact.lastname|slice(0, 1)|capitalize }} {{ contact.firstname|slice(0, 1)|capitalize  }}</span>
+								</div>
+								<div class="contact-user-info">
+									<span>{{ contact.lastname }} {{ contact.firstname }}</span>
+									<span>{{ contact.mail }}</span>
+								</div>
+							</div>
 						</td>
 						<td>{{ contact.mail }}</td>
 						<td>{{ contact.phone }}</td>
@@ -52,9 +56,9 @@
 						<td>{{ contact.comment|length > 25 ? contact.comment|slice(0, 25)~'...' : contact.comment }}</td>
 				
 
-						<td class="actions">
-							<a href="{{ path('contact_show', {'id': contact.id}) }}"><i class="far fa-eye"></i></a>
-							<a href="{{ path('contact_edit', {'id': contact.id}) }}"><i class="far fa-edit"></i></a>
+						<td class="actions contact-m">
+							<a href="{{ path('contact_show', {'id': contact.id}) }}" data-infoBulle="Voir"><i class="far fa-eye"></i></a>
+							<a href="{{ path('contact_edit', {'id': contact.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
 							{{ include('contact/_delete_form.html.twig') }}
 						</td>
 					</tr>						

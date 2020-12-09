@@ -26,13 +26,15 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Date</th>
 					<th>Type</th>
+					<th>Com</th>
 					<th>Mail</th>
 					<th>Téléphone</th>
-					<th>Ordinateurs</th>
+					<th>Ordinateur</th>
 					<th>Montant</th>
-					<th>Actions</th>
+					<th>Mode</th>
+					<th>Comment</th>
+					<th>actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,17 +50,21 @@
 							{{ member.lastname }}
 							{{ member.firstname }}
 						</td>
-						<td>{{ member_ship.beginAt ? member_ship.beginAt|date('Y-m-d') : '' }}</td>
 						<td>{{ member_ship.type }}</td>
+						<td>{{ member_ship.beginAt ? member_ship.beginAt|date('Y-m-d') : '' }}</td>
 						<td>{{ member.mail }}</td>
 						<td>{{ member.phone }}</td>
 						<td>
 							{% if member_ship.computer %}
 								{{ member_ship.computer.serial }}
 							{% else %}
-								{{ "Pas d'ordinateur"}}
+								{{ 'default.noComputer' | trans }}
 							{% endif %}
 						</td>
+						<td>{{ member_ship.amount }} €</td>
+						<td>{{ member_ship.residual }} €</td>
+						<td>{{ member_ship.mode }} €</td>
+						<td>{{ member_ship.comment }}</td>
 						<td class="actions">
 							<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" data-infoBulle="Modifier">
 								<i class="far fa-edit"></i>

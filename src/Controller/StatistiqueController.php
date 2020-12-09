@@ -7,15 +7,17 @@ use App\Form\StatsType;
 use App\Repository\ComputerRepository;
 use App\Repository\MemberShipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class StatistiqueController extends AbstractController
-{
+{  
+
     /**
-     * @Route("/statistique", name="statistique")
+     * @Route("/statistique", name="statistique", methods={"GET", "POST"})
      */
-    public function index( MemberShipRepository $memberShipRepository, ComputerRepository $computerRepository): Response
+    public function index( MemberShipRepository $memberShipRepository, ComputerRepository $computerRepository, HttpFoundationRequest $request): Response
     {
         //total
         $sumAmount = $memberShipRepository->selectAmountSum();
@@ -71,9 +73,29 @@ class StatistiqueController extends AbstractController
         $totalPriceSales = $memberShipRepository->selectTotalMembershipPriceSales();
         $avgPriceSales = $memberShipRepository->selectAvgMembershipPriceSales();
         $totalMemberSales = $memberShipRepository->selectTotalMembersSales();
+        
+        // form years/month
+        $data = [];
+        $form = $this->createForm(StatsType::class, $data,[
+            'method' => 'POST'
+        ]);
 
+        $form->handleRequest($request);
 
-        $form = $this->createForm(StatsType::class, null);
+        if($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $sales = $memberShipRepository->selectSalesByMonth($data['year'], $data['month']);
+            $computerGive = $computerRepository->selectComputerByMonth($data['year'], $data['month']);
+
+            return $this->render('statistique/years.html.twig', [
+                'data' => $data,
+                'sales' => $sales[1],
+                'computerGive' => $computerGive[1],
+                'form' => $form->createView(),
+
+            ]);
+        }
 
         return $this->render('statistique/index.html.twig', [
             'form' => $form->createView(),

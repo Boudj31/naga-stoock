@@ -12,7 +12,7 @@ class StatsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('years', ChoiceType::class, [
+            ->add('year', ChoiceType::class, [
                 'choices' => [
                     2013 => '2013',
                     2014 => '2014',
@@ -24,20 +24,20 @@ class StatsType extends AbstractType
                     2020 => '2020'
                 ]
             ])
-            ->add('months', ChoiceType::class, [
+            ->add('month', ChoiceType::class, [
                 'choices' => [
-                    'janvier' => 'Janvier',
-                    'fevrier' => 'Fevrier',
-                    'mars' => 'Mars',
-                    'avril' => 'Avril',
-                    'mai' => 'Mai',
-                    'juin' => 'Juin',
-                    'juillet' => 'Juillet',
-                    'aout' => 'Aout',
-                    'septembre' => 'Septembre',
-                    'octobre' => 'Octobre',
-                    'novembre' => 'Novembre',
-                    'decembre' => 'Decembre',
+                    '1' => "January",
+                    '2' => "Februrary",
+                    '3' => "March",
+                    '4' => "April",
+                    '5' => "May",
+                    '6' => "June",
+                    '7' => "July",
+                    '8' => "August",
+                    '9' => "September",
+                    '10' => "October",
+                    '11' => "November",
+                    '12' => "December"
                 ]
             ])
         ;
