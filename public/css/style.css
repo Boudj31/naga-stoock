@@ -1351,6 +1351,31 @@ hr {
   margin-right: 0.3125rem;
 }
 
+.show-info .text-show {
+  line-height: 1.5;
+}
+
+.show-info .text-show span {
+  opacity: .8;
+}
+
+.show-info .text-show:last-child {
+  text-align: right;
+}
+
+.show-info .title-show {
+  opacity: .5;
+  font-weight: 700;
+}
+
+.show-info address {
+  line-height: 1.8;
+}
+
+.show-info tfoot {
+  background-color: var(--light-grey);
+}
+
 .donne {
   background-color: #1b212d;
   color: var(--white);

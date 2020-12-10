@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} - Liste des adhésions{% endblock %}
+{% block title %}Résultat des recherches
+{% endblock %}
 
 {% block body %}
-	<h1 class="title">Adhésion</h1>
-	<p class="desc">Liste des adhésions</p>
 
-	{# Alert notification #}
-	{% include "notification.html.twig" %}
+	<h1 class="title margin-b">Nombre de résultat de votre recherche :
+		{{ search_member_ship | length }}</h1>
 
-	{# Contenue #}
+	<!--==== Card ====-->
 	<div class="card card-padding">
 
 		<div class="contact-header margin-b">
@@ -17,28 +16,23 @@
 				<i class="fas fa-plus"></i>
 				Ajouter
 			</a>
-			<form action="">
-				<input type="search" id="" placeholder="Search computer..." class="radius">
-			</form>
 		</div>
 
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Nom</th>
+					<th>Date</th>
 					<th>Type</th>
-					<th>Com</th>
 					<th>Mail</th>
 					<th>Téléphone</th>
-					<th>Ordinateur</th>
+					<th>Ordinateurs</th>
 					<th>Montant</th>
-					<th>Mode</th>
-					<th>Comment</th>
-					<th>actions</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for member_ship in member_ships %}
+				{% for member_ship in search_member_ship %}
 					{%  set member = member_ship.member %}
 					<tr>
 						<td>
@@ -50,39 +44,32 @@
 							{{ member.lastname }}
 							{{ member.firstname }}
 						</td>
-						<td>{{ member_ship.type }}</td>
 						<td>{{ member_ship.beginAt ? member_ship.beginAt|date('Y-m-d') : '' }}</td>
+						<td>{{ member_ship.type }}</td>
 						<td>{{ member.mail }}</td>
 						<td>{{ member.phone }}</td>
 						<td>
 							{% if member_ship.computer %}
 								{{ member_ship.computer.serial }}
 							{% else %}
-								{{ 'default.noComputer' | trans }}
+								{{ "Pas d'ordinateur"}}
 							{% endif %}
 						</td>
 						<td>{{ member_ship.amount/ 100 }} €</td>
-						<td>{{ member_ship.residual/ 100 }} €</td>
-						<td>{{ member_ship.mode }} €</td>
-						<td>{{ member_ship.comment }}</td>
 						<td class="actions">
-							<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" data-infoBulle="Modifier">
+							<a href="{{ path('member_ship_show', {'id': member_ship.id}) }}" data-infobulle="Voir">
+								<i class="far fa-eye"></i>
+							</a>
+							<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" data-infobulle="Modifier">
 								<i class="far fa-edit"></i>
 							</a>
 							{{ include('member_ship/_delete_form.html.twig') }}
 						</td>
 					</tr>
-				{% else %}
-					<tr>
-						<td colspan="6">no records found</td>
-					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
-		{# display navigation #}
-		<div class="margin-tb">
-			{{ knp_pagination_render(member_ships) }}
-		</div>
-
 	</div>
+
+
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat des recherches
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="title margin-b">Nombre de résultat de votre recherche :
+		{{ search_computer | length }}</h1>
+
+	<!--==== Card ====-->
+	<div class="card card-padding">
+
+		<div class="contact-header margin-b">
+			<a href="{{ path('computer_new') }}" class="btn btn-secondary btn-radius">
+				<i class="fas fa-plus"></i>
+				Ajouter
+			</a>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Identifiant</th>
+					<th>Date de réception</th>
+					<th>Status</th>
+					<th>Type</th>
+					<th>Commentaire</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for computer in search_computer %}
+					<tr>
+						<td>{{ computer.serial }}</td>
+						<td>{{ computer.receivedAt ? computer.receivedAt|date('d-m-Y') : '' }}</td>
+						<td>
+							<span class="status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }}">{{ computer.status }}</span>
+						</td>
+						<td>{{ computer.type }}</td>
+						<td>{{ computer.comment|length > 25 ? computer.comment|slice(0, 25)~'...' : computer.comment }}</td>
+						<td class="actions">
+							<a href="{{ path('computer_show', {'id': computer.id}) }}" data-infobulle="Voir">
+								<i class="far fa-eye"></i>
+							</a>
+							<a href="{{ path('computer_edit', {'id': computer.id}) }}" data-infobulle="Modifier">
+								<i class="far fa-edit"></i>
+							</a>
+							{{ include('computer/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+
+{% endblock %}

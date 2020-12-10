@@ -17,9 +17,7 @@
 			<a href="{{ path('computer_new') }}" class="btn btn-secondary btn-radius">
 				<i class="fas fa-plus"></i> Ajouter
 			</a>
-			<form action="">
-				<input type="search" id="" placeholder="Search computer..." class="radius">
-			</form>
+            {{render(controller('App\\Controller\\ComputerController::getSearchComputerForm'))}}
 		</div>
     
 
@@ -38,7 +36,7 @@
         {% for computer in computers %}
             <tr>
                 <td>{{ computer.serial }}</td>
-                <td>{{ computer.receivedAt ? computer.receivedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ computer.receivedAt ? computer.receivedAt|date('d-m-Y') : '' }}</td>
                 <td>
                     <span class="status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }}">{{ computer.status }}</span>
                 </td>
