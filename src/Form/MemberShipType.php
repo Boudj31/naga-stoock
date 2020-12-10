@@ -55,7 +55,7 @@ class MemberShipType extends AbstractType
             ->add('mode', ChoiceType::class, [
                 'choices' => [
                     'cash' => 'Espece',
-                    'check' => 'Chèques',
+                    'cheques' => 'cheques',
                     'refund' => 'Remboursement',
                     'transfert' => 'Virement'
                 ]

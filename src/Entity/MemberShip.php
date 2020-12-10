@@ -73,12 +73,12 @@ class MemberShip
     private $mode;
 
 
-  /*  public function __construct()
+    public function __construct()
     {
         $this->beginAt = new \DateTime();
     }
 
-    */
+    
 
     public function getId(): ?int
     {

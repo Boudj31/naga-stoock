@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Cheque;
 use App\Entity\MemberShip;
 use App\Form\MemberShipType;
+use App\Repository\ChequeRepository;
 use App\Repository\MemberShipRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +36,7 @@ class MemberShipController extends AbstractController
     /**
      * @Route("/new", name="member_ship_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ChequeRepository $chequeRepository): Response
     {
         $memberShip = new MemberShip();
         $form = $this->createForm(MemberShipType::class, $memberShip);
@@ -42,6 +44,21 @@ class MemberShipController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if ($memberShip->getMode() === "cheques") {
+                    
+                //$repo = $this->getDoctrine()->getRepository('TagStockComptaBundle:Cheque');
+                $total = $chequeRepository->selectLastTotal();
+                $cheque = new Cheque();
+                $cheque->setFirstname($memberShip->getMember()->getFirstname());
+                $cheque->setLastname($memberShip->getMember()->getLastname());
+                $cheque->setDate(new \DateTime);
+                $cheque->setAmount($memberShip->getAmount());
+                $cheque->setTotal($total['total'] + $cheque->getAmount());
+                $cheque->setType($memberShip->getType());
+                $entityManager->persist($cheque);
+                
+            }
             $entityManager->persist($memberShip);
             $entityManager->flush();
 
