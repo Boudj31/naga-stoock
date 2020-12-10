@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Cash;
 use App\Entity\Cheque;
 use App\Entity\MemberShip;
 use App\Form\MemberShipType;
 use App\Repository\ChequeRepository;
 use App\Form\SearchMemberShipType;
+use App\Repository\CashRepository;
 use App\Repository\MemberShipRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,7 +42,7 @@ class MemberShipController extends AbstractController
     /**
      * @Route("/new", name="member_ship_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ChequeRepository $chequeRepository): Response
+    public function new(Request $request, ChequeRepository $chequeRepository, CashRepository $cashRepository): Response
     {
         $memberShip = new MemberShip();
         $form = $this->createForm(MemberShipType::class, $memberShip);
@@ -49,9 +51,31 @@ class MemberShipController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
+            /*if($memberShip->getComputer()) {
+
+                $memberShip->getComputer()->setMember($memberShip);
+                $memberShip->getComputer()->setSerial(0);
+
+                $this->addFlash('danger', 'Cette ordinateur à déja été attribué.');
+                return $this->redirectToRoute('member_ship_new');
+            }*/
+            
+
+            if($memberShip->getMode() === "cash") {
+                $total = $cashRepository->selectLastTotal();
+                $cash = new Cash;
+                $cash->setFirstname($memberShip->getMember()->getFirstname());
+                $cash->setLastname($memberShip->getMember()->getLastname());
+                $cash->setDate(new \DateTime);
+                $cash->setAmountIn($memberShip->getAmount());
+                $cash->setAmountOut(0);
+                $cash->setTotal($total['total'] + $cash->getAmountIn());
+                $cash->setType($memberShip->getType());
+                $entityManager->persist($cash);
+            }
+
             if ($memberShip->getMode() === "cheques") {
                     
-                //$repo = $this->getDoctrine()->getRepository('TagStockComptaBundle:Cheque');
                 $total = $chequeRepository->selectLastTotal();
                 $cheque = new Cheque();
                 $cheque->setFirstname($memberShip->getMember()->getFirstname());
@@ -134,7 +158,7 @@ class MemberShipController extends AbstractController
     }
 
     /**
-     * @Route("/search", name="search_member_ship")
+     * @Route("/search", name="search_member_ship", methods={"GET"})
      */
     public function search(Request $request, MemberShipRepository $memberShipRepository): Response
     {

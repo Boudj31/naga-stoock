@@ -1,0 +1,22 @@
+   {% extends 'base.html.twig' %}
+
+{% block title %}Hello ComptaController!{% endblock %}
+
+{% block body %} 
+    
+    <h1 class="title margin-b">Déposer de l'argent</h1> 
+
+    <!--==== Formulaire ====-->
+    <div class="card card-padding">
+
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary btn-radius">
+                {{ button_label|default('Déposer !') }}
+            </button>
+            <a href="{{ path('cash') }}" class="btn btn-third btn-radius">Retour</a>
+        {{ form_end(form) }}
+
+    </div>
+    {% endblock %}
