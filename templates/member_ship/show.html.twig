@@ -3,48 +3,106 @@
 {% block title %}{{parent()}} - Référence adhésion : {{ member_ship.id }}{% endblock %}
 
 {% block body %}
-    <h1 class="margin-tb">Référence adhésion : {{ member_ship.id }}</h1>
+	<h1 class="margin-tb">Référence adhésion :
+		{{ member_ship.id }}</h1>
 
-    <div class="card">
-        <div class="row show-margin-b">
-            <p>Ceci est le reçu d'adhesions de {{ member_ship.member.lastname }} {{ member_ship.member.firstname }}</p>
-            <a href="" class="btn btn-third btn-radius"><i class="fas fa-print"></i> Imprimez ce reçu</a>
-        </div>
-        <div class="row">
-            <p><span>Référence adhésions : </span><br>{{ member_ship.id }}</p>
-            <p><span>Date : </span><br>{{ member_ship.beginAt ? member_ship.beginAt|date('d/m/Y') : '' }}</p>
-        </div>
-        <hr>
-    </div>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ member_ship.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ member_ship.type }}</td>
-            </tr>
-            <tr>
-                <th>BeginAt</th>
-                <td>{{ member_ship.beginAt ? member_ship.beginAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Comment</th>
-                <td>{{ member_ship.comment }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ member_ship.amount }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('member_ship_index') }}">back to list</a>
-
-    <a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}">edit</a>
-
-    {{ include('member_ship/_delete_form.html.twig') }}
+	<div class="card show-info">
+		<div class="row show-margin-b">
+			<p>Ceci est le reçu d'adhesions de
+				{{ member_ship.member.lastname }}
+				{{ member_ship.member.firstname }}</p>
+			<a href="{{ path('member_ship_facture', {'id': member_ship.id}) }}" target="_blank" class="btn btn-third btn-radius">
+				<i class="fas fa-print"></i> Voir la facture
+			</a>
+		</div>
+		{# Information adhésions #}
+		<div class="row">
+			<p class="text-show">
+				<span>Référence adhésions</span><br>{{ member_ship.id }}</p>
+			<p class="text-show">
+				<span>Date de paiement</span><br>{{ member_ship.beginAt ? member_ship.beginAt|date('d/m/Y H:i:s', "Europe/Paris") : '' }}
+            </p>
+		</div>
+		<hr>
+		<div class="info-member">
+			{# Information membres #}
+			{% set member = member_ship.member %}
+			<address>
+				<h2 class="title-show">Client</h2>
+				{% if member.title == "Monsieur" %}
+					Mr
+				{% else %}
+					Mme
+				{% endif %}
+				{{ member.lastname }}
+				{{ member.firstname }}<br>
+				{{member.adress ? member.adress.adressLine1 : ""}}<br>
+				{{ member.adress ? member.adress.zipCode : ""}}
+				{{ member.adress ? member.adress.city : ""}}
+				<br>
+				<a href="mailto:{{ member.mail }}">
+					<i class="far fa-envelope"></i>
+					{{ member.mail }}</a>
+				<p>
+					<i class="fas fa-phone"></i>
+					{{ member.phone }}</p>
+			</address>
+			{# Information matériel #}
+			<table class="table margin-tb">
+				<thead>
+					<tr style="font-weight: 700;">
+						<td>Désignation</td>
+						<td>Ordinateurs</td>
+						<td>Quantité</td>
+						<td>Montant</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ member_ship.type }}</td>
+						<td>
+							{% if member_ship.computer %}
+								{{ member_ship.computer.serial }}
+							{% else %}
+								{{ "Pas d'ordinateur"}}
+							{% endif %}
+						</td>
+						<td>1</td>
+						<td>{{ member_ship.amount / 100 }} €</td>
+					</tr>
+				</tbody>
+                <tfoot>
+                    <tr>
+						<td colspan="3" style="text-align: right;">
+							<strong>Total</strong>
+						</td>
+						<td>{{ member_ship.amount / 100 }} €</td>
+					</tr>
+                    <tr>
+						<td colspan="3" style="text-align: right;">
+							<strong>Residual</strong>
+						</td>
+						<td>{{ member_ship.residual / 100 }} €</td>
+					</tr>
+                    <tr>
+						<td colspan="3" style="text-align: right;">
+							<strong>Montant restant</strong>
+						</td>
+						<td>{{ (member_ship.amount -  member_ship.residual) / 100 }} €</td>
+					</tr>
+                    <tr>
+						<td colspan="3" style="text-align: right;">
+							<strong>Type de paiement </strong>
+						</td>
+						<td>{{ member_ship.mode }}</td>
+					</tr>
+                </tfoot>
+			</table>
+		</div>
+		<div class="inner margin-tb">
+			<a href="{{ path('member_ship_index') }}" class="btn btn-third btn-radius">Retour</a>
+			<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" class="btn btn-primary btn-radius">Modifier</a>
+			<span class="btn btn-secondary btn-radius" style="padding: 8px;">{{ include('member_ship/_delete_form.html.twig') }}</span>
+		</div>
+	</div>	
 {% endblock %}

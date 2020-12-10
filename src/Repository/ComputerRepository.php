@@ -20,12 +20,13 @@ class ComputerRepository extends ServiceEntityRepository
         parent::__construct($registry, Computer::class);
     }
 
-    public function findAllPagination() : Query
+    public function findAllPagination(): Query
     {
         return $this->createQueryBuilder('c')
-                ->orderBy('c.id', 'DESC')
-                ->getQuery();
+            ->orderBy('c.id', 'DESC')
+            ->getQuery();
     }
+
     public function selectComputersCount($type) {
         
         $query = $this->createQueryBuilder('c')
@@ -34,9 +35,22 @@ class ComputerRepository extends ServiceEntityRepository
                 ->setParameter('type', $type)
                 ->getQuery();
                 
-        return $query->getOneOrNullResult();
-        
+          return $query->getOneOrNullResult();
     }
+
+
+    public function findComputer(string $mot)
+    {
+        return ($queryBuilder =  $this->createQueryBuilder('c'))
+        ->where($queryBuilder->expr()->like('c.serial', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.type', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.status', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.comment', ':mot'))
+        ->setParameter('mot', '%'.$mot.'%')
+        ->getQuery()
+        ->getResult();
+    }
+  
     public function selectComputers($status, $type) {
         
         $query = $this->createQueryBuilder('c')
@@ -46,9 +60,10 @@ class ComputerRepository extends ServiceEntityRepository
                 ->setParameter('status', $status)
                 ->setParameter('type', $type )
                 ->getQuery();
+
         return $query->getOneOrNullResult();
-        
     }
+
 
     public function selectComputerByMonth($year, $month, $value) {
          
@@ -60,19 +75,19 @@ class ComputerRepository extends ServiceEntityRepository
                 ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
                 ->setParameter('type', $value)
                 ->getQuery();
-        
-        return $query->getOneOrNullResult();
-        
+      
+              return $query->getOneOrNullResult();
     }
 
+        
 
     public function findLast()
     {
         return $this->createQueryBuilder('computer')
-                ->orderBy('computer.id', 'DESC')
-                ->setMaxResults(4)
-                ->getQuery()
-                ->getResult();
+            ->orderBy('computer.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
     }
 
 

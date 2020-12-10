@@ -17,9 +17,7 @@
 				<i class="fas fa-plus"></i>
 				Ajouter
 			</a>
-			<form action="">
-				<input type="search" id="" placeholder="Search computer..." class="radius">
-			</form>
+            {{render(controller('App\\Controller\\MemberShipController::getSearchMemberForm'))}}
 		</div>
 
 		<table class="table">
