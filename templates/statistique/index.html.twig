@@ -21,61 +21,61 @@
 						<td> Adhésions 3 mois GEM </td>
 						<td>{{ totalMemberGem }}</td>
                         <td>{{totalPriceGem / 100}} €</td>
-                        <td>{{avgPriceGem / 100}} €</td>
+                        <td>{{(avgPriceGem / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>	
 
 					<tr>
 						<td>Adhésion RSA</td>
 						<td>{{ totalMemberRSA }}</td>
                         <td>{{totalPriceRSA / 100}} €</td>
-                        <td>{{avgPriceRSA / 100}} €</td>
+                        <td>{{(avgPriceRSA / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>	
 					
 			  		<tr>
 						<td>Adhésion SMIC</td>
 						<td>{{ totalMemberSMIC }}</td>
                         <td>{{totalPriceSMIC / 100}} €</td>
-                        <td>{{avgPriceSMIC / 100}} €</td>
+                        <td>{{(avgPriceSMIC / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>
 
 					<tr>
 						<td>Adhésion bénevole</td>
 						<td>{{ totalMemberBenevole }}</td>
                         <td>{{ totalPriceBenevole / 100}} €</td>
-                        <td> {{avgPriceBenevole / 100 }}€</td>
+                        <td> {{(avgPriceBenevole / 100)|number_format(2, '.', ',') }}€</td>
 					</tr>
 					<tr>
 						<td>Adhésion installation Linux</td>
 						<td>{{ totalMemberLinux }}</td>
                         <td>{{totalPriceLinux / 100}} €</td>
-                        <td>{{avgPriceLinux / 100}} €</td>
+                        <td>{{(avgPriceLinux / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>	
 	
 					<tr>
 						<td>Adhésion sup SMIC</td>
 						<td>{{ totalMemberSup }}</td>
                         <td>{{totalPriceSup / 100}} €</td>
-                        <td>{{avgPriceSup / 100}} €</td>
+                        <td>{{(avgPriceSup / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>	
 					<tr>
 						<td>Don</td>
 						<td>{{ totalMemberDon }}</td>
                         <td>{{totalPriceDon / 100}} €</td>
-                        <td>{{avgPriceDon / 100}} €</td>
+                        <td>{{(avgPriceDon / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>
 					<tr>
 						<td>Vente</td>
 						<td>{{ totalMemberSales }}</td>
                         <td>{{totalPriceSales / 100}} €</td>
-                        <td>{{avgPriceSales / 100}} €</td>
+                        <td>{{(avgPriceSales / 100)|number_format(2, '.', ',')}} €</td>
 					</tr>		
 			</tbody>
 			<tfoot>
 				<tr>
 					<td>Total</td>
-					<td>{{ member }}</td>
+					<td>{{ memberTotal }}</td>
 					<td>{{ sumAmount / 100}} €</td>
-					<td>{{avgPrice/ 100}} €</td>
+					<td>{{ (avgPrice/ 100)|number_format(2, '.', ',')}} €</td>
 				</tr>	
 
 			</tfoot>
@@ -102,7 +102,7 @@
         		<table class="table">
 			<thead>
 				<tr>
-					<th>Nombre d'Ordinateur</th>
+					<th>Nombre d'Ordinateur Fixe</th>
 					<th>En Stock</th>
                     <th>Donné</th>
                     <th>Donné Asso</th>
@@ -119,9 +119,31 @@
 						<td>{{ computerBreak }}</td>
 					</tr>						
 			</tbody>
+		</table>  <br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre d'Ordinateur Portable</th>
+					<th>En Stock</th>
+                    <th>Donné</th>
+                    <th>Donné Asso</th>
+					<th>Démonté</th>
+		
+				</tr>
+            </thead>
+       			<tbody>
+					<tr>
+						<td>{{ sumLComputer }}</td>
+						<td>{{ computerLInStock }}</td>
+                        <td>{{ computerLGiven }}</td>
+                        <td>{{ computerLAsso }}</td>
+						<td>{{ computerLBreak }}</td>
+					</tr>						
+			</tbody>
         </table>  <br><br>
         
-    <!--==== Formulaire ====-->
+	<!--==== Formulaire ====-->
+	<p class="desc">Selectionner une date</p>
     <div class="card card-padding">
 
         {{ form_start(form) }}

@@ -21,24 +21,27 @@ class StatsType extends AbstractType
                     2017 => '2017',
                     2018 => '2018',
                     2019 => '2019',
-                    2020 => '2020'
-                ]
+                    2020 => '2020',
+                    2021 => '2021'
+                ],
+                'label' => 'Année'
             ])
             ->add('month', ChoiceType::class, [
                 'choices' => [
-                    '1' => "January",
-                    '2' => "Februrary",
-                    '3' => "March",
-                    '4' => "April",
-                    '5' => "May",
-                    '6' => "June",
-                    '7' => "July",
-                    '8' => "August",
-                    '9' => "September",
-                    '10' => "October",
-                    '11' => "November",
-                    '12' => "December"
-                ]
+                    1 => "Janvier",
+                    2 => "Fevrier",
+                    3 => "Mars",
+                    4 => "Avril",
+                    5 => "Mai",
+                    6 => "Juin",
+                    7 => "Juillet",
+                    8 => "Aout",
+                    9 => "Septembre",
+                    10 => "Octobre",
+                    11 => "Novembre",
+                    12 => "Décembre"
+                ],
+                'label' => 'Mois'
             ])
         ;
     }

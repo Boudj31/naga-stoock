@@ -12,6 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MemberShip
 {
+    CONST MEMBERSHIP_GEM = 'Adhésion GEM 3 mois';
+    CONST MEMBERSHIP_RSA = 'Adhésion RSA';
+    CONST MEMBERSHIP_SMIC = 'Adhésion SMIC';
+    CONST MEMBERSHIP_BENEVOLE = 'Adhésion bénévole';
+    CONST MEMBERSHIP_SUP = 'Adhésion sup SMIC';
+    CONST MEMBERSHIP_LINUX = 'Adhésion installation Linux';
+    CONST SALES = 'Vente';
+    CONST GIFT = 'Don';
+
+
 
     /**
      * @ORM\Id
@@ -63,12 +73,12 @@ class MemberShip
     private $mode;
 
 
-
-
-    public function __construct()
+  /*  public function __construct()
     {
         $this->beginAt = new \DateTime();
     }
+
+    */
 
     public function getId(): ?int
     {

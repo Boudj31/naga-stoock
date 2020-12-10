@@ -10,18 +10,28 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Computer
 {
+    CONST GIVEN = 'Donné';
+    CONST ASSO = 'Donné asso';
+    CONST STOCK = 'En stock';
+    CONST BREAK = 'Démonté';
+
+    CONST FIXE = 'PC Fixe';
+    CONST LAPTOP = 'PC Portable';
+    CONST SERVER = 'Serveur';
+
+
     public const TYPE_STATUS = [
-        'donné' => "Donné",
-        'asso' => 'Donné asso',
-        'dispo' => 'En stock',
-        'démonté' => 'Démonté'
+        'donné' => self::GIVEN,
+        'asso' => self::ASSO,
+        'dispo' => self::STOCK,
+        'démonté' => self::BREAK
     ];
     
 
     public const TYPE_VALUES = [
-        'fixe' => 'PC Fixe',
-        'portable' => 'PC portable',
-        'serveur' => 'Serveur'
+        'fixe' => self::FIXE,
+        'portable' => self::LAPTOP,
+        'serveur' => self::SERVER
     ];
 
     /**
