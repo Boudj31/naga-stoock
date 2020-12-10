@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Computer;
 use App\Form\ComputerType;
+use App\Form\SearchComputerType;
 use App\Repository\ComputerRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -103,4 +104,34 @@ class ComputerController extends AbstractController
 
         return $this->redirectToRoute('computer_index');
     }
+
+    public function getSearchComputerForm()
+    {
+        $form = $this->createForm(SearchComputerType::class, null, [
+            'method' => 'get',
+            'action' => $this->generateUrl('search_computer'),
+        ]);;
+
+        return $this->render('form/_search_form.html.twig', [
+            'search_form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search_computer", methods={"GET"})
+     */
+    public function search(Request $request, ComputerRepository $computerRepository): Response
+    {
+        $results = null;
+        if ('GET' === $request->getMethod()) {
+            $results = $computerRepository->findComputer(
+                $request->query->get('search_computer')['mot']
+            );
+        }
+
+        return $this->render('/computer/search.html.twig', [
+            'search_computer' => $results ? $results : $computerRepository->findAll(),
+        ]);
+    }
+
 }

@@ -20,88 +20,103 @@ class ComputerRepository extends ServiceEntityRepository
         parent::__construct($registry, Computer::class);
     }
 
-    public function findAllPagination() : Query
+    public function findAllPagination(): Query
     {
         return $this->createQueryBuilder('c')
-                ->orderBy('c.id', 'DESC')
-                ->getQuery();
-    }
-    public function selectComputersCount() {
-        
-        $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->getQuery();
-                
-        return $query->getOneOrNullResult();
-        
-    }
-    public function selectGivenComputers() {
-        
-        $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.status = :status')
-                ->setParameter('status', 'Donné')
-                ->getQuery();
-        return $query->getOneOrNullResult();
-        
+            ->orderBy('c.id', 'DESC')
+            ->getQuery();
     }
 
-    public function selectComputersInStock() {
-        
-        $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.status = :status')
-                ->setParameter('status','En stock')
-                ->getQuery();
-        
-        return $query->getOneOrNullResult();
-        
+    public function findComputer(string $mot)
+    {
+        return ($queryBuilder =  $this->createQueryBuilder('c'))
+        ->where($queryBuilder->expr()->like('c.serial', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.type', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.status', ':mot'))
+        ->orWhere($queryBuilder->expr()->like('c.comment', ':mot'))
+        ->setParameter('mot', '%'.$mot.'%')
+        ->getQuery()
+        ->getResult();
     }
-    public function selectComputersAsso() {
-        
+
+    public function selectComputersCount()
+    {
+
         $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.status = :status')
-                ->setParameter('status','Donné asso')
-                ->getQuery();
-        
+            ->select('count(c.id)')
+            ->getQuery();
+
         return $query->getOneOrNullResult();
-        
     }
-    public function selectComputersBreak() {
-        
+
+    public function selectGivenComputers()
+    {
+
         $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.status = :status')
-                ->setParameter('status','Démonté')
-                ->getQuery();
-        
+            ->select('count(c.id)')
+            ->where('c.status = :status')
+            ->setParameter('status', 'Donné')
+            ->getQuery();
         return $query->getOneOrNullResult();
-        
+    }
+
+    public function selectComputersInStock()
+    {
+
+        $query = $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->where('c.status = :status')
+            ->setParameter('status', 'En stock')
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
+
+    public function selectComputersAsso()
+    {
+
+        $query = $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->where('c.status = :status')
+            ->setParameter('status', 'Donné asso')
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
+    public function selectComputersBreak()
+    {
+
+        $query = $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->where('c.status = :status')
+            ->setParameter('status', 'Démonté')
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
     }
 
     public function findLast()
     {
         return $this->createQueryBuilder('computer')
-                ->orderBy('computer.id', 'DESC')
-                ->setMaxResults(4)
-                ->getQuery()
-                ->getResult();
+            ->orderBy('computer.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
     }
 
-    public function selectComputerByMonth($year, $month) {
-         
+    public function selectComputerByMonth($year, $month)
+    {
+
         $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
-                ->andWhere('c.type = :type')
-                ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
-                ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
-                ->setParameter('type', 'Donné')
-                ->getQuery();
-        
+            ->select('count(c.id)')
+            ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
+            ->andWhere('c.type = :type')
+            ->setParameter('fromDate', $year . '-' . $month . '-01 00:00:00')
+            ->setParameter('toDate', $year . '-' . $month . '-31 00:00:00')
+            ->setParameter('type', 'Donné')
+            ->getQuery();
+
         return $query->getOneOrNullResult();
-        
     }
 
     // /**

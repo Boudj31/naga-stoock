@@ -4,12 +4,16 @@ namespace App\Controller;
 
 use App\Entity\MemberShip;
 use App\Form\MemberShipType;
+use App\Form\SearchMemberShipType;
 use App\Repository\MemberShipRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/member/ship")
@@ -98,6 +102,77 @@ class MemberShipController extends AbstractController
         }
 
         return $this->redirectToRoute('member_ship_index');
+    }
+
+    public function getSearchMemberForm()
+    {
+        $form = $this->createForm(SearchMemberShipType::class, null, [
+            'method' => 'get',
+            'action' => $this->generateUrl('search_member_ship'),
+        ]);
+
+        return $this->render('form/_search_form.html.twig', [
+            'search_form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search_member_ship")
+     */
+    public function search(Request $request, MemberShipRepository $memberShipRepository): Response
+    {
+        $results = null;
+        if ('GET' === $request->getMethod()) {
+            $results = $memberShipRepository->findMember(
+                $request->query->get('search_member_ship')['mot']
+            );
+        }
+
+        return $this->render('/member_ship/search.html.twig', [
+            'search_member_ship' => $results ? $results : $memberShipRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/facture/{id}", name="member_ship_facture", methods={"GET"})
+     */
+    public function facture(MemberShip $memberShip): Response
+    {
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+
+        // On génère le html
+        $html = $this->renderView('member_ship/facture.html.twig', [
+            'member_ship' => $memberShip,
+        ]);
+        
+        $html .= '<link type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css" rel="stylesheet" />';
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // On génère un nom de fichier
+        $fichier = 'Facture-'. $memberShip->getId().'.pdf';
+
+        // On envoie le PDF au navigateur
+        $dompdf->stream($fichier, [
+            'Attachment' => false
+        ]);
+
+        return new Response();
     }
 
 }
