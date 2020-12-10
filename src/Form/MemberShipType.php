@@ -5,12 +5,10 @@ namespace App\Form;
 use App\Entity\Computer;
 use App\Entity\Contact;
 use App\Entity\MemberShip;
-use App\Entity\Payement;
 use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,14 +21,14 @@ class MemberShipType extends AbstractType
         $builder
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'adhgem3' => 'Adhésion GEM 3 mois',
-                    'adhrsa' => 'Adhésion RSA',
-                    'adhsmic' => 'Adhésion SMIC',
-                    'adhbene' => 'Adhésion bénévole',
-                    'adhinsta' => 'Adhésion installation Linux',
-                    'adhsupsmic' => 'Adhésion sup SMIC',
-                    'gift' => 'Don',
-                    'sale' => 'Vente',
+                    'adhgem3' => MemberShip::MEMBERSHIP_GEM,
+                    'adhrsa' => MemberShip::MEMBERSHIP_RSA,
+                    'adhsmic' => MemberShip::MEMBERSHIP_SMIC,
+                    'adhbene' => MemberShip::MEMBERSHIP_BENEVOLE,
+                    'adhinsta' => MemberShip::MEMBERSHIP_LINUX,
+                    'adhsupsmic' => MemberShip::MEMBERSHIP_SUP,
+                    'gift' => MemberShip::GIFT,
+                    'sale' => MemberShip::SALES,
                 ],
                 'label' => 'Type'
             ])
@@ -56,10 +54,10 @@ class MemberShipType extends AbstractType
             ])
             ->add('mode', ChoiceType::class, [
                 'choices' => [
-                    'liquide' => 'Espece',
-                    'chèques' => 'Chèques',
-                    'remboursement' => 'Remboursement',
-                    'autres' => 'Virement'
+                    'cash' => 'Espece',
+                    'cheques' => 'cheques',
+                    'refund' => 'Remboursement',
+                    'transfert' => 'Virement'
                 ]
             ])
             ->add('comment', TextareaType::class, [

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ComptaController!{% endblock %}
+
+{% block body %}
+
+         <table class="table">
+           <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Montant</th>
+                <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cheque in cheques %}
+                <tr>
+                    <td>{{cheque.firstname}}</td>
+                    <td>{{cheque.lastname}}</td>
+                    <td>{{cheque.date|date('Y-m-d')}}</td>
+                    <td>{{cheque.type}}</td>
+                    <td>{{cheque.amount / 100}} €</td>
+                    <td>{{cheque.total / 100}} €</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+{% endblock %}

@@ -27,6 +27,18 @@ class ComputerRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
+    public function selectComputersCount($type) {
+        
+        $query = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->where('c.type = :type')
+                ->setParameter('type', $type)
+                ->getQuery();
+                
+          return $query->getOneOrNullResult();
+    }
+
+
     public function findComputer(string $mot)
     {
         return ($queryBuilder =  $this->createQueryBuilder('c'))
@@ -38,62 +50,36 @@ class ComputerRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
     }
-
-    public function selectComputersCount()
-    {
-
+  
+    public function selectComputers($status, $type) {
+        
         $query = $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->getQuery();
+                ->select('count(c.id)')
+                ->where('c.status = :status')
+                ->andWhere('c.type = :type')
+                ->setParameter('status', $status)
+                ->setParameter('type', $type )
+                ->getQuery();
 
         return $query->getOneOrNullResult();
     }
 
-    public function selectGivenComputers()
-    {
 
+    public function selectComputerByMonth($year, $month, $value) {
+         
         $query = $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->where('c.status = :status')
-            ->setParameter('status', 'Donné')
-            ->getQuery();
-        return $query->getOneOrNullResult();
+                ->select('count(c.id)')
+                ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
+                ->andWhere('c.type = :type')
+                ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
+                ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
+                ->setParameter('type', $value)
+                ->getQuery();
+      
+              return $query->getOneOrNullResult();
     }
 
-    public function selectComputersInStock()
-    {
-
-        $query = $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->where('c.status = :status')
-            ->setParameter('status', 'En stock')
-            ->getQuery();
-
-        return $query->getOneOrNullResult();
-    }
-
-    public function selectComputersAsso()
-    {
-
-        $query = $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->where('c.status = :status')
-            ->setParameter('status', 'Donné asso')
-            ->getQuery();
-
-        return $query->getOneOrNullResult();
-    }
-    public function selectComputersBreak()
-    {
-
-        $query = $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->where('c.status = :status')
-            ->setParameter('status', 'Démonté')
-            ->getQuery();
-
-        return $query->getOneOrNullResult();
-    }
+        
 
     public function findLast()
     {
@@ -104,20 +90,6 @@ class ComputerRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function selectComputerByMonth($year, $month)
-    {
-
-        $query = $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
-            ->andWhere('c.type = :type')
-            ->setParameter('fromDate', $year . '-' . $month . '-01 00:00:00')
-            ->setParameter('toDate', $year . '-' . $month . '-31 00:00:00')
-            ->setParameter('type', 'Donné')
-            ->getQuery();
-
-        return $query->getOneOrNullResult();
-    }
 
     // /**
     //  * @return Computer[] Returns an array of Computer objects

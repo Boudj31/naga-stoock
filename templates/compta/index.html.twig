@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ComptaController!{% endblock %}
+
+{% block body %}
+ <ul>
+     <li> <a href="{{path('cash')}}"> Cash</a></li>
+     <li><a href="{{path('transfert')}}">Transfert</a></li>
+     <li><a href="{{path('cheque')}}">Cheque</a></li>
+ </ul>
+{% endblock %}

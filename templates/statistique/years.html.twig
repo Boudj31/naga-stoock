@@ -4,14 +4,66 @@
 
 {% block body %}
 
- <h4> Vente pour la période {{data.month}} {{data.year}}</h4>
-<br>
-  <h3> {{ sales ? sales : 'Pas de vente'}} </h3>
-  <br><br><br>
+<h4>Période du mois de {{data.month}} {{data.year}}</h4><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Résulats</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> Adhésion Gem 3 mois</td>
+            <td>{{ memberShipGem ? memberShipGem : '0'}}</td>
+        </tr>
+        <tr>
+            <td> Adhésion RSA</td>
+            <td>{{ memberShipRSA ? memberShipRSA : '0'}}</td>
+        </tr>
+        <tr>
+            <td> Adhésion SMIC</td>
+            <td>{{ memberShipSMIC ? memberShipSMIC : '0'}}</td>
+        </tr>
+        <tr>
+            <td> Adhésion Bénévole</td>
+            <td>{{ memberShipBenevole ? memberShipBenevole : '0'}}</td>
+        </tr>
+        <tr>
+            <td> Adhésion Sup SMIC</td>
+            <td>{{ memberShipSup ? memberShipSup : '0'}}</td>
+        </tr>
+        <tr>
+            <td> Adhésion installation Linux </td>
+            <td>{{ memberShipLinux ? memberShipLinux : '0'}}</td>
+        </tr>
+       <tr>
+            <td> Ventes</td>
+            <td>{{sales ? sales : '0'}}</td>
+        </tr>
+        <tr>
+            <td> Ordinateurs Donnés</td>
+            <td>{{computerGive ? ComputerGive : '0'}}</td>
+        </tr>
+    </tbody>
 
-   <h4> Ordinateur Donnés pour {{data.month}} {{data.year}}</h4>
-  <h3> {{ computerGive ? ComputerGive : "Pas d'ordinateur donnés!"}} </h3>
 
-  <a href="{{ path('statistique') }}">Retour</a>
+</table>
+
+      <!--==== Formulaire ====-->
+      <p class="desc">Selection par Date</p>
+      <div class="card card-padding">
+
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary btn-radius">
+                {{ button_label|default('Envoyer !') }}
+            </button>
+            <a href="{{ path('statistique') }}" class="btn btn-third btn-radius">Retour</a>
+        {{ form_end(form) }}
+
+    </div>
+
  
 {% endblock %}
