@@ -3,40 +3,47 @@
 {% block title %}Society{% endblock %}
 
 {% block body %}
-    <h1>Society</h1>
+    {# Description #}
+	<h1 class="margin-tb title">Aperçu de la société</h1>
+	<nav>
+		<ol class="breadcrumb">
+			<li>Home</li>
+			<li>Société</li>
+			<li>{{ society.representativeName ? society.representativeName : 'Particulier' }}</li>
+		</ol>
+	</nav>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ society.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ society.name }}</td>
-            </tr>
-            <tr>
-                <th>RepresentativeName</th>
-                <td>{{ society.representativeName }}</td>
-            </tr>
-            <tr>
-                <th>RepresentativeMail</th>
-                <td>{{ society.representativeMail }}</td>
-            </tr>
-            <tr>
-                <th>RepresentativePhone</th>
-                <td>{{ society.representativePhone }}</td>
-            </tr>
-            <tr>
-                <th>Comment</th>
-                <td>{{ society.comment }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="society">
+        <header class="inner card">
+            <img src="{{absolute_url(asset('images/undraw_home.svg'))}}" alt="Immeuble">
+            <h2>{{ society.representativeName ? society.representativeName : 'Particulier' }}</h2>
+        </header>
+        <main class="card margin-tb">
+            <strong class="block">Echanges</strong>
+            <div class="block">
+                <address class="society-border">
+                    <b>Représentant : </b> {{ society.name }}<br/><br/>
+                    {{ society.representativeName }}<br/>
+                    <span>
+                        {{ society.adress.adressLine1 }}<br/>
+                        {{ society.adress.zipCode }} - {{ society.adress.city }}<br/>
+                    </span>
+                </address>
+                <div class="society-border society-phone margin-tb">
+                    <a href="tel:{{ society.representativePhone }}"><strong>Téléphone :</strong> {{ society.representativePhone ? society.representativePhone : 'Pas de numéro enregistré' }}</a>
+                </div>
+                <div class="society-border society-phone">
+                    <strong>Commentaire</strong>
+                    <p>{{ society.comment ? society.comment : 'Aucun commentaire pour le môment'}}</p>
+                </div>
+            </div>
+        </main>
+    </section>
 
-    <a href="{{ path('society_index') }}">back to list</a>
-
-    <a href="{{ path('society_edit', {'id': society.id}) }}">edit</a>
-
-    {{ include('society/_delete_form.html.twig') }}
+    <div class="inner">
+        <a href="{{ path('society_index') }}" class="btn btn-third btn-radius">Retour</a>
+        <a href="{{ path('society_edit', {'id': society.id}) }}" class="btn btn-primary btn-radius">Modifier</a>
+        <span class="btn btn-secondary btn-radius" style="padding: 8px;">{{ include('society/_delete_form.html.twig') }}</span>
+    </div>
+    
 {% endblock %}

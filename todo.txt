@@ -2,8 +2,7 @@
 - Alerte quand ordinateur déja pris
 - Page Compta
 - Regler les donnée par mois et années 
-- Barre de recherche page adhésion et ordinateur
-- Bundle facture
+- Barre de recherche page adhésion (corrigé le bug)
 - role admin pour connexion
 - design tableau provenance 
 - rendre code lisible

@@ -33,15 +33,23 @@
 @import 'tools/typography';
 @import 'tools/animation';
 
+// Fonts
+// ==================
+@import 'tools/fonts/fonts';
+
+
 
 // Generic
 // ==================
 body {
     background-color: var(--light-grey);
-    font-family: var(--font-family);
+    font-family: 'Open Sans';
     font-size: var(--font-size);
     color: var(--dark);
     min-height: 100vh;
+
+    transition: all .3s;
+    scroll-behavior: smooth !important;
 
     @include md {
         --font-size: 12px;
@@ -91,6 +99,8 @@ body {
 @import 'modules/radius';
 @import 'modules/notification';
 @import 'modules/infoBulle';
+@import 'modules/breadcrumb';
+@import 'modules/settings';
 
 
 // Pages
@@ -101,3 +111,4 @@ body {
 @import 'pages/show';
 @import 'pages/computer';
 @import 'pages/facture';
+@import 'pages/society';

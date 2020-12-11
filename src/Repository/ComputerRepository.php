@@ -27,59 +27,62 @@ class ComputerRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-    public function selectComputersCount($type) {
-        
+    public function selectComputersCount($type)
+    {
+
         $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.type = :type')
-                ->setParameter('type', $type)
-                ->getQuery();
-                
-          return $query->getOneOrNullResult();
+            ->select('count(c.id)')
+            ->where('c.type = :type')
+            ->setParameter('type', $type)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
     }
 
 
     public function findComputer(string $mot)
     {
         return ($queryBuilder =  $this->createQueryBuilder('c'))
-        ->where($queryBuilder->expr()->like('c.serial', ':mot'))
-        ->orWhere($queryBuilder->expr()->like('c.type', ':mot'))
-        ->orWhere($queryBuilder->expr()->like('c.status', ':mot'))
-        ->orWhere($queryBuilder->expr()->like('c.comment', ':mot'))
-        ->setParameter('mot', '%'.$mot.'%')
-        ->getQuery()
-        ->getResult();
+            ->where($queryBuilder->expr()->like('c.serial', ':mot'))
+            ->orWhere($queryBuilder->expr()->like('c.type', ':mot'))
+            ->orWhere($queryBuilder->expr()->like('c.status', ':mot'))
+            ->orWhere($queryBuilder->expr()->like('c.comment', ':mot'))
+            ->setParameter('mot', '%' . $mot . '%')
+            ->getQuery()
+            ->getResult();
     }
-  
-    public function selectComputers($status, $type) {
-        
+
+    public function selectComputers($status, $type)
+    {
+
         $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.status = :status')
-                ->andWhere('c.type = :type')
-                ->setParameter('status', $status)
-                ->setParameter('type', $type )
-                ->getQuery();
+            ->select('count(c.id)')
+            ->where('c.status = :status')
+            ->andWhere('c.type = :type')
+            ->setParameter('status', $status)
+            ->setParameter('type', $type)
+            ->getQuery();
 
         return $query->getOneOrNullResult();
     }
 
 
-    public function selectComputerByMonth($year, $month, $value) {
-         
+    public function selectComputerByMonth($year, $month, $value)
+    {
+
         $query = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
-                ->andWhere('c.type = :type')
-                ->setParameter('fromDate', $year.'-'.$month.'-01 00:00:00')
-                ->setParameter('toDate', $year.'-'.$month.'-31 00:00:00')
-                ->setParameter('type', $value)
-                ->getQuery();
-      
-              return $query->getOneOrNullResult();
+            ->select('count(c.id)')
+            ->where('c.receivedAt >= :fromDate AND c.receivedAt <= :toDate')
+            ->andWhere('c.type = :type')
+            ->setParameter('fromDate', $year . '-' . $month . '-01 00:00:00')
+            ->setParameter('toDate', $year . '-' . $month . '-31 00:00:00')
+            ->setParameter('type', $value)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
     }
 
-        
+
 
     public function findLast()
     {

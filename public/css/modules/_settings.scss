@@ -1,0 +1,19 @@
+.web-settings {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: end;
+
+    svg {
+        width: size(20)+rem;
+        color: #94949f;
+    }
+
+    .dark-light {
+        margin-right: size(10)+rem;
+    }
+}
+
+.dislexic {
+    font-family: 'Open-Dyslexic Roman' !important;
+}
