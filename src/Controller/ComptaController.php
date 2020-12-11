@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Cash;
+use App\Form\CashType;
+use App\Repository\CashRepository;
 use App\Repository\ChequeRepository;
+use App\Repository\TranfertRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,17 +26,42 @@ class ComptaController extends AbstractController
     /**
      * @Route("/cash", name="cash")
      */
-    public function cash(): Response
+    public function cash(CashRepository $cashRepository): Response
     {
-        return $this->render('compta/cash.html.twig');
+        return $this->render('compta/cash.html.twig', [
+           'cashs' => $cashRepository->findAll()
+        ]);
+    }
+
+     /**
+     * @Route("/deposit", name="deposit")
+     */
+    public function depositCash(Request $request): Response
+    {
+        $cash = new Cash();
+        $form = $this->createForm(CashType::class, $cash, [
+            'method' => 'PUT'
+        ]);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+
+         $this->getDoctrine()->getManager()->flush();
+        }
+
+        return $this->render('compta/deposit.html.twig', [
+           'form' => $form->createView(),
+        ]);
     }
 
     /**
      * @Route("/transfert", name="transfert")
      */
-    public function transfert(): Response
+    public function transfert(TranfertRepository $tranfertRepository): Response
     {
-        return $this->render('compta/transfert.html.twig');
+        return $this->render('compta/transfert.html.twig', [
+            'transferts' => $tranfertRepository->findAll()
+        ]);
     }
 
      /**

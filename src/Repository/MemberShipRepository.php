@@ -32,8 +32,9 @@ class MemberShipRepository extends ServiceEntityRepository
     {
         return ($queryBuilder =  $this->createQueryBuilder('m'))
         ->where($queryBuilder->expr()->like('m.type', ':mot'))
-        ->orWhere($queryBuilder->expr()->like('m.mode', ':mot'))
-        ->setParameter('mot', '%'.$mot.'%')
+        ->andWhere($queryBuilder->expr()->like('m.mode', ':mot'))
+        ->setParameter('mode', '%'.$mot.'%')
+        ->setParameter('type', '%'.$mot.'%')
         ->getQuery()
         ->getResult();
     }

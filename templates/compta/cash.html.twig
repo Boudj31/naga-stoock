@@ -3,5 +3,51 @@
 {% block title %}Hello ComptaController!{% endblock %}
 
 {% block body %}
-  Hello cash
+
+    <h1 class="title">Compabilité</h1>
+    <p class="desc">Pour les sommes en especes</p>
+    
+    	{# Alert notification #}
+	{% include "notification.html.twig" %}
+
+	{# Contenue #}
+	<div class="card card-padding">
+
+		<div class="contact-header margin-b">
+			<a href="{{path('deposit')}}" class="btn btn-secondary btn-radius">
+				<i class="fas fa-euro-sign"></i> Déposer
+			</a>
+		</div>
+  
+         <table class="table">
+           <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Montant In</th>
+                <th>Montant Out</th>
+                <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cash in cashs %}
+                <tr>
+                    <td>{{ cash.firstname }}</td>
+                    <td>{{ cash.lastname }}</td>
+                    <td>{{ cash.date|date("d/m/Y") }}</td>
+                    <td>{{ cash.type }}</td>
+                    <td>{{ cash.amountIn / 100}} €</td>
+                    <td>{{ cash.amountOut }} €</td>
+                    <td>{{ cash.total / 100}} €</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+        	<div class="inner margin-tb">
+			<a href="{{ path('compta') }}" class="btn btn-third btn-radius">Retour</a>
+		</div>
+
+        </div>
 {% endblock %}

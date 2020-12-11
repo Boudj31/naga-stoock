@@ -4,6 +4,9 @@
 
 {% block body %}
 
+ <h1 class="title">Compabilité</h1>
+ <p class="desc">Pour les sommes en chèques</p>
+	<div class="card card-padding">
          <table class="table">
            <thead>
             <tr>
@@ -28,4 +31,8 @@
                 {% endfor %}
               </tbody>
         </table>
+    	<div class="inner margin-tb">
+			<a href="{{ path('compta') }}" class="btn btn-third btn-radius">Retour</a>
+		</div>
+    </div>
 {% endblock %}

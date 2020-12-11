@@ -3,9 +3,38 @@
 {% block title %}Hello ComptaController!{% endblock %}
 
 {% block body %}
- <ul>
-     <li> <a href="{{path('cash')}}"> Cash</a></li>
-     <li><a href="{{path('transfert')}}">Transfert</a></li>
-     <li><a href="{{path('cheque')}}">Cheque</a></li>
- </ul>
+
+<section class="section">
+    <header class="section-header">
+        <h2 class="section-title">Comptabilité</h2>
+        <p>Consulter le suivi des transactions</p>
+    </header>
+    <ul class="stats">
+        <li class="stats-items">
+            <div class="items-icons">
+                <a href="{{path('cash')}}"><i class="fas fa-euro-sign"></i></a>
+            </div>
+            <div class="items-text">
+                <strong>Cash</strong>
+            </div>
+        </li>
+        <li class="stats-items">
+            <div class="items-icons">
+                <a href="{{path('cheque')}}"><i class="fas fa-money-check-alt"></i></a>
+            </div>
+            <div class="items-text">
+                <strong>Cheque</strong>
+            </div>
+        </li>
+        <li class="stats-items">
+            <div class="items-icons">
+                <a href="{{path('transfert')}}"><i class="fas fa-hand-holding-usd"></i></a>
+            </div>
+            <div class="items-text">
+                <strong>Transfert</strong>
+            </div>
+        </li>
+
+    </ul>
+</section>
 {% endblock %}
