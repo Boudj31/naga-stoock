@@ -5,8 +5,16 @@
 
 {% block body %}
 
-	<h1>Ordinateurs</h1>
-
+	{# Description #}
+	<h1 class="margin-tb title">Aperçu Ordinateurs</h1>
+	<nav>
+		<ol class="breadcrumb">
+			<li>Home</li>
+			<li>Ordinateurs</li>
+			<li>{{ computer.serial }}</li>
+		</ol>
+	</nav>
+	
 	{# Contenue #}
 	<div class="card">
 		<div class="row margin-tb no-align-center">
@@ -20,8 +28,7 @@
 				{% endif %}
 			</div>
 			<div class="right">
-				<h2>Numéro de série :
-					{{ computer.serial }}</h2>
+				<h2>Numéro de série : {{ computer.serial }}</h2>
 				<div class="info">
 					<p class="info-status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }} btn-radius">{{ computer.status }}</p>
 					<p>

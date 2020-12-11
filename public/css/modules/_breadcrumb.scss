@@ -1,0 +1,28 @@
+// Breadcrumb
+// ==================
+.breadcrumb {
+    display: flex;
+    flex-flow: row wrap;
+    background: transparent;
+    color: var(--primary);
+    margin-bottom: size(45)+rem;
+
+    li {
+        padding-left: size(5)+rem;
+
+        &::before {
+            display: inline-flex;
+            content: "/";
+            color: var(--primary);
+            padding-right: size(5)+rem;
+        }
+
+        &:first-child {
+            padding-left: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

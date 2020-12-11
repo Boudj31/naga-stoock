@@ -3,8 +3,16 @@
 {% block title %}{{parent()}} - Référence adhésion : {{ member_ship.id }}{% endblock %}
 
 {% block body %}
-	<h1 class="margin-tb">Référence adhésion :
-		{{ member_ship.id }}</h1>
+
+	{# Description #}
+	<h1 class="margin-tb title">Aperçu adhésions</h1>
+	<nav>
+		<ol class="breadcrumb">
+			<li>Home</li>
+			<li>Adhésions</li>
+			<li>Référence adhésion :{{ member_ship.id }}</li>
+		</ol>
+	</nav>
 
 	<div class="card show-info">
 		<div class="row show-margin-b">
@@ -12,7 +20,7 @@
 				{{ member_ship.member.lastname }}
 				{{ member_ship.member.firstname }}</p>
 			<a href="{{ path('member_ship_facture', {'id': member_ship.id}) }}" target="_blank" class="btn btn-third btn-radius">
-				<i class="fas fa-print"></i> Voir la facture
+				<i class="fas fa-print"></i> Imprimer le reçu
 			</a>
 		</div>
 		{# Information adhésions #}
