@@ -1,0 +1,61 @@
+// Pages Society
+// ==================
+.society {
+    line-height: 1.8;
+
+    h2,
+    strong {
+        font-weight: 700;
+    }
+
+    hr {
+        margin: size(15)+rem 0;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    header {
+        padding: size(15)+rem;
+
+        img {
+            width: size(80)+rem;
+            height: size(80)+rem;
+            object-fit: contain;
+            margin-right: size(30)+rem;
+        }
+    }
+
+    main {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    address span {
+        opacity: .6;
+    }
+
+    &-border {
+        border: 1px solid #BDC6C7;
+        border-radius: size(5)+rem;
+        padding: size(30)+rem;
+    }
+
+    &-phone {
+        position: relative;
+        padding: size(15)+rem !important;
+
+        strong {
+            position: absolute;
+            margin-top: size(-20)+rem;
+            position: absolute;
+            background: white;
+            padding: 0 15px;
+            top: 6px;
+        }
+    }
+
+    .block {
+        width: calc(100% / 2);
+    }
+
+}

@@ -14,9 +14,9 @@
         <div class="wb-home">
             {% include "menu.html.twig" %}
             <div class="container">
-            {% block body %} 
-
-            {% endblock %}
+                {% include "header.html.twig" %}
+                {% block body %}
+                {% endblock %}
             </div>
         </div>
 
