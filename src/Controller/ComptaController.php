@@ -6,6 +6,7 @@ use App\Entity\Cash;
 use App\Form\CashType;
 use App\Repository\CashRepository;
 use App\Repository\ChequeRepository;
+use App\Repository\TranfertRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,7 +45,7 @@ class ComptaController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            
+
          $this->getDoctrine()->getManager()->flush();
         }
 
@@ -56,9 +57,11 @@ class ComptaController extends AbstractController
     /**
      * @Route("/transfert", name="transfert")
      */
-    public function transfert(): Response
+    public function transfert(TranfertRepository $tranfertRepository): Response
     {
-        return $this->render('compta/transfert.html.twig');
+        return $this->render('compta/transfert.html.twig', [
+            'transferts' => $tranfertRepository->findAll()
+        ]);
     }
 
      /**

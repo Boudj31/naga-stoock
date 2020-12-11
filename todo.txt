@@ -3,8 +3,10 @@
 - Page Compta
 - Regler les donnée par mois et années 
 - Barre de recherche page adhésion(corriger bug)
+-  rendre donnée modifiable
 - role admin pour connexion
 - design tableau provenance 
 - rendre code lisible
 - trouver nombre adhérent sans vente et don 
+- 
 

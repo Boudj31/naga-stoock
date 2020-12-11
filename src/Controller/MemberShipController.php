@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Cash;
 use App\Entity\Cheque;
+use App\Entity\Tranfert;
 use App\Entity\MemberShip;
 use App\Form\MemberShipType;
 use App\Repository\ChequeRepository;
 use App\Form\SearchMemberShipType;
 use App\Repository\CashRepository;
 use App\Repository\MemberShipRepository;
+use App\Repository\TranfertRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,7 +44,7 @@ class MemberShipController extends AbstractController
     /**
      * @Route("/new", name="member_ship_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ChequeRepository $chequeRepository, CashRepository $cashRepository): Response
+    public function new(Request $request, ChequeRepository $chequeRepository, CashRepository $cashRepository, TranfertRepository $tranfertRepository): Response
     {
         $memberShip = new MemberShip();
         $form = $this->createForm(MemberShipType::class, $memberShip);
@@ -51,19 +53,23 @@ class MemberShipController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            /*if($memberShip->getComputer()) {
-
-                $memberShip->getComputer()->setMember($memberShip);
-                $memberShip->getComputer()->setSerial(0);
-
-                $this->addFlash('danger', 'Cette ordinateur à déja été attribué.');
-                return $this->redirectToRoute('member_ship_new');
-            }*/
-            
-
+            // Compta Remboursement
+            if ($memberShip->getMode() === "transferts") {   
+                $total = $tranfertRepository->selectLastTotal();
+                $transfert = new Tranfert();
+                $transfert->setFirstname($memberShip->getMember()->getFirstname());
+                $transfert->setLastname($memberShip->getMember()->getLastname());
+                $transfert->setDate(new \DateTime);
+                $transfert->setAmount($memberShip->getAmount());
+                $transfert->setTotal($total['total'] + $transfert->getAmount());
+                $transfert->setType($memberShip->getType());
+                $entityManager->persist($transfert);
+                
+            }
+            // Compta Cash
             if($memberShip->getMode() === "cash") {
                 $total = $cashRepository->selectLastTotal();
-                $cash = new Cash;
+                $cash = new Cash();
                 $cash->setFirstname($memberShip->getMember()->getFirstname());
                 $cash->setLastname($memberShip->getMember()->getLastname());
                 $cash->setDate(new \DateTime);
@@ -73,7 +79,7 @@ class MemberShipController extends AbstractController
                 $cash->setType($memberShip->getType());
                 $entityManager->persist($cash);
             }
-
+            // Compta Cheque
             if ($memberShip->getMode() === "cheques") {
                     
                 $total = $chequeRepository->selectLastTotal();
@@ -85,8 +91,10 @@ class MemberShipController extends AbstractController
                 $cheque->setTotal($total['total'] + $cheque->getAmount());
                 $cheque->setType($memberShip->getType());
                 $entityManager->persist($cheque);
+      
                 
             }
+
             $entityManager->persist($memberShip);
             $entityManager->flush();
 

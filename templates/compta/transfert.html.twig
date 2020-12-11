@@ -1,7 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ComptaController!{% endblock %}
+{% block title %}Transfert{% endblock %}
 
 {% block body %}
-  Hello tranfert
+
+ <h1 class="title">Compabilité</h1>
+ <p class="desc">Pour les sommes remboursées</p>
+
+   	<div class="card card-padding">
+         <table class="table">
+           <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Montant</th>
+                <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for transfert in transferts %}
+               <tr>
+                   <th>{{ transfert.firstname }}</th>
+                   <th>{{ transfert.lastname }}</th>
+                   <th>{{ transfert.date|date('Y-m-d') }}</th>
+                   <th>{{ transfert.type }}</th>
+                   <th>{{ transfert.amount / 100 }} €</th>
+                   <th>{{ transfert.total / 100}} €</th>
+               </tr>
+           {% endfor %}
+         </tbody>
+        </table>
+    	<div class="inner margin-tb">
+			<a href="{{ path('compta') }}" class="btn btn-third btn-radius">Retour</a>
+		</div>
+
+        </div>
 {% endblock %}

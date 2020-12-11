@@ -56,8 +56,8 @@ class MemberShipType extends AbstractType
                 'choices' => [
                     'cash' => 'cash',
                     'cheques' => 'cheques',
-                    'refund' => 'Remboursement',
-                    'transfert' => 'Virement'
+                    'transferts' => 'transferts',
+                     'virement' => 'Virement'
                 ]
             ])
             ->add('comment', TextareaType::class, [
