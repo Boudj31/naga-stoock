@@ -7,8 +7,9 @@ use App\Entity\MemberShip;
 use App\Form\StatsType;
 use App\Repository\ComputerRepository;
 use App\Repository\MemberShipRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,19 +19,19 @@ class StatistiqueController extends AbstractController
     /**
      * @Route("/statistique", name="statistique", methods={"GET", "POST"})
      */
-    public function index( MemberShipRepository $memberShipRepository, ComputerRepository $computerRepository, HttpFoundationRequest $request): Response
+    public function index(MemberShipRepository $memberShipRepository, ComputerRepository $computerRepository, Request $request): Response
     {
  
         $data = [];
-        $form = $this->createForm(StatsType::class, $data,[
-            'method' => 'POST'
-        ]);
+        $form = $this->createForm(StatsType::class, $data);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
 
             $data = $form->getData();
+            //$mbGem = $memberShipRepository->selectMembershipsByMonth($data['year'], $data['month'], MemberShip::MEMBERSHIP_GEM);
+
     
             return $this->render('statistique/years.html.twig', [
                 'data' => $data,

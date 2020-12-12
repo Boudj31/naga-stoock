@@ -26,9 +26,9 @@
                 <th>Nom</th>
                 <th>Date</th>
                 <th>Type</th>
-                <th>Montant In</th>
-                <th>Montant Out</th>
-                <th>Total</th>
+                <th>Argent entré</th>
+                <th>Argent sorti</th>
+                <th>Caisse</th>
             </tr>
           </thead>
           <tbody>
@@ -39,7 +39,7 @@
                     <td>{{ cash.date|date("d/m/Y") }}</td>
                     <td>{{ cash.type }}</td>
                     <td>{{ cash.amountIn / 100}} €</td>
-                    <td>{{ cash.amountOut }} €</td>
+                    <td>{{ cash.amountOut / 100}} €</td>
                     <td>{{ cash.total / 100}} €</td>
                 </tr>
                 {% endfor %}

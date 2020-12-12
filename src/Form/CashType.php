@@ -5,6 +5,9 @@ namespace App\Form;
 use App\Entity\Cash;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType as TypeDateType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,10 +23,15 @@ class CashType extends AbstractType
                 'choices' => [
                     'deposit' => 'Déposer'
             ]])
-            ->add('amountIn', NumberType::class, [
-                'disabled' => true
+            ->add('amountIn', MoneyType::class, [
+                'currency' => 'EUR',
+                'divisor' => 100, 
+                'disabled' => true 
             ])
-            ->add('amountOut')
+            ->add('amountOut', MoneyType::class, [
+                'currency' => 'EUR',
+                'divisor' => 100, 
+            ])
         ;
     }
 
