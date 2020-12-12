@@ -21,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+
 /**
  * @Route("/member/ship")
  */
@@ -34,7 +35,7 @@ class MemberShipController extends AbstractController
         $memberShips = $paginatorInterface->paginate(
             $memberShipRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            4 /*limit par page*/
+            10 /*limit par page*/
         );
         return $this->render('member_ship/index.html.twig', [
             'member_ships' => $memberShips,
@@ -101,6 +102,7 @@ class MemberShipController extends AbstractController
             $this->addFlash('success', 'L\'adhésion a bien été prise en compte.');
 
             return $this->redirectToRoute('member_ship_index');
+
         }
 
         return $this->render('member_ship/new.html.twig', [
@@ -178,7 +180,7 @@ class MemberShipController extends AbstractController
         }
 
         return $this->render('/member_ship/search.html.twig', [
-            'search_member_ship' => $results ? $results : $memberShipRepository->findAll(),
+            'search_member_ships' => $results ? $results : $memberShipRepository->findAll(),
         ]);
     }
 
