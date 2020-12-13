@@ -1,12 +1,13 @@
 - Traductions
-- Alerte quand ordinateur déja pris
-- Page Compta
-- Regler les donnée par mois et années 
-- Barre de recherche page adhésion(corriger bug)
+- Alerte quand ordinateur déja pris (toute entity)
+- Page Compta  ✅
+- Regler les donnée par mois et années ✅
+- Barre de recherche page adhésion(corriger bug) 
 -  rendre donnée modifiable
-- role admin pour connexion
-- design tableau provenance 
+- role admin pour connexion 
+- design tableau provenance ✅
 - rendre code lisible
-- trouver nombre adhérent sans vente et don 
-- 
+- trouver nombre adhérent sans vente et don
+- deposit a finir ✅ 
+
 

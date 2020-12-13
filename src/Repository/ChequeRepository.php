@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Cheque;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -29,6 +30,13 @@ class ChequeRepository extends ServiceEntityRepository
 
         return $query->getOneOrNullResult();
         
+    }
+
+    public function findAllPagination() : Query
+    {
+        return $this->createQueryBuilder('c')
+                ->orderBy('c.id', 'DESC')
+                ->getQuery();
     }
 
     // /**

@@ -14,32 +14,32 @@ class StatsType extends AbstractType
         $builder
             ->add('year', ChoiceType::class, [
                 'choices' => [
-                    2013 => '2013',
-                    2014 => '2014',
-                    2015 => '2015',
-                    2016 => '2016',
-                    2017 => '2017',
-                    2018 => '2018',
-                    2019 => '2019',
-                    2020 => '2020',
-                    2021 => '2021'
+                    2013 => 2013,
+                    2014 => 2014,
+                    2015 => 2015,
+                    2016 => 2016,
+                    2017 => 2017,
+                    2018 => 2018,
+                    2019 => 2019,
+                    2020 => 2020,
+                    2021 => 2021
                 ],
                 'label' => 'Année'
             ])
             ->add('month', ChoiceType::class, [
                 'choices' => [
-                    1 => "Janvier",
-                    2 => "Fevrier",
-                    3 => "Mars",
-                    4 => "Avril",
-                    5 => "Mai",
-                    6 => "Juin",
-                    7 => "Juillet",
-                    8 => "Aout",
-                    9 => "Septembre",
-                    10 => "Octobre",
-                    11 => "Novembre",
-                    12 => "Décembre"
+                    'Janvier' => 1,
+                    'Fevrier' => 2,
+                    'Mars' => 3,
+                    'Avril' => 4,
+                    'Mai' => 5,
+                    'Juin' => 6,
+                    'Juillet' => 7,
+                    'Aout' => 8,
+                    'Septembre' => 9,
+                    'Octobre' => 10,
+                    'Novembre' => 11,
+                    'Décembre' => 12
                 ],
                 'label' => 'Mois'
             ])

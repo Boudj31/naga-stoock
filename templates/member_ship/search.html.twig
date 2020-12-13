@@ -32,8 +32,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for member_ship in search_member_ship %}
-					{%  set member = member_ship.member %}
+				{% for member_ship in search_member_ships %}
+				   {%  set member = member_ship.member %}
 					<tr>
 						<td>
 							{% if member.title == "Monsieur" %}
@@ -66,6 +66,7 @@
 							{{ include('member_ship/_delete_form.html.twig') }}
 						</td>
 					</tr>
+				  
 				{% endfor %}
 			</tbody>
 		</table>

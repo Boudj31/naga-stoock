@@ -34,7 +34,12 @@
         </table>
     	<div class="inner margin-tb">
 			<a href="{{ path('compta') }}" class="btn btn-third btn-radius">Retour</a>
+        </div>
+        
+        <div class="margin-tb">
+			{{ knp_pagination_render(transferts) }}
 		</div>
+
 
         </div>
 {% endblock %}
