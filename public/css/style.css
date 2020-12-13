@@ -253,48 +253,48 @@ hr {
   font-family: 'Open-Dyslexic Roman';
   font-style: normal;
   font-weight: normal;
-  src: local("Open-Dyslexic Roman"), url("open-dyslexic.woff") format("woff");
+  src: local("Open-Dyslexic Roman"), url("fonts/open-dyslexic.woff") format("woff");
 }
 
 /* Open Sans */
 @font-face {
   font-family: 'Open Sans';
-  src: url("OpenSans-Italic-webfont.eot");
-  src: url("OpenSans-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("OpenSans-Italic-webfont.woff2") format("woff2"), url("OpenSans-Italic-webfont.woff") format("woff"), url("OpenSans-Italic-webfont.ttf") format("truetype"), url("OpenSans-Italic-webfont.svg#open_sansitalic") format("svg");
-  font-weight: normal;
+  src: url("fonts/OpenSans-Italic-webfont.eot");
+  src: url("fonts/OpenSans-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-Italic-webfont.woff2") format("woff2"), url("fonts/OpenSans-Italic-webfont.woff") format("woff"), url("fonts/OpenSans-Italic-webfont.ttf") format("truetype"), url("fonts/OpenSans-Italic-webfont.svg#open_sansitalic") format("svg");
+  font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: local("Open Sans"), url("OpenSans-Regular-webfont.eot");
-  src: url("OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("OpenSans-Regular-webfont.woff2") format("woff2"), url("OpenSans-Regular-webfont.woff") format("woff"), url("OpenSans-Regular-webfont.ttf") format("truetype"), url("OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
-  font-weight: normal;
+  src: url("fonts/OpenSans-Regular-webfont.eot");
+  src: url("fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-Regular-webfont.woff2") format("woff2"), url("fonts/OpenSans-Regular-webfont.woff") format("woff"), url("fonts/OpenSans-Regular-webfont.ttf") format("truetype"), url("fonts/OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
+  font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url("OpenSans-Semibold-webfont.eot");
-  src: url("OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("OpenSans-Semibold-webfont.woff2") format("woff2"), url("OpenSans-Semibold-webfont.woff") format("woff"), url("OpenSans-Semibold-webfont.ttf") format("truetype"), url("OpenSans-Semibold-webfont.svg#open_sanssemibold") format("svg");
+  src: url("fonts/OpenSans-Semibold-webfont.eot");
+  src: url("fonts/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-Semibold-webfont.woff2") format("woff2"), url("fonts/OpenSans-Semibold-webfont.woff") format("woff"), url("fonts/OpenSans-Semibold-webfont.ttf") format("truetype"), url("fonts/OpenSans-Semibold-webfont.svg#open_sanssemibold") format("svg");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url("OpenSans-Bold-webfont.eot");
-  src: url("OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("OpenSans-Bold-webfont.woff2") format("woff2"), url("OpenSans-Bold-webfont.woff") format("woff"), url("OpenSans-Bold-webfont.ttf") format("truetype"), url("OpenSans-Bold-webfont.svg#open_sansbold") format("svg");
-  font-weight: bold;
-  font-style: normal;
+  src: url("fonts/OpenSans-Bold-webfont.eot");
+  src: url("fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-Bold-webfont.woff2") format("woff2"), url("fonts/OpenSans-Bold-webfont.woff") format("woff"), url("fonts/OpenSans-Bold-webfont.ttf") format("truetype"), url("fonts/OpenSans-Bold-webfont.svg#open_sansbold") format("svg");
+  font-weight: 700;
+  font-style: oblique;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url("OpenSans-ExtraBold-webfont.eot");
-  src: url("OpenSans-ExtraBold-webfont.eot?#iefix") format("embedded-opentype"), url("OpenSans-ExtraBold-webfont.woff2") format("woff2"), url("OpenSans-ExtraBold-webfont.woff") format("woff"), url("OpenSans-ExtraBold-webfont.ttf") format("truetype"), url("OpenSans-ExtraBold-webfont.svg#open_sansextrabold") format("svg");
-  font-weight: bolder;
-  font-style: normal;
+  src: url("fonts/OpenSans-ExtraBold-webfont.eot");
+  src: url("fonts/OpenSans-ExtraBold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-ExtraBold-webfont.woff2") format("woff2"), url("fonts/OpenSans-ExtraBold-webfont.woff") format("woff"), url("fonts/OpenSans-ExtraBold-webfont.ttf") format("truetype"), url("fonts/OpenSans-ExtraBold-webfont.svg#open_sansextrabold") format("svg");
+  font-weight: 800;
+  font-style: oblique;
 }
 
 body {
@@ -303,8 +303,8 @@ body {
   font-size: var(--font-size);
   color: var(--dark);
   min-height: 100vh;
-  -webkit-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
   scroll-behavior: smooth !important;
 }
 
@@ -807,6 +807,11 @@ select::-ms-expand {
   color: #132C14;
 }
 
+.notification-danger {
+  background-color: #FEE8E7;
+  color: #9C2B23;
+}
+
 [data-infoBulle] {
   position: relative;
   z-index: 2;
@@ -900,20 +905,129 @@ select::-ms-expand {
           align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: end;
+          justify-content: flex-end;
 }
 
 .web-settings svg {
   width: 1.25rem;
   color: #94949f;
+  cursor: pointer;
 }
 
-.web-settings .dark-light {
+.web-settings .btn-accessibility {
   margin-right: 0.625rem;
+}
+
+.web-settings .active-access {
+  fill: #ff0 !important;
+  stroke: #ff0 !important;
 }
 
 .dislexic {
   font-family: 'Open-Dyslexic Roman' !important;
+}
+
+.accessibility {
+  --primary: #2E3B58;
+  --secondary: #20C997;
+  --dark: #ff0 !important;
+  --white: #080808 !important;
+  --light-grey: #000 !important;
+  --line-gray: #E0E2E1;
+  --input-header: #e2E8F0;
+}
+
+.accessibility .table {
+  border: 1px solid #e3ebf6;
+  background-color: white;
+  color: var(--dark);
+}
+
+.accessibility .table thead th {
+  background-color: var(--light-grey);
+  color: var(--dark);
+}
+
+.accessibility .table tbody tr {
+  background-color: var(--light-grey);
+}
+
+.accessibility .table tbody tr:nth-child(2n) {
+  background-color: #0b0b0b;
+}
+
+.accessibility .table th,
+.accessibility .table td {
+  background: var(--light-grey) !important;
+}
+
+.accessibility .sidebar-menu ul .nav-items-list a:hover {
+  background-color: #1C1C24;
+  color: var(--dark);
+  border-radius: 0.25rem;
+}
+
+.accessibility [data-infoBulle]::before {
+  background-color: var(--dark);
+  color: var(--light-grey);
+}
+
+.accessibility [data-infoBulle]::after {
+  border-top: 5px solid var(--dark);
+}
+
+.accessibility .donne {
+  color: var(--dark);
+  background-color: var(--light-grey);
+}
+
+.accessibility .asso {
+  background-color: #ffbf00 !important;
+  color: var(--light-grey) !important;
+}
+
+.accessibility .demonte {
+  background-color: #4e3633;
+  color: var(--light-grey);
+}
+
+.accessibility .page-item.disabled {
+  background-color: #000;
+}
+
+.accessibility .page-item:hover {
+  background-color: #2f2f2f;
+}
+
+.accessibility .active {
+  border: 1px solid #FFF !important;
+  background-color: #ff0 !important;
+  color: #000;
+}
+
+.accessibility .show-card,
+.accessibility select,
+.accessibility .stats .items-icons,
+.accessibility .computers-wrapper .elements-logo,
+.accessibility .society-phone strong {
+  background-color: var(--light-grey);
+  color: var(--dark);
+}
+
+.accessibility .society-phone strong {
+  background: var(--white);
+}
+
+.accessibility input,
+.accessibility textarea,
+.accessibility select,
+.accessibility .card,
+.accessibility .stats-items,
+.accessibility .show-card,
+.accessibility .computers-items,
+.accessibility .computers-wrapper .elements-logo,
+.accessibility .stats .items-icons {
+  border: 1px solid #FFF;
 }
 
 .auth-wrapper {

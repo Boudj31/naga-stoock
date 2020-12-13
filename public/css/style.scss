@@ -35,7 +35,7 @@
 
 // Fonts
 // ==================
-@import 'tools/fonts/fonts';
+@import 'tools/fonts';
 
 
 
@@ -48,7 +48,7 @@ body {
     color: var(--dark);
     min-height: 100vh;
 
-    transition: all .3s;
+    transition: background-color 1s;
     scroll-behavior: smooth !important;
 
     @include md {
