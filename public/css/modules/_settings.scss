@@ -134,4 +134,9 @@
         border: 1px solid #FFF;
     }
 
+    select {
+        background: var(--light-grey) url(../../images/triangle-contrast.png) no-repeat right 0.9375rem center;
+        background-size: size(9)+rem;
+    }
+
 }

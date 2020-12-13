@@ -1030,6 +1030,11 @@ select::-ms-expand {
   border: 1px solid #FFF;
 }
 
+.accessibility select {
+  background: var(--light-grey) url(../../images/triangle-contrast.png) no-repeat right 0.9375rem center;
+  background-size: 0.5625rem;
+}
+
 .auth-wrapper {
   width: 100%;
   min-height: 100vh;
