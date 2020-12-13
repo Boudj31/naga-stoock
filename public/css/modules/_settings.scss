@@ -2,18 +2,141 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
 
     svg {
         width: size(20)+rem;
         color: #94949f;
+        cursor: pointer;
     }
 
-    .dark-light {
+    .btn-accessibility {
         margin-right: size(10)+rem;
+    }
+
+    .active-access {
+        fill:  #ff0 !important;
+        stroke:  #ff0 !important;
     }
 }
 
 .dislexic {
     font-family: 'Open-Dyslexic Roman' !important;
+}
+
+.accessibility {
+
+    --primary: #2E3B58;
+    --secondary: #20C997;
+    --dark: #ff0 !important;
+    --white: #080808 !important;
+    --light-grey: #000 !important;
+    --line-gray: #E0E2E1;
+    --input-header: #e2E8F0;
+
+    // Table
+    .table {
+        border: 1px solid #e3ebf6;
+        background-color: white;
+        color: var(--dark);
+
+        thead th {
+            background-color: var(--light-grey);
+            color: var(--dark);
+        }
+
+        tbody tr {
+            background-color: var(--light-grey);
+
+            &:nth-child(2n) {
+                background-color: #0b0b0b;
+            }
+        }
+
+        th,
+        td {
+            background: var(--light-grey) !important;
+        }
+    }
+
+    // Menu
+    .sidebar-menu ul .nav-items-list a:hover {
+        background-color: #1C1C24;
+        color: var(--dark);
+        border-radius: 0.25rem;
+    }
+    
+    // Info-bulle
+    [data-infoBulle]{
+        &::before {
+            background-color: var(--dark);
+            color: var(--light-grey); 
+        }
+
+        &::after {
+            border-top: 5px solid var(--dark);
+        }
+    }
+
+    .donne {
+        color: var(--dark);
+        background-color: var(--light-grey);
+    }
+
+    .asso {
+        background-color: #ffbf00 !important;
+        color: var(--light-grey) !important;
+    }
+
+    .demonte {
+        background-color: #4e3633;
+        color: var(--light-grey);
+    }
+
+    // Pagination
+    .page-item.disabled {
+        background-color: #000;
+    }
+
+    .page-item:hover {
+        background-color: #2f2f2f;
+    }
+
+    .active {
+        border: 1px solid #FFF !important;
+        background-color: #ff0 !important;
+        color: #000;
+    }
+
+    // Home 
+    .show-card,
+    select,
+    .stats .items-icons,
+    .computers-wrapper .elements-logo,
+    .society-phone strong {
+        background-color: var(--light-grey);
+        color: var(--dark);
+    }
+
+    .society-phone strong {
+        background: var(--white);
+    }
+
+    input, 
+    textarea, 
+    select,
+    .card,
+    .stats-items,
+    .show-card,
+    .computers-items,
+    .computers-wrapper .elements-logo,
+    .stats .items-icons {
+        border: 1px solid #FFF;
+    }
+
+    select {
+        background: var(--light-grey) url(../../images/triangle-contrast.png) no-repeat right 0.9375rem center;
+        background-size: size(9)+rem;
+    }
+
 }

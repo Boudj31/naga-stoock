@@ -43,6 +43,36 @@ class MemberShipController extends AbstractController
     }
 
     /**
+     * @Route("/search", name="search_member_ship", methods={"GET"})
+     */
+    public function search(Request $request, MemberShipRepository $memberShipRepository): Response
+    {
+        $results = null;
+        if ('GET' === $request->getMethod()) {
+            $results = $memberShipRepository->findMemberSearch(
+                $request->query->get('search_member_ship')['mot']
+            );
+        }
+
+        return $this->render('/member_ship/search.html.twig', [
+            'search_member_ship' => $results ? $results : $memberShipRepository->findAll(),
+        ]);
+    }
+
+    public function getSearchMemberForm()
+    {
+        $form = $this->createForm(SearchMemberShipType::class, null, [
+            'method' => 'get',
+            'action' => $this->generateUrl('search_member_ship'),
+        ]);
+
+        return $this->render('form/_search_form.html.twig', [
+            'search_form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
      * @Route("/new", name="member_ship_new", methods={"GET","POST"})
      */
     public function new(Request $request, ChequeRepository $chequeRepository, CashRepository $cashRepository, TranfertRepository $tranfertRepository): Response
@@ -153,35 +183,6 @@ class MemberShipController extends AbstractController
         }
 
         return $this->redirectToRoute('member_ship_index');
-    }
-
-    public function getSearchMemberForm()
-    {
-        $form = $this->createForm(SearchMemberShipType::class, null, [
-            'method' => 'get',
-            'action' => $this->generateUrl('search_member_ship'),
-        ]);
-
-        return $this->render('form/_search_form.html.twig', [
-            'search_form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/search", name="search_member_ship", methods={"GET"})
-     */
-    public function search(Request $request, MemberShipRepository $memberShipRepository): Response
-    {
-        $results = null;
-        if ('GET' === $request->getMethod()) {
-            $results = $memberShipRepository->findMember(
-                $request->query->get('search_member_ship')['mot']
-            );
-        }
-
-        return $this->render('/member_ship/search.html.twig', [
-            'search_member_ships' => $results ? $results : $memberShipRepository->findAll(),
-        ]);
     }
 
     /**
