@@ -28,13 +28,12 @@ class MemberShipRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
-    public function findMember(string $mot)
+    public function findMemberSearch(string $mot)
     {
         return ($queryBuilder =  $this->createQueryBuilder('m'))
         ->where($queryBuilder->expr()->like('m.type', ':mot'))
-        ->andWhere($queryBuilder->expr()->like('m.mode', ':mot'))
-        ->setParameter('mode', '%'.$mot.'%')
-        ->setParameter('type', '%'.$mot.'%')
+        ->orWhere($queryBuilder->expr()->like('m.mode', ':mot'))
+        ->setParameter('mot', '%'.$mot.'%')
         ->getQuery()
         ->getResult();
     }
