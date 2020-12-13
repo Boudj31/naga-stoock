@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Data index{% endblock %}
+
+{% block body %}
+    	<h1 class="title">Données</h1>
+	<p class="desc">Liste des données</p>
+
+    	{# Alert notification #}
+	{% include "notification.html.twig" %}
+
+	{# Contenue #}
+	<div class="card card-padding">
+
+		<div class="contact-header margin-b">
+			<a href="{{ path('data_new') }}" class="btn btn-secondary btn-radius">
+				<i class="fas fa-plus"></i>
+				Ajouter
+			</a>
+		</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type d'adhésion</th>
+                <th>Montant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in data %}
+            <tr>
+                <td>{{ data.membershipType }}</td>
+                <td>{{ data.membershipValue }} €</td>
+                <td class="actions">
+					<a href="{{ path('data_edit', {'id': data.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
+					{{ include('data/_delete_form.html.twig') }}
+                </td>
+            </tr>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}
