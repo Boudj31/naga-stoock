@@ -4,46 +4,46 @@
 
 {% block body %}
 
-<h4>Période du mois de {{data.month}} {{data.year}}</h4><br>
+<h4>Période du 01/{{data.month}}/{{data.year}} au 31/{{data.month}}/{{data.year}}</h4><br>
 <table class="table">
     <thead>
         <tr>
-            <th>Catégorie</th>
-            <th>Résulats</th>
+            <th>Type d'adhésion</th>
+            <th>Montant</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td> Adhésion Gem 3 mois</td>
-            <td>{{ memberShipGem ? memberShipGem : '0'}}</td>
+            <td>{{ memberShipGem / 100 }} €</td>
         </tr>
         <tr>
             <td> Adhésion RSA</td>
-            <td>{{ memberShipRSA ? memberShipRSA : '0'}}</td>
+            <td>{{ memberShipRSA / 100 }} €</td>
         </tr>
         <tr>
             <td> Adhésion SMIC</td>
-            <td>{{ memberShipSMIC ? memberShipSMIC : '0'}}</td>
+            <td>{{ memberShipSMIC / 100 }} €</td>
         </tr>
         <tr>
             <td> Adhésion Bénévole</td>
-            <td>{{ memberShipBenevole ? memberShipBenevole : '0'}}</td>
+            <td>{{ memberShipBenevole / 100 }} €</td>
         </tr>
         <tr>
             <td> Adhésion Sup SMIC</td>
-            <td>{{ memberShipSup ? memberShipSup : '0'}}</td>
+            <td>{{ memberShipSup / 100 }} €</td>
         </tr>
         <tr>
             <td> Adhésion installation Linux </td>
-            <td>{{ memberShipLinux ? memberShipLinux : '0'}}</td>
+            <td>{{ memberShipLinux / 100 }} €</td>
         </tr>
        <tr>
             <td> Ventes</td>
-            <td>{{sales ? sales : '0'}}</td>
+            <td>{{sales / 100 }} €</td>
         </tr>
         <tr>
             <td> Ordinateurs Donnés</td>
-            <td>{{computerGive ? ComputerGive : '0'}}</td>
+            <td>{{computerGive / 100 }} €</td>
         </tr>
     </tbody>
 
