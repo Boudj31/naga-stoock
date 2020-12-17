@@ -1,3 +1,17 @@
+# Buton 
+btn:
+    add: Ajouter
+    back: Retour
+    edit: Modifier
+
+    #infobulle
+    tooltip: 
+        show: Visualiser
+        edit: Modifier
+        delete: Supprimer
+
+
+
 # Default
 home:
     title:
@@ -15,4 +29,32 @@ home:
 contact:
     index:
         title: Contact
+        desc: Liste des conctats
+
+        table: 
+            nomPrenom: Nom Prénom
+            tel: Téléphone
+            adresse: Adresse
+            city: Ville
+            codePostale: CP
+            comment: Commentaires
+            actions: Actions
+            noFounds: Aucun contact pour le moment 
+    show:
+        title: Aperçu Contact
+        desc: Liste des conctats
+
+        info: 
+            nomPrenom: Nom Prénom
+            motif: Motif
+            comment: Commentaire
+            phone: Téléphone
+            mail: Email
+            adresse: Adresse
+            adresseComplement: Complément d'adresse
+            city: Ville
+            codePostale: Code Postal
+
+
+    
 
