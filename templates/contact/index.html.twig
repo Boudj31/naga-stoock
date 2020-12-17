@@ -4,7 +4,7 @@
 
 {% block body %}
 	<h1 class="title">Contact</h1>
-	<p class="desc">Liste des conctats</p>
+	<p class="desc">Liste des contacts</p>
 
 
 	{# Alert notification #}
@@ -39,10 +39,10 @@
 						<td>
 							<div class="contact-info">
 								<div class="contact-user {% if contact.title == "Monsieur" %} man {% else %} women {% endif %}">
-									<span>{{ contact.lastname|upper }} {{ contact.firstname|slice(0, 1)|capitalize  }}</span>
+									<span>{{ contact.lastname|slice(0, 1)|upper }} {{ contact.firstname|slice(0, 1)|capitalize  }}</span>
 								</div>
 								<div class="contact-user-info">
-									<span>{{ contact.lastname|upper }} {{ contact.firstname|slice(0, 1)|capitalize }}</span>
+									<span>{{ contact.lastname|upper }} {{ contact.firstname|capitalize}}</span>
 									<a href="mailto:{{ contact.mail }}">{{ contact.mail }}</a>
 								</div>
 							</div>
