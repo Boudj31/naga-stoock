@@ -3,7 +3,7 @@
 {% block title %}Liste des contacts{% endblock %}
 
 {% block body %}
-	<h1 class="title">Contact</h1>
+	<h1 class="title">{{'contact.index.title'| trans}}</h1>
 	<p class="desc">Liste des conctats</p>
 
 
@@ -39,7 +39,7 @@
 						<td>
 							<div class="contact-info">
 								<div class="contact-user {% if contact.title == "Monsieur" %} man {% else %} women {% endif %}">
-									<span>{{ contact.lastname|slice(0, 1)|capitalize }} {{ contact.firstname|slice(0, 1)|capitalize  }}</span>
+									<span>{{ contact.lastname|slice(0, 1)|uppercase }} {{ contact.firstname|slice(0, 1)|capitalize  }}</span>
 								</div>
 								<div class="contact-user-info">
 									<span>{{ contact.lastname }} {{ contact.firstname }}</span>
@@ -55,7 +55,7 @@
 				
 
 						<td class="actions contact-m">
-							<a href="{{ path('contact_show', {'id': contact.id}) }}" data-infoBulle="Voir"><i class="far fa-eye"></i></a>
+							<a href="{{ path('contact_show', {'id': contact.id}) }}" data-infoBulle="Visualiser"><i class="far fa-eye"></i></a>
 							<a href="{{ path('contact_edit', {'id': contact.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
 							{{ include('contact/_delete_form.html.twig') }}
 						</td>

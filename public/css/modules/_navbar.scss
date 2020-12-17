@@ -5,6 +5,10 @@
     width: size(255)+rem;
     z-index: 100;
 
+    @include sm {
+        width: 4rem;
+    }
+
     @include md {
         width: 4rem;
     }
@@ -31,6 +35,11 @@
     min-height: 100vh;
     font-weight: 600;
     transition: all 200ms ease-out;
+
+    @include sm {
+        border-radius: 5px;
+        width: 4.3rem;
+    }
 
     @include md {
         border-radius: 5px;
