@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ComputerType extends AbstractType
 {
@@ -28,11 +30,23 @@ class ComputerType extends AbstractType
                 'label' => 'Numéro de série',
                 'attr' => [
                     'placeholder' => 'Exemple 65HFO...'
-                ]
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champs ne peut pas être vide.',
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Le Numéro de serie doit faire au moins 3 caractères.',
+                        'max' => 4096,
+                    ]),
+                ],
             ])
             ->add('status', ChoiceType::class, [
-                'choices' => Computer::TYPE_STATUS
-            ])
+                'choices' => Computer::TYPE_STATUS,
+
+            ]
+               )
             ->add('comment', TextareaType::class, [
                 'label' => 'Commentaires',
                 'required' => false,

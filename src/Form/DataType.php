@@ -15,7 +15,7 @@ class DataType extends AbstractType
         $builder
             ->add('membershipType', TypeTextType::class, [
                 'label' => 'Type d\'adhésion',
-                'required' => false
+                'required' => false,
             ])
             ->add('membershipValue', TypeTextType::class, [
                 'label' => 'Montant',

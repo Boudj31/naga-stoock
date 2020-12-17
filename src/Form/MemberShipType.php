@@ -30,7 +30,7 @@ class MemberShipType extends AbstractType
                     'gift' => MemberShip::GIFT,
                     'sale' => MemberShip::SALES,
                 ],
-                'label' => 'Type'
+                'label' => 'Type d\'adhésion'
             ])
             ->add('amount', MoneyType::class, [
                 'currency' => 'EUR',
@@ -53,12 +53,7 @@ class MemberShipType extends AbstractType
                 'required' => false
             ])
             ->add('mode', ChoiceType::class, [
-                'choices' => [
-                    'cash' => 'cash',
-                    'cheques' => 'cheques',
-                    'transferts' => 'transferts',
-                     'virement' => 'Virement'
-                ]
+                'choices' => MemberShip::PAY
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Commentaire',

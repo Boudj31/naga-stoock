@@ -85,7 +85,7 @@ class MemberShipController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             // Compta Remboursement
-            if ($memberShip->getMode() === "transferts") {   
+            if ($memberShip->getMode() === MemberShip::TRANSFERT) {   
                 $total = $tranfertRepository->selectLastTotal();
                 $transfert = new Tranfert();
                 $transfert->setFirstname($memberShip->getMember()->getFirstname());
@@ -98,7 +98,7 @@ class MemberShipController extends AbstractController
                 
             }
             // Compta Cash
-            if($memberShip->getMode() === "cash") {
+            if($memberShip->getMode() === MemberShip::CASH) {
                 $total = $cashRepository->selectLastTotal();
                 $cash = new Cash();
                 $cash->setFirstname($memberShip->getMember()->getFirstname());
@@ -111,7 +111,7 @@ class MemberShipController extends AbstractController
                 $entityManager->persist($cash);
             }
             // Compta Cheque
-            if ($memberShip->getMode() === "cheques") {
+            if ($memberShip->getMode() === MemberShip::CHEQUE) {
                     
                 $total = $chequeRepository->selectLastTotal();
                 $cheque = new Cheque();

@@ -19,6 +19,18 @@ class MemberShip
     CONST SALES = 'Vente';
     CONST GIFT = 'Don';
 
+    CONST PAY = [
+        'Cash' => self::CASH,
+        'Remboursement' => self::TRANSFERT,
+        'Cheques' => self::CHEQUE,
+        'Virement' => self::VIREMENT
+    ];
+
+    CONST CASH = 'Liquide';
+    CONST CHEQUE = 'Cheques';
+    CONST TRANSFERT = 'Remboursement';
+    CONST VIREMENT = 'Virement';
+
 
 
     /**
