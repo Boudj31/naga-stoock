@@ -34,8 +34,8 @@
           <tbody>
             {% for cash in cashs %}
                 <tr>
-                    <td>{{ cash.firstname }}</td>
-                    <td>{{ cash.lastname }}</td>
+                    <td>{{ cash.firstname|slice(0, 1)|capitalize }}</td>
+                    <td>{{ cash.lastname|upper }}</td>
                     <td>{{ cash.date|date("d/m/Y") }}</td>
                     <td>{{ cash.type }}</td>
                     <td>{{ cash.amountIn / 100}} €</td>

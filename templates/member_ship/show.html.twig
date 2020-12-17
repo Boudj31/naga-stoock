@@ -17,8 +17,8 @@
 	<div class="card show-info">
 		<div class="row show-margin-b">
 			<p>Ceci est le reçu d'adhesions de
-				{{ member_ship.member.lastname }}
-				{{ member_ship.member.firstname }}</p>
+				{{ member_ship.member.lastname|upper }}
+				{{ member_ship.member.firstname|slice(0, 1)|capitalize }}</p>
 			<a href="{{ path('member_ship_facture', {'id': member_ship.id}) }}" target="_blank" class="btn btn-third btn-radius">
 				<i class="fas fa-print"></i> Imprimer le reçu
 			</a>

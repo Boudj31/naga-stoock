@@ -21,8 +21,8 @@
 				<div class="show-baseline">
 					<h4>
 						<em>{{ contact.title }}</em>
-						<strong>{{ contact.lastname }}</strong>
-						{{ contact.firstname }}
+						<strong>{{ contact.lastname|upper }}</strong>
+						{{ contact.firstname|slice(0,1)|capitalize }}
 					</h4>
 				</div>
 			</div>
