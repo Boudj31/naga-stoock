@@ -6,7 +6,7 @@
 {% block body %}
 
 	{# Description #}
-	<h1 class="margin-tb title">Aperçu Ordinateurs</h1>
+	<h1 class="margin-tb title">{{'computers.show.title'| trans}}</h1>
 	<nav>
 		<ol class="breadcrumb">
 			<li>Home</li>
@@ -28,17 +28,17 @@
 				{% endif %}
 			</div>
 			<div class="right">
-				<h2>Numéro de série : {{ computer.serial }}</h2>
+				<h2>{{'computers.show.info.serial'| trans}} : {{ computer.serial }}</h2>
 				<div class="info">
 					<p class="info-status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }} btn-radius">{{ computer.status }}</p>
 					<p>
-						<b>Date de réception : </b>
+						<b>{{'computers.show.info.date'| trans}} : </b>
 						{{ computer.receivedAt ? computer.receivedAt|date('Y-m-d') : '' }}</p>
 					<p>
-						<b>Type : </b>
+						<b>{{'computers.show.info.type'| trans}} : </b>
 						{{ computer.type }}</p>
 					<p>
-						<b>Commentaire : </b>
+						<b>{{'computers.show.info.comment'| trans}} : </b>
 					</p>
 					<p>
 						<span>{{ computer.comment }}</span>
@@ -47,9 +47,9 @@
 
 				{# Bouton #}
 				<div class="inner">
-					<a href="{{ path('computer_index') }}" class="btn btn-third btn-radius">Retour</a>
+					<a href="{{ path('computer_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
 
-					<a href="{{ path('computer_edit', {'id': computer.id}) }}" class="btn btn-primary btn-radius">Modifier</a>
+					<a href="{{ path('computer_edit', {'id': computer.id}) }}" class="btn btn-primary btn-radius">{{'btn.edit'| trans}}</a>
 
 					<span class="btn btn-secondary btn-radius" style="padding: 8px;">{{ include('computer/_delete_form.html.twig') }}</span>
 				</div>

@@ -80,6 +80,31 @@ society:
             comment: Commentaire
             commentNoFounds: Aucun commentaire pour le môment
 
+#Ordinateurs
+computers:
+    index:
+        title: Ordinateur
+        desc: Inventaire des ordinateurs
+
+        table:
+            serial: Identifiant
+            date: Date de réception
+            status: Status
+            type: Type
+            comment: Commentaire
+            actions: Actions
+            noFounds: Aucun ordinateur pour le moment
+    show:
+        title: Aperçu Ordinateurs
+
+        info:
+            serial: Numéro de série
+            date: Date de réception
+            type: Type
+            comment: Commentaire
+
+
+
 
 
 
