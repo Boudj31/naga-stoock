@@ -162,6 +162,8 @@ class MemberShipController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'L\'action sur l\'adhésion a été correctement réalisée');
+
             return $this->redirectToRoute('member_ship_index');
         }
 

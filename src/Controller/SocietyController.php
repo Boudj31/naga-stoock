@@ -57,6 +57,8 @@ class SocietyController extends AbstractController
             $entityManager->persist($society);
             $entityManager->flush();
 
+            $this->addFlash('success', 'La nouvelle société a bien été enregistrée');
+
             return $this->redirectToRoute('society_index');
         }
 
@@ -76,6 +78,8 @@ class SocietyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'L\'action sur la société a été correctement réalisée');
 
             return $this->redirectToRoute('society_index');
         }
