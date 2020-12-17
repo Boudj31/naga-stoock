@@ -3,8 +3,8 @@
 {% block title %}{{parent()}} - Liste des sociétés{% endblock %}
 
 {% block body %}
-    <h1 class="title">Société</h1>
-	<p class="desc">Lorem ipsum dolor sit amet.</p>
+    <h1 class="title">{{'society.index.title'| trans}}</h1>
+	<p class="desc">{{'society.index.desc'| trans}}</p>
 
 	{# Alert notification #}
 	{% include "notification.html.twig" %}
@@ -22,13 +22,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Identité</th>
-                <th>Raison sociale</th>
-                <th>Email</th>
-                <th>Téléphone</th>
-                <th>Adresse</th>
-				<th>CP - Ville</th>
-                <th>actions</th>
+                <th>{{'society.index.table.name'| trans}}</th>
+                <th>{{'society.index.table.raisonSocial'| trans}}</th>
+                <th>{{'society.index.table.mail'| trans}}</th>
+                <th>{{'society.index.table.phone'| trans}}</th>
+                <th>{{'society.index.table.adresse'| trans}}</th>
+				<th>{{'society.index.table.cpVille'| trans}}</th>
+                <th>{{'society.index.table.actions'| trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -41,14 +41,14 @@
                 <td>{{ society.adress.adressLine1 }}</td>
 				<td>{{ society.adress.zipCode }} - {{ society.adress.city }}</td>
                 <td class="actions">
-                	<a href="{{ path('society_show', {'id': society.id}) }}" data-infoBulle="Visualiser"><i class="far fa-eye"></i></a>
-                    <a href="{{ path('society_edit', {'id': society.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
+                	<a href="{{ path('society_show', {'id': society.id}) }}" data-infoBulle="{{'btn.tooltip.show'| trans}}"><i class="far fa-eye"></i></a>
+                    <a href="{{ path('society_edit', {'id': society.id}) }}" data-infoBulle="{{'btn.tooltip.edit'| trans}}"><i class="far fa-edit"></i></a>
                     {{ include('society/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">{{'society.index.table.noFounds'| trans}}</td>
             </tr>
         {% endfor %}
         </tbody>

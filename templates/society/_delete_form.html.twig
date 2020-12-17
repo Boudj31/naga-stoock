@@ -1,7 +1,7 @@
 <form method="post" action="{{ path('society_delete', {'id': society.id}) }}" onsubmit="return confirm('La société va être supprimée pour de bon. Êtes-vous sûr ?');">
 	<input type="hidden" name="_method" value="DELETE">
 	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ society.id) }}">
-	<button data-infobulle="Supprimer">
+	<button data-infobulle="{{'btn.tooltip.delete'| trans}}">
 		<i class="far fa-trash-alt"></i>
 	</button>
 </form>

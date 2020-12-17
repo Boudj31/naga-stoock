@@ -55,6 +55,33 @@ contact:
             city: Ville
             codePostale: Code Postal
 
+# Société
+society:
+    index:
+        title: Société
+        desc: Lorem ipsum dolor sit amet.
+
+        table: 
+            name: Identité
+            raisonSocial: Raison sociale
+            mail: Email
+            phone: Téléphone
+            adresse: Adresse
+            cpVille: CP - Ville
+            actions: Actions
+            noFounds: Aucune société pour le moment 
+    show:
+        title: Aperçu de la société
+
+        info:
+            title: Echanges
+            name: Représentant
+            phone: Téléphone
+            comment: Commentaire
+            commentNoFounds: Aucun commentaire pour le môment
+
+
+
 
     
 
