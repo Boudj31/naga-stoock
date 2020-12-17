@@ -308,6 +308,13 @@ body {
   scroll-behavior: smooth !important;
 }
 
+@media (max-width: 767px) {
+  body {
+    --font-size: 11px;
+    font-size: var(--font-size);
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1098px) {
   body {
     --font-size: 12px;
@@ -347,6 +354,12 @@ body {
   margin-right: auto;
   padding: 3.125rem 1.25rem;
   overflow: hidden;
+}
+
+@media (min-width: 768px) and (max-width: 1098px) {
+  .container {
+    max-width: 1040px;
+  }
 }
 
 .btn {
@@ -428,6 +441,12 @@ body {
   z-index: 100;
 }
 
+@media (max-width: 767px) {
+  .sidebar {
+    width: 4rem;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1098px) {
   .sidebar {
     width: 4rem;
@@ -442,6 +461,13 @@ body {
   font-weight: 600;
   -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
+}
+
+@media (max-width: 767px) {
+  .sidebar-menu {
+    border-radius: 5px;
+    width: 4.3rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1098px) {

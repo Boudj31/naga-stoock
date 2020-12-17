@@ -51,6 +51,11 @@ body {
     transition: background-color 1s;
     scroll-behavior: smooth !important;
 
+    @include sm {
+        --font-size: 11px;
+        font-size: var(--font-size);
+    }
+
     @include md {
         --font-size: 12px;
         font-size: var(--font-size);
@@ -82,6 +87,11 @@ body {
     margin-right: auto;
     padding: size(50)+rem size(20)+rem;
     overflow: hidden;
+
+    @include md {
+        max-width: 1040px;
+    }
+
 }
 
 

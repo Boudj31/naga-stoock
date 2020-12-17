@@ -5,7 +5,7 @@
 {% block body %}
 
 	{# Description #}
-	<h1 class="margin-tb title">Aperçu Contact</h1>
+	<h1 class="margin-tb title">{{'contact.show.title'| trans}}</h1>
 	<nav>
 		<ol class="breadcrumb">
 			<li>Home</li>
@@ -15,7 +15,7 @@
 	</nav>
 
 	<div class="card">
-		<div class="row margin-tb">
+		<div class="row margin-b">
 			<div class="left">
 				<img src="{{asset('images/avatar.gif')}}" alt="{{contact.firstname}}" class="image">
 				<div class="show-baseline">
@@ -28,41 +28,41 @@
 			</div>
 			<div class="phone">
 				<div class="show-card">
-					<p>Téléphone :
+					<p>{{'contact.show.info.phone'| trans}} :
 						{{ contact.phone }}</p>
 				</div>
 			</div>
 		</div>
 		<div class="show-commentaire">
-			<p>Commentaire :</p>
+			<p>{{'contact.show.info.comment'| trans}} :</p>
 			<p>{{ contact.comment }}</p>
 		</div>
 		<div class="show-content">
 			<p>
-				<strong>Motif :</strong>
+				<strong>{{'contact.show.info.motif'| trans}} :</strong>
 				{{ contact.reason }}</p>
 			<p>
-				<strong>Email :</strong>
+				<strong>{{'contact.show.info.mail'| trans}} :</strong>
 				{{ contact.mail }}</p>
 			<p>
-				<strong>Adresse :</strong>
+				<strong>{{'contact.show.info.adresse'| trans}} :</strong>
 				{{ contact.adress ? contact.adress.adressLine1 : ""}}</p>
 			<p>
-				<strong>Complément d'adresse :</strong>
+				<strong>{{'contact.show.info.adresseComplement'| trans}} :</strong>
 				{{ contact.adress ? contact.adress.adressLine2 : ""}}</p>
 			<p>
-				<strong>Code Postal :</strong>
+				<strong>{{'contact.show.info.codePostale'| trans}} :</strong>
 				{{ contact.adress ? contact.adress.zipCode : ""}}</p>
 			<p>
-				<strong>Ville :</strong>
+				<strong>{{'contact.show.info.city'| trans}} :</strong>
 				{{ contact.adress ? contact.adress.city : ""}}</p>
 		</div>
 
 
 		<div class="inner">
-			<a href="{{ path('contact_index') }}" class="btn btn-third btn-radius">Retour</a>
+			<a href="{{ path('contact_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
 
-			<a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-primary btn-radius">Modifier</a>
+			<a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-primary btn-radius">{{'btn.edit'| trans}}</a>
 
 			<span class="btn btn-secondary btn-radius" style="padding: 8px;">{{ include('contact/_delete_form.html.twig') }}</span>
 		</div>

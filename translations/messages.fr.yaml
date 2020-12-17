@@ -1,0 +1,87 @@
+# Buton 
+btn:
+    add: Ajouter
+    back: Retour
+    edit: Modifier
+
+    #infobulle
+    tooltip: 
+        show: Visualiser
+        edit: Modifier
+        delete: Supprimer
+
+
+
+# Default
+home:
+    title:
+        dashbord: Dashbord
+        computers: Ordinateurs
+    description:
+        dashbord: Quelques statistiques.
+        computers: Les quatre dernières matérielles.
+    stats:
+        somme: Somme Total
+        member: Nombre d'adhérents
+        nbComputersFixe: Nombre d'Ordinateurs fixes
+
+# Contact
+contact:
+    index:
+        title: Contact
+        desc: Liste des conctats
+
+        table: 
+            nomPrenom: Nom Prénom
+            tel: Téléphone
+            adresse: Adresse
+            city: Ville
+            codePostale: CP
+            comment: Commentaires
+            actions: Actions
+            noFounds: Aucun contact pour le moment 
+    show:
+        title: Aperçu Contact
+        desc: Liste des conctats
+
+        info: 
+            nomPrenom: Nom Prénom
+            motif: Motif
+            comment: Commentaire
+            phone: Téléphone
+            mail: Email
+            adresse: Adresse
+            adresseComplement: Complément d'adresse
+            city: Ville
+            codePostale: Code Postal
+
+# Société
+society:
+    index:
+        title: Société
+        desc: Lorem ipsum dolor sit amet.
+
+        table: 
+            name: Identité
+            raisonSocial: Raison sociale
+            mail: Email
+            phone: Téléphone
+            adresse: Adresse
+            cpVille: CP - Ville
+            actions: Actions
+            noFounds: Aucune société pour le moment 
+    show:
+        title: Aperçu de la société
+
+        info:
+            title: Echanges
+            name: Représentant
+            phone: Téléphone
+            comment: Commentaire
+            commentNoFounds: Aucun commentaire pour le môment
+
+
+
+
+    
+
