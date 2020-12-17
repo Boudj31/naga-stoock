@@ -45,7 +45,7 @@
 						{% else %}
 							Mme
 						{% endif %}
-                        {{ member.lastname }} {{ member.firstname }}<br>
+                        {{ member.lastname|upper }} {{ member.firstname|slice(0, 1)|capitalize }}<br>
                         {{ member.adress ? member.adress.adressLine1 : ""}}<br>
                         {{ member.adress ? member.adress.zipCode : ""}} {{ member.adress ? member.adress.city : ""}}
 					</address>

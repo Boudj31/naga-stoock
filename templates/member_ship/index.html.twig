@@ -43,8 +43,8 @@
 							{% else %}
 								Mme
 							{% endif %}
-							{{ member.lastname }}
-							{{ member.firstname }}
+							{{ member.lastname|upper }}
+							{{ member.firstname|slice(0, 1)|capitalize }}
 						</td>
 						<td>{{ member_ship.beginAt ? member_ship.beginAt|date('Y-m-d') : '' }}</td>
 						<td>{{ member_ship.type }}</td>

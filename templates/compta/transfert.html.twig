@@ -22,8 +22,8 @@
           <tbody>
            {% for transfert in transferts %}
                <tr>
-                   <th>{{ transfert.firstname }}</th>
-                   <th>{{ transfert.lastname }}</th>
+                   <th>{{ transfert.firstname|slice(0, 1)|capitalize }}</th>
+                   <th>{{ transfert.lastname|upper }}</th>
                    <th>{{ transfert.date|date('Y-m-d') }}</th>
                    <th>{{ transfert.type }}</th>
                    <th>{{ transfert.amount / 100 }} €</th>

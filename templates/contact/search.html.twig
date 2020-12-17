@@ -39,7 +39,7 @@
 							{% else %}
 								Mme
 							{% endif %}
-							{{ contact.lastname }} {{ contact.firstname }}
+							{{ contact.lastname|upper }} {{ contact.firstname|slice(0, 1)|capitalize }}
 						</td>
 						<td>{{ contact.mail }}</td>
 						<td>{{ contact.phone }}</td>

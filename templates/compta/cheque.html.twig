@@ -21,8 +21,8 @@
           <tbody>
             {% for cheque in cheques %}
                 <tr>
-                    <td>{{cheque.firstname}}</td>
-                    <td>{{cheque.lastname}}</td>
+                    <td>{{cheque.firstname|slice(0, 1)|capitalize}}</td>
+                    <td>{{cheque.lastname|upper}}</td>
                     <td>{{cheque.date|date('Y-m-d')}}</td>
                     <td>{{cheque.type}}</td>
                     <td>{{cheque.amount / 100}} €</td>
