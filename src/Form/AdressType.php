@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AdressType extends AbstractType
 {
@@ -16,7 +18,17 @@ class AdressType extends AbstractType
             ->add('adressLine1', TextType::class, [
                 'label' => "Adresse",
                 'required' => false,
-                'attr' => [ 'placeholder' => "Saisissez l'adresse"]
+                'attr' => [ 'placeholder' => "Saisissez l'adresse"],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champs ne peut pas être vide.',
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Le nom doit faire au moins 3 caractères.',
+                        'max' => 4096,
+                    ]),
+                ],
             ])
             ->add('adressLine2', TextType::class, [
                 'label' => "Complément d'adresse",
