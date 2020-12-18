@@ -54,7 +54,16 @@ class ComputerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($computer);
+            $serials = $form->getData('serial');
+            $serials = explode("\n", $serials);
+            foreach($serials as $serial) {
+                $computerWithSerial = clone $computer;
+                $computerWithSerial->setSerial($serial);
+                $entityManager->persist($computerWithSerial); 
+            }
+           
+
+
             $entityManager->flush();
 
             $this->addFlash('success', 'Le nouveau matériel a bien été enregistré');

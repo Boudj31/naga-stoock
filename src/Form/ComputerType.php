@@ -26,7 +26,7 @@ class ComputerType extends AbstractType
                 'widget' => 'single_text',
                 'label' => 'Date de réception'
             ])
-            ->add('serial', TextType::class, [
+            ->add('serial', TextareaType::class, [
                 'label' => 'Numéro de série',
                 'attr' => [
                     'placeholder' => 'Exemple 65HFO...'

@@ -34,7 +34,7 @@
           <tbody>
             {% for cash in cashs %}
                 <tr>
-                    <td>{{ cash.firstname|slice(0, 1)|capitalize }}</td>
+                    <td>{{ cash.firstname}}</td>
                     <td>{{ cash.lastname|upper }}</td>
                     <td>{{ cash.date|date("d/m/Y") }}</td>
                     <td>{{ cash.type }}</td>
