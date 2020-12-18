@@ -29,6 +29,7 @@
                 <th>Argent entré</th>
                 <th>Argent sortie</th>
                 <th>Caisse</th>
+                <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -41,6 +42,13 @@
                     <td>{{ cash.amountIn / 100}} €</td>
                     <td>{{ cash.amountOut / 100}} €</td>
                     <td>{{ cash.total / 100}} €</td>
+                    {% if  cash.amountOut != 0 %}
+                  	<td class="actions">
+                        {{ include('compta/_delete_form.html.twig') }}
+			           		</td>
+                     {% else %}
+                    <td></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
               </tbody>
