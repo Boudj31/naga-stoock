@@ -83,8 +83,8 @@ class MemberShipRepository extends ServiceEntityRepository
                 
         $query = $this->createQueryBuilder('m')
                 ->select('count(m.id)')
-                ->where('m.type != :type')
-                ->setParameter('type', MemberShip::SALES)
+                ->where('m.type NOT IN (:typeList)')
+                ->setParameter('typeList', [MemberShip::SALES, MemberShip::GIFT ])
                 ->getQuery();
         
         return $query->getOneOrNullResult();
@@ -136,10 +136,10 @@ class MemberShipRepository extends ServiceEntityRepository
         
         $query = $this->createQueryBuilder('m')
                 ->select('count(m.id)')
-                ->where('m.type != :type')
+                ->where('m.type NOT IN (:type)')
                 ->andWhere('m.computer != :slug')
                 ->setParameter('slug', $slug)
-                ->setParameter('type', MemberShip::SALES)
+                ->setParameter('type', [MemberShip::SALES, MemberShip::GIFT])
                 ->getQuery();
         
         return $query->getOneOrNullResult();
@@ -151,9 +151,9 @@ class MemberShipRepository extends ServiceEntityRepository
         
         $query = $this->createQueryBuilder('m')
                 ->select('count(m.id)')
-                ->where('m.type != :type')
+                ->where('m.type NOT IN (:type)')
                 ->andWhere('m.computer IS NULL')
-                ->setParameter('type', MemberShip::SALES)
+                ->setParameter('type', [MemberShip::SALES, MemberShip::GIFT])
                 ->getQuery();
         
         return $query->getOneOrNullResult();

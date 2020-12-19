@@ -34,6 +34,25 @@ class Computer
         'serveur' => self::SERVER
     ];
 
+    public static function getTypeName(string $type): string
+    {
+        if (!in_array($type, self::TYPE_STATUS)) {
+            throw new \InvalidArgumentException($type.' is not a valid computer status');
+        }
+
+        return 'computer.type.values.'.$type;
+    }
+
+    public static function getStatusName(string $status): string
+    {
+        if (!in_array($status, self::TYPE_VALUES)) {
+            throw new \InvalidArgumentException($status.' is not a valid computer status');
+        }
+
+        return 'computer.status.values.'.$status;
+    }
+    
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

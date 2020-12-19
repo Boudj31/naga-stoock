@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Computer;
+use App\Factory\ComputerFactory;
+use App\Form\ComputerBulkType;
 use App\Form\ComputerType;
 use App\Form\SearchComputerType;
 use App\Repository\ComputerRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,20 +49,30 @@ class ComputerController extends AbstractController
     /**
      * @Route("/new", name="computer_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ComputerFactory $factory): Response
     {
         $computer = new Computer();
-        $form = $this->createForm(ComputerType::class, $computer);
+        $computer->setStatus(Computer::STOCK);
+       // $computer = $computer->setStatus();
+
+        $form = $this->createForm(ComputerBulkType::class ,
+           [
+            'pattern' => $computer,
+            'serials' => []
+          ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($computer);
+
+            $data = $form->getData();
+            $computers = $factory->bulkCreate($data['serials'], $data['pattern']);
+
+            foreach ($computers as $computer) {
+                $entityManager->persist($computer);
+
+            }
             $entityManager->flush();
-
             $this->addFlash('success', 'Le nouveau matériel a bien été enregistré');
-
-
             return $this->redirectToRoute('computer_index');
         }
 

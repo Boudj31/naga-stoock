@@ -12,6 +12,7 @@ use App\Form\SearchMemberShipType;
 use App\Repository\CashRepository;
 use App\Repository\MemberShipRepository;
 use App\Repository\TranfertRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,13 +87,14 @@ class MemberShipController extends AbstractController
 
             // Compta Remboursement
             if ($memberShip->getMode() === MemberShip::TRANSFERT) {   
-                $total = $tranfertRepository->selectLastTotal();
-                $transfert = new Tranfert();
+                $total = $cashRepository->selectLastTotal();
+                $transfert = new Cash();
                 $transfert->setFirstname($memberShip->getMember()->getFirstname());
                 $transfert->setLastname($memberShip->getMember()->getLastname());
                 $transfert->setDate(new \DateTime);
-                $transfert->setAmount($memberShip->getAmount());
-                $transfert->setTotal($total['total'] + $transfert->getAmount());
+                $transfert->setAmountIn(0);
+                $transfert->setAmountOut($memberShip->getAmount());
+                $transfert->setTotal($total['total'] - $transfert->getAmountOut());
                 $transfert->setType($memberShip->getType());
                 $entityManager->persist($transfert);
                 
@@ -176,7 +178,9 @@ class MemberShipController extends AbstractController
     /**
      * @Route("/{id}", name="member_ship_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, MemberShip $memberShip): Response
+    public function delete(Request $request, 
+                           MemberShip $memberShip, 
+                           CashRepository $cashRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$memberShip->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

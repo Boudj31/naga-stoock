@@ -28,7 +28,7 @@ class ComptaController extends AbstractController
     /**
      * @Route("/cash", name="cash")
      */
-    public function cash(CashRepository $cashRepository, PaginatorInterface $paginatorInterface, Request $request): Response
+    public function cash(CashRepository $cashRepository, PaginatorInterface $paginatorInterface, Request $request, TranfertRepository $tranfertRepository): Response
     {
 
         $cashs = $paginatorInterface->paginate(
@@ -70,20 +70,18 @@ class ComptaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/transfert", name="transfert")
+        /**
+     * @Route("/{id}", name="cash_delete", methods={"DELETE"})
      */
-    public function transfert(TranfertRepository $tranfertRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    public function delete(Request $request, Cash $cash): Response
     {
+        if ($this->isCsrfTokenValid('delete'.$cash->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($cash);
+            $entityManager->flush();
+        }
 
-        $transferts = $paginatorInterface->paginate(
-            $tranfertRepository->findAllPagination(),
-            $request->query->getInt('page', 1), /*page number*/
-            10 /*limit par page*/
-        );
-        return $this->render('compta/transfert.html.twig', [
-            'transferts' => $transferts
-        ]);
+        return $this->redirectToRoute('cash');
     }
 
      /**

@@ -23,18 +23,21 @@
 
     <table class="table">
         <thead>
-            <tr>
+            <tr>                
+                <th>Id</th>
                 <th>{{'computers.index.table.serial'| trans}}</th>
                 <th>{{'computers.index.table.date'| trans}}</th>
                 <th>{{'computers.index.table.status'| trans}}</th>
                 <th>{{'computers.index.table.type'| trans}}</th>
                 <th>{{'computers.index.table.comment'| trans}}</th>
                 <th>{{'computers.index.table.actions'| trans}}</th>
+
             </tr>
         </thead>
         <tbody>
         {% for computer in computers %}
             <tr>
+                <td>{{ computer.id }}</td>
                 <td>{{ computer.serial }}</td>
                 <td>{{ computer.receivedAt ? computer.receivedAt|date('d-m-Y') : '' }}</td>
                 <td>
