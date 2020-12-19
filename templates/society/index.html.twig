@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} - Liste des sociétés{% endblock %}
+{% block title %}{{parent()}} - {{'society.index.title-page'| trans}}{% endblock %}
 
 {% block body %}
     <h1 class="title">{{'society.index.title'| trans}}</h1>
@@ -14,7 +14,7 @@
 
 		<div class="contact-header margin-b">
 			<a href="{{ path('society_new') }}" class="btn btn-secondary btn-radius">
-				<i class="fas fa-plus"></i> Ajouter
+				<i class="fas fa-plus"></i> {{'btn.add'| trans}}
 			</a>
             {{render(controller('App\\Controller\\SocietyController::getSearchSocietyForm'))}}
 		</div>

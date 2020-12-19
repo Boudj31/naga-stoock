@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Liste des adhésions{% endblock %}
+{% block title %}{{parent()}} - {{'member.index.title-page'| trans}}{% endblock %}
 
 {% block body %}
-	<h1 class="title">Adhésion</h1>
-	<p class="desc">Liste des adhésions</p>
+	<h1 class="title">{{'member.index.title'| trans}}</h1>
+	<p class="desc">{{'member.index.desc'| trans}}</p>
 
 	{# Alert notification #}
 	{% include "notification.html.twig" %}
@@ -15,7 +15,7 @@
 		<div class="contact-header margin-b">
 			<a href="{{ path('member_ship_new') }}" class="btn btn-secondary btn-radius">
 				<i class="fas fa-plus"></i>
-				Ajouter
+				{{'btn.add'| trans}}
 			</a>
             {{render(controller('App\\Controller\\MemberShipController::getSearchMemberForm'))}}
 		</div>
@@ -23,14 +23,14 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Nom</th>
-					<th>Date</th>
-					<th>Type</th>
-					<th>Mail</th>
-					<th>Téléphone</th>
-					<th>Ordinateurs</th>
-					<th>Montant</th>
-					<th>Actions</th>
+					<th>{{'member.table.name'| trans}}</th>
+					<th>{{'member.table.date'| trans}}</th>
+					<th>{{'member.table.type'| trans}}</th>
+					<th>{{'member.table.mail'| trans}}</th>
+					<th>{{'member.table.phone'| trans}}</th>
+					<th>{{'member.table.computer'| trans}}</th>
+					<th>{{'member.table.amount'| trans}}</th>
+					<th>{{'member.table.actions'| trans}}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -59,14 +59,14 @@
 						</td>
 						<td>{{ member_ship.amount/ 100 }} €</td>
 						<td class="actions">
-							<a href="{{ path('member_ship_show', {'id': member_ship.id}) }}" data-infoBulle="Visualiser"><i class="far fa-eye"></i></a>
-							<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
+							<a href="{{ path('member_ship_show', {'id': member_ship.id}) }}" data-infoBulle="{{'btn.tooltip.show'| trans}}"><i class="far fa-eye"></i></a>
+							<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" data-infoBulle="{{'btn.tooltip.edit'| trans}}"><i class="far fa-edit"></i></a>
 							{{ include('member_ship/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="6">no records found</td>
+						<td colspan="6">{{'member.table.noFounds'| trans}}</td>
 					</tr>
 				{% endfor %}
 			</tbody>

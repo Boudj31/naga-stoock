@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ordinateurs
+{% block title %}
+	{{parent()}} - {{'computers.show.title-page'| trans}}
 {% endblock %}
 
 {% block body %}

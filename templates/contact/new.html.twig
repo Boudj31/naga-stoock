@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouts Contact{% endblock %}
+{% block title %}{{parent()}} - {{'contact.new.title'| trans}}{% endblock %}
 
 {% block body %}
-    <h1 class="title margin-b">Ajouter un nouveau contact</h1> 
+    <h1 class="title margin-b">{{'contact.new.title'| trans}}</h1> 
 
     <!--==== Formulaire ====-->
     <div class="card card-padding">
@@ -14,7 +14,7 @@
             <button class="btn btn-primary btn-radius">
                 {{ button_label|default('Enregistrer !') }}
             </button>
-            <a href="{{ path('contact_index') }}" class="btn btn-third btn-radius">Retour</a>
+            <a href="{{ path('contact_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
         {{ form_end(form) }}
 
     </div>

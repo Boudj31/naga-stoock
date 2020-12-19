@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un matériel{% endblock %}
+{% block title %}{{parent()}} - {{'computers.new.title'| trans}}{% endblock %}
 
 {% block body %}
-     <h1 class="title margin-b">Ajouter un nouveau matériel</h1> 
+     <h1 class="title margin-b">{{'computers.new.title'| trans}}</h1> 
 
     <!--==== Formulaire ====-->
     <div class="card card-padding">
