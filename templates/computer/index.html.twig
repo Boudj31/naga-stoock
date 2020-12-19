@@ -24,7 +24,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Identifiant</th>
+                <th>Id</th>
+                <th>Numéro de série</th>
                 <th>Date de réception</th>
                 <th>Status</th>
                 <th>Type</th>
@@ -35,6 +36,7 @@
         <tbody>
         {% for computer in computers %}
             <tr>
+                <td>{{ computer.id }}</td>
                 <td>{{ computer.serial }}</td>
                 <td>{{ computer.receivedAt ? computer.receivedAt|date('d-m-Y') : '' }}</td>
                 <td>

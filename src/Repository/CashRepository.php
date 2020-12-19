@@ -38,6 +38,13 @@ class CashRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
+    public function SelectById($id) {
+        $query = $this->createQueryBuilder('c')
+                ->where('c.id = :id')
+                ->setParameter('id', $id)
+                ;
+    }
+
     // /**
     //  * @return Cash[] Returns an array of Cash objects
     //  */
