@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inventaire des ordinateurs{% endblock %}
+{% block title %}{{parent()}} - {{'computers.index.title-page'| trans}}{% endblock %}
 
 {% block body %}
     <h1 class="title">{{'computers.index.title'| trans}}</h1>

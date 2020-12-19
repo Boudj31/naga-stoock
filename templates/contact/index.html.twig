@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des contacts{% endblock %}
+{% block title %}{{parent()}} - {{'contact.index.title-page'| trans}}{% endblock %}
 
 {% block body %}
 	<h1 class="title">{{'contact.index.title'| trans}}</h1>

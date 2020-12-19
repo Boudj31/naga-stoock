@@ -1,10 +1,10 @@
-<header class="web-settings">
-	<div class="btn-accessibility" data-infobulle="Constraté">
+<header class="web-settings" role="Navigation accessibility">
+	<div class="btn-accessibility" data-infobulle="{{'accessibility.tooltip.constrated'| trans}}" aria-label="daltonic" aria-describedby="coulor-blind mode">
 		<svg id="icon-eye" viewbox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
 			<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
 		</svg>
 	</div>
-	<div class="font" data-infobulle="Dyslexic">
+	<div class="font" data-infobulle="{{'accessibility.tooltip.dyslexic'| trans}}" aria-label="dyslexic" aria-describedby="dyslexic mode">
 		<svg id="icon-font" enable-background="new 0 0 512 512" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 			<g>
 				<path fill="currentColor" stroke="currentColor" d="m15 90c8.284 0 15-6.716 15-15v-45h45c8.284 0 15-6.716 15-15s-6.716-15-15-15h-60c-8.284 0-15 6.716-15 15v60c0 8.284 6.716 15 15 15z"/>
@@ -15,4 +15,13 @@
 			</g>
 		</svg>
 	</div>
+	<ul class="topbar__lang" style="margin-left: 15px;">
+		{% for locale in locales %}
+			{% if locale != app.request.locale %}
+				<li class="lang-item">
+					<a href="{{ path('langue_locale', {'locale': locale}) }}"><img src="{{asset('images/'~locale~'.png')}}" alt="{{locale}}"></a>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
 </header>
