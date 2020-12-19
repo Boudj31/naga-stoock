@@ -1,62 +1,62 @@
 <aside class="sidebar">
 	<div class="sidebar-col">
 		<div class="sidebar-items">
-			<nav class="sidebar-menu">
+			<nav class="sidebar-menu" role="navigation" aria-label="Main navigation">
 				<ul class="nav-list">
 					<li class="nav-logo">
 						<a href="{{path('home')}}"><img src="{{asset('images/logo.svg')}}" alt="Logo"></a>
-						<strong>Stock Manager</strong>
+						<strong>{{'title.website'| trans}}</strong>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('member_ship_index')}}">
 							<i class="fas fa-home"></i>
-							<span>Adhésions</span>
+							<span>{{'nav-list.membership'| trans}}</span>
 						</a>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('computer_index')}}">
 							<i class="fas fa-desktop"></i>
-							<span>Ordinateurs</span>
+							<span>{{'nav-list.computer'| trans}}</span>
 						</a>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('contact_index')}}">
 							<i class="far fa-address-book"></i>
-							<span>Contact</span>
+							<span>{{'nav-list.contact'| trans}}</span>
 						</a>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('society_index')}}">
 							<i class="far fa-building"></i>
-							<span>Société</span>
+							<span>{{'nav-list.company'| trans}}</span>
 						</a>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('statistique')}}">
 							<i class="fas fa-signal"></i>
-							<span>Stats</span>
+							<span>{{'nav-list.statistics'| trans}}</span>
 						</a>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('data_index')}}">
 							<i class="fas fa-database"></i>
-							<span>Données</span>
+							<span>{{'nav-list.data'| trans}}</span>
 						</a>
 					</li>
 					<li class="nav-items-list">
 						<a href="{{path('compta')}}">
 							<i class="fas fa-calculator"></i>
-							<span>Compta</span>
+							<span>{{'nav-list.accounts'| trans}}</span>
 						</a>
 					</li>
-					  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              <li class="nav-items-list">
-                <a href="{{path('app_logout')}}">
-                  <i class="fas fa-door-open"></i>
-                  <span>Deconnexion</span>
-                </a>
-              </li>
-            {% endif %}
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<li class="nav-items-list">
+							<a href="{{path('app_logout')}}">
+								<i class="fas fa-door-open"></i>
+								<span>{{'nav-list.logout'| trans}}</span>
+							</a>
+						</li>
+					{% endif %}
 				</ul>
 				{% if app.user %}
 					<div class="nav-items-profile">

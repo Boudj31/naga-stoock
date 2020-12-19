@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inventaire des ordinateurs{% endblock %}
+{% block title %}{{parent()}} - {{'computers.index.title-page'| trans}}{% endblock %}
 
 {% block body %}
-    <h1 class="title">Ordinateur</h1>
-	<p class="desc">Inventaire des ordinateurs</p>
+    <h1 class="title">{{'computers.index.title'| trans}}</h1>
+	<p class="desc">{{'computers.index.desc'| trans}}</p>
 
 
 	{# Alert notification #}
@@ -15,7 +15,7 @@
 
 		<div class="contact-header margin-b">
 			<a href="{{ path('computer_new') }}" class="btn btn-secondary btn-radius">
-				<i class="fas fa-plus"></i> Ajouter
+				<i class="fas fa-plus"></i> {{'btn.add'| trans}}
 			</a>
             {{render(controller('App\\Controller\\ComputerController::getSearchComputerForm'))}}
 		</div>
@@ -23,14 +23,15 @@
 
     <table class="table">
         <thead>
-            <tr>
+            <tr>                
                 <th>Id</th>
-                <th>Numéro de série</th>
-                <th>Date de réception</th>
-                <th>Status</th>
-                <th>Type</th>
-                <th>Commentaire</th>
-                <th>actions</th>
+                <th>{{'computers.index.table.serial'| trans}}</th>
+                <th>{{'computers.index.table.date'| trans}}</th>
+                <th>{{'computers.index.table.status'| trans}}</th>
+                <th>{{'computers.index.table.type'| trans}}</th>
+                <th>{{'computers.index.table.comment'| trans}}</th>
+                <th>{{'computers.index.table.actions'| trans}}</th>
+
             </tr>
         </thead>
         <tbody>
@@ -45,14 +46,14 @@
                 <td>{{ computer.type }}</td>
                 <td>{{ computer.comment|length > 25 ? computer.comment|slice(0, 25)~'...' : computer.comment }}</td>
                 	<td class="actions">
-                        <a href="{{ path('computer_show', {'id': computer.id}) }}" data-infoBulle="Visualiser"><i class="far fa-eye"></i></a>
-                        <a href="{{ path('computer_edit', {'id': computer.id}) }}" data-infoBulle="Modifier"><i class="far fa-edit"></i></a>
+                        <a href="{{ path('computer_show', {'id': computer.id}) }}" data-infoBulle="{{'btn.tooltip.show'| trans}}"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('computer_edit', {'id': computer.id}) }}" data-infoBulle="{{'btn.tooltip.edit'| trans}}"><i class="far fa-edit"></i></a>
                         {{ include('computer/_delete_form.html.twig') }}
 					</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">{{'computers.index.table.noFounds'| trans}}</td>
             </tr>
         {% endfor %}
         </tbody>

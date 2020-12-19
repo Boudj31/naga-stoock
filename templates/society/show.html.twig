@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Society{% endblock %}
+{% block title %}{{parent()}} - {{'society.show.title'| trans}}{% endblock %}
 
 {% block body %}
     {# Description #}

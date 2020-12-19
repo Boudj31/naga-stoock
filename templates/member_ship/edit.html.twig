@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier une adhésions{% endblock %}
+{% block title %}{{parent()}} - {{'member.edit.title'| trans}}{% endblock %}
 
 {% block body %}
-    <h1 class="title margin-b">Modifier un nouveau contact</h1> 
+    <h1 class="title margin-b">{{'member.edit.title'| trans}}</h1> 
 
     <!--==== Formulaire ====-->
     <div class="card card-padding">
@@ -14,7 +14,7 @@
             <button class="btn btn-primary btn-radius">
                 {{ button_label|default('Mettre à jour!') }}
             </button>
-            <a href="{{ path('member_ship_index') }}" class="btn btn-third btn-radius">Retour</a>
+            <a href="{{ path('member_ship_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
         {{ form_end(form) }}
 
     </div>

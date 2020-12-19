@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Society{% endblock %}
+{% block title %}{{parent()}} - {{'society.new.title'| trans}}{% endblock %}
 
 {% block body %}
-      <h1 class="title margin-b">Ajouter une nouvelle entreprise</h1> 
+      <h1 class="title margin-b">{{'society.new.title'| trans}}</h1> 
 
     <!--==== Formulaire ====-->
     <div class="card card-padding">
@@ -14,7 +14,7 @@
             <button class="btn btn-primary btn-radius">
                 {{ button_label|default('Enregistrer !') }}
             </button>
-            <a href="{{ path('society_index') }}" class="btn btn-third btn-radius">Retour</a>
+            <a href="{{ path('society_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
         {{ form_end(form) }}
 
     </div>

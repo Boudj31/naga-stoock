@@ -108,8 +108,8 @@
 			</table>
 		</div>
 		<div class="inner margin-tb">
-			<a href="{{ path('member_ship_index') }}" class="btn btn-third btn-radius">Retour</a>
-			<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" class="btn btn-primary btn-radius">Modifier</a>
+			<a href="{{ path('member_ship_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
+			<a href="{{ path('member_ship_edit', {'id': member_ship.id}) }}" class="btn btn-primary btn-radius">{{'btn.edit'| trans}}</a>
 			<span class="btn btn-secondary btn-radius" style="padding: 8px;">{{ include('member_ship/_delete_form.html.twig') }}</span>
 		</div>
 	</div>	

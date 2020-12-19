@@ -64,7 +64,7 @@
 						</div>
 						<div class="elements elements-serial">
 							<span>{{computer.serial}}</span>
-							<p>Donnateur : {{computer.donor.representativeName}}</p>
+							<p>{{'home.sponsor'| trans}} : {{computer.donor.representativeName}}</p>
 						</div>
 						<div class="elements elements-date">
 							<span>{{computer.receivedAt ? computer.receivedAt|date('Y-m-d') : '' }}</span>
@@ -73,7 +73,7 @@
 							<span class="items-status {{ computer.status|replace({'à':'a'})|replace({'é':'e'})|lower }}">{{ computer.status }}</span>
 						</div>
 						<div class="elements">
-							<a href="{{ path('computer_show', {'id': computer.id}) }}">Voir</a>
+							<a href="{{ path('computer_show', {'id': computer.id}) }}">{{'btn.tooltip.show'| trans}}</a>
 						</div>
 					</div>
 				</li>
