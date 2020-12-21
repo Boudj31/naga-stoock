@@ -43,6 +43,7 @@
     opacity: 0;
     transform: translateY(-20px);
     transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
+    z-index: 999;
 
     &::before {
         content: "";
@@ -58,7 +59,7 @@
     }
 }
 
-.list-lang.active {
+.list-lang.active-lang {
     opacity: 1;
     transform: translateY(-0px);
     transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
@@ -82,7 +83,7 @@
         margin: 0 size(5)+rem;
     }
 
-    .active {
+    .active-lang {
         border-radius: size(5)+rem;
         background-color: #f1f1f1;
         width: 100%;

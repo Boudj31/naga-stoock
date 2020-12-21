@@ -32,7 +32,7 @@
 		<ul class="list-lang">
 			{% for locale in locales %}
 				<li class="lang" data-value="{{locale}}">
-					<a href="{{ path('langue_locale', {'locale': locale}) }}" class="{{ (locale == app.request.locale) ? 'active' : '' }}">
+					<a href="{{ path('langue_locale', {'locale': locale}) }}" class="{{ (locale == app.request.locale) ? 'active-lang' : '' }}">
 						<img src="{{asset('images/'~locale~'.svg')}}" alt="{{locale}}"/>
 						<span>
 							{% if locale == "fr" %}

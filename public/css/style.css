@@ -1025,7 +1025,8 @@ select::-ms-expand {
   background-color: #2f2f2f;
 }
 
-.accessibility .active {
+.accessibility .active,
+.accessibility .lang .active-lang {
   border: 1px solid #FFF !important;
   background-color: #ff0 !important;
   color: #000;
@@ -1052,7 +1053,8 @@ select::-ms-expand {
 .accessibility .show-card,
 .accessibility .computers-items,
 .accessibility .computers-wrapper .elements-logo,
-.accessibility .stats .items-icons {
+.accessibility .stats .items-icons,
+.accessibility .topbar-lang {
   border: 1px solid #FFF;
 }
 
@@ -1117,6 +1119,7 @@ select::-ms-expand {
           transform: translateY(-20px);
   -webkit-transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
   transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+  z-index: 999;
 }
 
 .list-lang::before {
@@ -1132,7 +1135,7 @@ select::-ms-expand {
   border-left: 6px solid transparent;
 }
 
-.list-lang.active {
+.list-lang.active-lang {
   opacity: 1;
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
@@ -1169,7 +1172,7 @@ select::-ms-expand {
   margin: 0 0.3125rem;
 }
 
-.lang .active {
+.lang .active-lang {
   border-radius: 0.3125rem;
   background-color: #f1f1f1;
   width: 100%;
