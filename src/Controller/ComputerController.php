@@ -143,7 +143,7 @@ class ComputerController extends AbstractController
         }
 
         return $this->render('/computer/search.html.twig', [
-            'search_computer' => $results ? $results : $computerRepository->findAll(),
+            'search_computer' => $results ? $results : '',
         ]);
     }
 

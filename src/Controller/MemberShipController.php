@@ -56,7 +56,7 @@ class MemberShipController extends AbstractController
         }
 
         return $this->render('/member_ship/search.html.twig', [
-            'search_member_ship' => $results ? $results : $memberShipRepository->findAll(),
+            'search_member_ship' => $results ? $results : '',
         ]);
     }
 

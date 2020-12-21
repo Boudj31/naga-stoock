@@ -136,7 +136,7 @@ class ContactController extends AbstractController
         }
 
         return $this->render('/contact/search.html.twig', [
-            'search_contact' => $results ? $results : $contactRepository->findAll(),
+            'search_contact' => $results ? $results : '',
         ]);
     }
 
