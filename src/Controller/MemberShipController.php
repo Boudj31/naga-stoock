@@ -124,7 +124,6 @@ class MemberShipController extends AbstractController
                 $cheque->setTotal($total['total'] + $cheque->getAmount());
                 $cheque->setType($memberShip->getType());
                 $entityManager->persist($cheque);
-      
                 
             }
 
@@ -156,12 +155,35 @@ class MemberShipController extends AbstractController
     /**
      * @Route("/{id}/edit", name="member_ship_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, MemberShip $memberShip): Response
+    public function edit(Request $request,
+                         MemberShip $memberShip,
+                         ChequeRepository $chequeRepository,
+                         EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(MemberShipType::class, $memberShip);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+          /*  if ($memberShip->getMode() === MemberShip::CHEQUE) {    
+                $total = $chequeRepository->selectLastTotal();
+                $cheque = new Cheque();
+                $cheque->setFirstname($memberShip->getMember()->getFirstname());
+                $cheque->setLastname($memberShip->getMember()->getLastname());
+                $cheque->setDate(new \DateTime);
+                if($cheque->getAmount() > $memberShip->getAmount()) {
+                    $cheque->setAmount($memberShip->getAmount());
+                    $cheque->setTotal($total['total'] + $cheque->getAmount());
+                    dd($total);
+                }
+                else {
+                    $cheque->setAmount($memberShip->getAmount());
+                    $cheque->setTotal($total['total'] - $cheque->getAmount()); 
+                    dd($total);
+                }
+                $cheque->setType('Montant modifié');
+                $entityManager->persist($cheque);
+                
+            }*/
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'L\'action sur l\'adhésion a été correctement réalisée');
@@ -179,11 +201,26 @@ class MemberShipController extends AbstractController
      * @Route("/{id}", name="member_ship_delete", methods={"DELETE"})
      */
     public function delete(Request $request, 
-                           MemberShip $memberShip, 
+                           MemberShip $memberShip,
+                           ChequeRepository $chequeRepository,
                            CashRepository $cashRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$memberShip->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if ($memberShip->getMode() === MemberShip::CHEQUE) {    
+                $total = $chequeRepository->selectLastTotal();
+                $cheque = new Cheque();
+                $cheque->setFirstname($memberShip->getMember()->getFirstname());
+                $cheque->setLastname($memberShip->getMember()->getLastname());
+                $cheque->setDate(new \DateTime);
+                $cheque->setAmount($memberShip->getAmount());
+                $cheque->setTotal($total['total'] - $cheque->getAmount());
+                $cheque->setType('Cheque non encaissé');
+                $entityManager->persist($cheque);
+                
+            }
+
             $entityManager->remove($memberShip);
             $entityManager->flush();
         }

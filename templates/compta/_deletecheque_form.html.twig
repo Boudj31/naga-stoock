@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('cheque_delete', {'id': cheque.id}) }}" onsubmit="return confirm('Le dernier cheque va être supprimée pour de bon. Êtes-vous sûr ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cheque.id) }}">
+    <button data-infoBulle="Supprimer"> <i class="far fa-trash-alt"></i> </button>
+</form>
