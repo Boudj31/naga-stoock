@@ -16,6 +16,8 @@
 				<i class="fas fa-plus"></i>
 				Ajouter
 			</a>
+		    <a href="{{ path('member_ship_index') }}" class="btn btn-third btn-radius">{{'btn.back'| trans}}</a>
+
 		</div>
 
 		<table class="table">
@@ -32,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for member_ship in search_member_ships %}
+				{% for member_ship in search_member_ship %}
 				   {%  set member = member_ship.member %}
 					<tr>
 						<td>
@@ -66,7 +68,10 @@
 							{{ include('member_ship/_delete_form.html.twig') }}
 						</td>
 					</tr>
-				  
+				{% else %}
+					<tr>
+						<td colspan="9">no records found</td>
+					</tr>
 				{% endfor %}
 			</tbody>
 		</table>

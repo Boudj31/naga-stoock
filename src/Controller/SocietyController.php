@@ -129,7 +129,7 @@ class SocietyController extends AbstractController
         }
 
         return $this->render('/society/search.html.twig', [
-            'search_society' => $results ? $results : $societyRepository->findAll(),
+            'search_society' => $results ? $results : '',
         ]);
     }
 

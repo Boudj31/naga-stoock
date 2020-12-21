@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cash;
+use App\Entity\Cheque;
 use App\Form\CashType;
 use App\Repository\CashRepository;
 use App\Repository\ChequeRepository;
@@ -70,10 +71,10 @@ class ComptaController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/{id}", name="cash_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Cash $cash): Response
+    public function deleteCash(Request $request, Cash $cash): Response
     {
         if ($this->isCsrfTokenValid('delete'.$cash->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -98,6 +99,20 @@ class ComptaController extends AbstractController
         return $this->render('compta/cheque.html.twig', [
             'cheques' => $cheques
         ]);
+    }
+
+    /**
+     * @Route("/cheque/{id}", name="cheque_delete", methods={"DELETE"})
+     */
+    public function deleteCheque(Request $request, Cheque $cheque): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$cheque->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($cheque);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('cheque');
     }
 
     

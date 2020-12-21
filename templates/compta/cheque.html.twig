@@ -16,17 +16,21 @@
                 <th>Type</th>
                 <th>Montant</th>
                 <th>Total</th>
+                <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {% for cheque in cheques %}
                 <tr>
-                    <td>{{cheque.firstname|slice(0, 1)|capitalize}}</td>
+                    <td>{{cheque.firstname}}</td>
                     <td>{{cheque.lastname|upper}}</td>
                     <td>{{cheque.date|date('Y-m-d')}}</td>
                     <td>{{cheque.type}}</td>
                     <td>{{cheque.amount / 100}} €</td>
                     <td>{{cheque.total / 100}} €</td>
+                  	<td class="actions">
+                        {{ include('compta/_deletecheque_form.html.twig') }}
+			           		</td>
                 </tr>
                 {% endfor %}
               </tbody>

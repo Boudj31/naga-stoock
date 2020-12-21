@@ -29,7 +29,7 @@ class ComputerController extends AbstractController
         $computers = $paginatorInterface->paginate(
             $computerRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            5 /*limit par page*/
+            10 /*limit par page*/
         );
         return $this->render('computer/index.html.twig', [
             'computers' => $computers,
@@ -143,7 +143,7 @@ class ComputerController extends AbstractController
         }
 
         return $this->render('/computer/search.html.twig', [
-            'search_computer' => $results ? $results : $computerRepository->findAll(),
+            'search_computer' => $results ? $results : '',
         ]);
     }
 
