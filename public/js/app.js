@@ -11,6 +11,8 @@
     const alertNotification = document.querySelector('.notification');
     const iconEye = document.querySelector("#icon-eye");
     const iconFont = document.querySelector("#icon-font");
+    const translationBtn = document.querySelector(".topbar-lang");
+    const translationList = document.querySelector(".list-lang");
 
     // Font Open Dyslexic
     toggleButtonFont.addEventListener("click", () => {
@@ -53,6 +55,11 @@
         iconEye.classList.add("active-access");
         localStorage.setItem("currentTheme", "accessibility");
     }
+
+    // Translation switcher
+    translationBtn.addEventListener("click", () => {
+        translationList.classList.toggle("active");
+    })
 
 
     // Alert Notification

@@ -1,0 +1,91 @@
+// Translation
+// ==================
+.lang-wrapper {
+    position: relative;
+
+    a {
+        display: flex;
+        align-items: center;
+        padding: size(8)+rem size(15)+rem;
+    }
+}
+
+.topbar-lang {
+    margin-left: size(15)+rem;
+    background-color: var(--white);
+    padding: size(5)+rem size(10)+rem;
+    border-radius: size(5)+rem;
+    cursor: pointer;
+
+    .lang {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chevron {
+        transform: rotate(-90deg);
+        transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
+    }
+
+    :hover .chevron {
+        transform: rotate(0deg);
+    }
+}
+
+.list-lang {
+    position: absolute;
+    width: size(150)+rem;
+    background-color: var(--white);
+    border: size(1)+rem solid #e2e8f0;
+    border-radius: size(5)+rem;
+    top: size(45)+rem;
+    right: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
+
+    &::before {
+        content: "";
+        position: absolute;
+        display : inline-block;
+        height : 0;
+        width : 0;
+        right: 11%;
+        top: -7%;
+        border-right : 4px solid transparent;
+        border-bottom : 10px solid var(--white);
+        border-left : 6px solid transparent;
+    }
+}
+
+.list-lang.active {
+    opacity: 1;
+    transform: translateY(-0px);
+    transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
+}
+
+.lang {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-flow: row nowrap;
+    font-size: size(10)+rem;
+
+    img {
+        width: size(20)+rem;
+        height: size(20)+rem;
+        object-fit: contain;
+    }
+
+    span {
+        font-size: size(15)+rem;
+        margin: 0 size(5)+rem;
+    }
+
+    .active {
+        border-radius: size(5)+rem;
+        background-color: #f1f1f1;
+        width: 100%;
+        margin: size(5)+rem;
+    }
+}
