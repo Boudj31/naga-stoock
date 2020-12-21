@@ -85,85 +85,85 @@ contact:
 # Société
 society:
     index:
-        title-page: Liste des sociétés
-        title: Société
-        desc: Liste des sociétés
+        title-page: List of Compagny
+        title: Compagny
+        desc: List of Compagny
 
         table: 
-            name: Identité
-            raisonSocial: Raison sociale
+            name: Identity
+            raisonSocial: Sociale Name
             mail: Email
-            phone: Téléphone
-            adresse: Adresse
-            cpVille: CP - Ville
+            phone: Phone
+            adresse: Adress
+            cpVille: PC- City
             actions: Actions
-            noFounds: Aucune société pour le moment 
+            noFounds: No compagny found 
     show:
-        title: Aperçu de la société
+        title: Survey of Compagny
 
         info:
-            title: Echanges
-            name: Représentant
-            phone: Téléphone
-            comment: Commentaire
-            commentNoFounds: Aucun commentaire pour le môment
+            title: Exchange
+            name: Name
+            phone: Phone
+            comment: Comment
+            commentNoFounds: No comment found
     new:
-        title: Ajouter une nouvelle entreprise
+        title: Add New compagny
 
     edit:
-        title: Modifier une Entreprise
+        title: Edit compagny
 
 #Ordinateurs
 computers:
     index:
-        title-page: Inventaire des ordinateurs
-        title: Ordinateur
-        desc: Inventaire des ordinateurs
+        title-page: List of Computers
+        title: Computer
+        desc: List of Computers
 
         table:
-            serial: Identifiant
-            date: Date de réception
+            serial: Serial
+            date: Receive at 
             status: Status
             type: Type
-            comment: Commentaire
+            comment: Comment
             actions: Actions
-            noFounds: Aucun ordinateur pour le moment
+            noFounds: No computer found 
     show:
-        title-page: Ordinateurs
-        title: Aperçu Ordinateurs
+        title-page: Computer
+        title: Survey of computer
 
         info:
-            serial: Numéro de série
-            date: Date de réception
+            serial: Serial
+            date: Receive at 
             type: Type
-            comment: Commentaire
+            comment: Comment
     new:
-        title: Ajouter un nouveau matériel
+        title: Add new computer
 
     edit:
-        title: Modifer un matériel
+        title: Edit computer
 
 #Adhésions
 member:
     index:
-        title-page: Liste des adhésions
-        title: Adhésion
-        desc: Liste des adhésions
+        title-page: List of memberships
+        title: memberships
+        desc: List of memberships
 
     table:
-        name: Nom
+        name: Name
         date: Date
         type: Type
         mail: Mail
-        phone: Téléphone
-        computer: Ordinateurs
-        amount: Montant
+        phone: Phone
+        computer: Computer
+        amount: Amount
         actions: Actions
-        noFounds: Aucune adhésions pour le moment
+        noFounds: No membership found
     
     show:
-        title-page: Ordinateurs
-        title: Aperçu Ordinateurs
+        title-page: Membership
+        title: Survey of membership
 
         info:
             serial: Numéro de série
@@ -171,10 +171,10 @@ member:
             type: Type
             comment: Commentaire
     new:
-        title: Ajouter une adhésion
+        title: Add membership
 
     edit:
-        title: Modifier une adhésions
+        title: Edit membership
 
 
 

@@ -1,86 +1,86 @@
-title.website: Stock Manager
+title.website: Vorat Managen
 
 # Buton 
 btn:
-    add: Ajouter
-    back: Retour
-    edit: Modifier
+    add: Add
+    back: Back
+    edit: Edit
 
     #infobulle
     tooltip: 
-        show: Visualiser
-        edit: Modifier
-        delete: Supprimer
+        show: View
+        edit: Edit
+        delete: Delete
 
 #Accessibility
 accessibility:
     tooltip:
-        constrated: Contrasté
+        constrated: Daltonic
         dyslexic: Dyslexic
 
 #Navigation 
 nav-list:
-    membership: Adhésions
-    computer: Ordinateurs
-    contact: Contacts
-    company: Société
-    statistics: Stats
-    data: Données
-    accounts: Compta
-    logout: Déconnexion
+    membership: Mitgliedschaft
+    computer: Computers
+    contact: Kontakt
+    company: Unternehmen
+    statistics: Statistik
+    data: Daten
+    accounts: Buchhaltung
+    logout: Abschalten
 
 # Default
 home:
     title:
-        page: Accueil
-        dashbord: Dashbord
-        computers: Ordinateurs
+        page: Zugriffsseite
+        dashbord: Instrumententafel
+        computers: Computer
     description:
-        dashbord: Quelques statistiques.
-        computers: Les quatre derniers matériels.
+        dashbord: Einige Statistiken.
+        computers: Die letzten vier Materialien.
     stats:
-        somme: Somme Total
-        member: Nombre d'adhérents
-        nbComputersFixe: Nombre d'Ordinateurs fixes
-    sponsor: Donateur
-
+        somme: Gesamtsumme
+        member: Anzahl der Mitglieder
+        nbComputersFixe: Anzahl der Computer
+    sponsor: Spender
+    
 
 # Contact
 contact:
     index:
-        title-page: Liste des contacts
+        title-page: Contacts List
         title: Contact
-        desc: Liste des contacts
+        desc: Contacts List
 
         table: 
-            nomPrenom: Nom Prénom
-            tel: Téléphone
-            adresse: Adresse
-            city: Ville
-            codePostale: CP
-            comment: Commentaires
+            nomPrenom: Lastname Firstname
+            tel: Phone
+            adresse: Address
+            city: City
+            codePostale: ZipCode
+            comment: Comment
             actions: Actions
-            noFounds: Aucun contact pour le moment 
+            noFounds: No records founds 
     show:
         title-page: Contact
-        title: Aperçu Contact
-        desc: Liste des contacts
+        title: View Contact
+        desc: Contacts List
 
         info: 
-            nomPrenom: Nom Prénom
+            nomPrenom: Lastname Firstname
             motif: Motif
-            comment: Commentaire
-            phone: Téléphone
-            mail: Email
-            adresse: Adresse
-            adresseComplement: Complément d'adresse
-            city: Ville
-            codePostale: Code Postal
+            comment: Comment
+            phone: Phone
+            mail: mail
+            adresse: Address
+            adresseComplement: Complement address
+            city: City
+            codePostale: Zip Code
     new:
-        title: Ajouter un nouveau contact
+        title: New Contact
 
     edit:
-        title: Modifer un contact
+        title: Edit contact
 
 # Société
 society:
