@@ -58,7 +58,7 @@
 
     // Translation switcher
     translationBtn.addEventListener("click", () => {
-        translationList.classList.toggle("active");
+        translationList.classList.toggle("active-lang");
     })
 
 

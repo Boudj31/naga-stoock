@@ -104,7 +104,8 @@
         background-color: #2f2f2f;
     }
 
-    .active {
+    .active,
+    .lang .active-lang {
         border: 1px solid #FFF !important;
         background-color: #ff0 !important;
         color: #000;
@@ -132,7 +133,8 @@
     .show-card,
     .computers-items,
     .computers-wrapper .elements-logo,
-    .stats .items-icons {
+    .stats .items-icons,
+    .topbar-lang {
         border: 1px solid #FFF;
     }
 
