@@ -1119,6 +1119,7 @@ select::-ms-expand {
           transform: translateY(-20px);
   -webkit-transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
   transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+  visibility: hidden;
   z-index: 999;
 }
 
@@ -1141,6 +1142,7 @@ select::-ms-expand {
           transform: translateY(0px);
   -webkit-transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
   transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+  visibility: visible;
 }
 
 .lang {
