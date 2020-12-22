@@ -54,17 +54,4 @@
 			{% endfor %}
 		</ul>
 	</div>
-
-	{# <ul class="topbar__lang" style="margin-left: 15px;">
-									{% for locale in locales %}
-										{% if locale == app.request.locale %}
-											<button class="btn-trans"><img src="{{asset('images/'~locale~'.svg')}}" alt="{{locale}}"></button>
-										{% endif %}
-										{% if locale != app.request.locale %}
-											<li class="lang-item">
-												<a href="{{ path('langue_locale', {'locale': locale}) }}"><img src="{{asset('images/'~locale~'.svg')}}" alt="{{locale}}" style="width: 20px;height: 21px;vertical-align: middle;object-fit: contain;"></a>
-											</li>
-										{% endif %}
-									{% endfor %}
-								</ul> #}
 </header>
