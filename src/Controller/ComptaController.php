@@ -35,7 +35,7 @@ class ComptaController extends AbstractController
         $cashs = $paginatorInterface->paginate(
             $cashRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            10 /*limit par page*/
+            8 /*limit par page*/
         );
         return $this->render('compta/cash.html.twig', [
            'cashs' => $cashs
@@ -93,7 +93,7 @@ class ComptaController extends AbstractController
         $cheques = $paginatorInterface->paginate(
             $chequeRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            10 /*limit par page*/
+            8 /*limit par page*/
         );
 
         return $this->render('compta/cheque.html.twig', [
