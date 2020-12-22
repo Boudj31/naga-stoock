@@ -36,7 +36,7 @@ class MemberShipController extends AbstractController
         $memberShips = $paginatorInterface->paginate(
             $memberShipRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            10 /*limit par page*/
+            8 /*limit par page*/
         );
         return $this->render('member_ship/index.html.twig', [
             'member_ships' => $memberShips,
@@ -95,7 +95,7 @@ class MemberShipController extends AbstractController
                 $transfert->setAmountIn(0);
                 $transfert->setAmountOut($memberShip->getAmount());
                 $transfert->setTotal($total['total'] - $transfert->getAmountOut());
-                $transfert->setType($memberShip->getType());
+                $transfert->setType('remboursement ' . $memberShip->getType());
                 $entityManager->persist($transfert);
                 
             }

@@ -29,7 +29,7 @@ class ContactController extends AbstractController
         $contacts = $paginatorInterface->paginate(
             $contactRepository->findAllPagination(),
             $request->query->getInt('page', 1), /*page number*/
-            4 /*limit par page*/
+            8 /*limit par page*/
         );
 
         return $this->render('contact/index.html.twig', [

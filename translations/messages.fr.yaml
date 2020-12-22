@@ -121,7 +121,7 @@ computers:
         desc: Inventaire des ordinateurs
 
         table:
-            serial: Identifiant
+            serial: Numéro de série
             date: Date de réception
             status: Status
             type: Type
