@@ -20,7 +20,9 @@
              ->add('pattern', ComputerType::class, [
                  'label' => false,
              ])
-             ->add('serials', TextareaType::class)
+             ->add('serials', TextareaType::class, [
+                 'label' => 'Numéros de série'
+             ])
          ;
  
          $builder->get('serials')->addModelTransformer(new CallbackTransformer(

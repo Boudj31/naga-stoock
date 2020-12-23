@@ -39,6 +39,15 @@ class ChequeRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
+    public function SelectAllTotal() {
+        $query = $this->createQueryBuilder('c')       
+                ->addSelect('c.total')
+                ->getQuery()
+                ;
+
+                return $query->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Cheque[] Returns an array of Cheque objects
     //  */

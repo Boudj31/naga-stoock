@@ -23,10 +23,10 @@ nav-list:
     membership: Adhésions
     computer: Ordinateurs
     contact: Contacts
-    company: Société
-    statistics: Stats
+    company: Sociétés
+    statistics: Statistiques
     data: Données
-    accounts: Compta
+    accounts: Comptabilité
     logout: Déconnexion
 
 # Default

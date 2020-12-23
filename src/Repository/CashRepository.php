@@ -38,11 +38,13 @@ class CashRepository extends ServiceEntityRepository
                 ->getQuery();
     }
 
-    public function SelectById($id) {
-        $query = $this->createQueryBuilder('c')
-                ->where('c.id = :id')
-                ->setParameter('id', $id)
+    public function SelectAllTotal() {
+        $query = $this->createQueryBuilder('c')       
+                ->addSelect('c.total')
+                ->getQuery()
                 ;
+
+                return $query->getOneOrNullResult();
     }
 
     // /**
