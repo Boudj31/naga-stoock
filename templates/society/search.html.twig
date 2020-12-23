@@ -44,6 +44,9 @@
 							-
 							{{ society.adress.city }}</td>
 						<td class="actions">
+					    	<a href="{{ path('society_show', {'id': society.id}) }}" data-infobulle="Voir">
+								<i class="far fa-eye"></i>
+							</a>
 							<a href="{{ path('society_edit', {'id': society.id}) }}">
 								<i class="far fa-edit"></i>
 							</a>

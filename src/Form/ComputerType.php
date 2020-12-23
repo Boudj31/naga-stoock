@@ -44,6 +44,7 @@ class ComputerType extends AbstractType
             ])*/
             ->add('status', ChoiceType::class, [
                 'choices' => Computer::TYPE_STATUS,
+                'label' => 'Statut'
 
             ]
                )
@@ -81,7 +82,7 @@ class ComputerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Computer::class,
-            'label_format' => 'computer.%name%.label',
+           // 'label_format' => 'computer.%name%.label',
         ]);
     }
 }

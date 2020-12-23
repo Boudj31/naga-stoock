@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Cash;
 use App\Entity\Cheque;
-use App\Entity\Tranfert;
 use App\Entity\MemberShip;
 use App\Form\MemberShipType;
 use App\Repository\ChequeRepository;
@@ -164,26 +163,20 @@ class MemberShipController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-          /*  if ($memberShip->getMode() === MemberShip::CHEQUE) {    
+            // Compta Cheque
+            if ($memberShip->getMode() === MemberShip::CHEQUE ) {  
                 $total = $chequeRepository->selectLastTotal();
                 $cheque = new Cheque();
                 $cheque->setFirstname($memberShip->getMember()->getFirstname());
                 $cheque->setLastname($memberShip->getMember()->getLastname());
                 $cheque->setDate(new \DateTime);
-                if($cheque->getAmount() > $memberShip->getAmount()) {
-                    $cheque->setAmount($memberShip->getAmount());
-                    $cheque->setTotal($total['total'] + $cheque->getAmount());
-                    dd($total);
-                }
-                else {
-                    $cheque->setAmount($memberShip->getAmount());
-                    $cheque->setTotal($total['total'] - $cheque->getAmount()); 
-                    dd($total);
-                }
-                $cheque->setType('Montant modifié');
-                $entityManager->persist($cheque);
+                $cheque->setAmount($memberShip->getAmount());
+                $cheque->setTotal($total['total'] + $cheque->getAmount());
+                $cheque->setType('Modification ' . $memberShip->getType());
+                $entityManager->persist($cheque); 
                 
-            }*/
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'L\'action sur l\'adhésion a été correctement réalisée');
@@ -220,6 +213,20 @@ class MemberShipController extends AbstractController
                 $entityManager->persist($cheque);
                 
             }
+
+               // Compta Cash
+              if($memberShip->getMode() === MemberShip::CASH) {
+                  $total = $cashRepository->selectLastTotal();
+                  $cash = new Cash();
+                  $cash->setFirstname($memberShip->getMember()->getFirstname());
+                  $cash->setLastname($memberShip->getMember()->getLastname());
+                  $cash->setDate(new \DateTime);
+                  $cash->setAmountIn(0);
+                  $cash->setAmountOut($memberShip->getAmount());
+                  $cash->setTotal($total['total'] - $cash->getAmountOut());
+                  $cash->setType('Suppresion ' . $memberShip->getType());
+                  $entityManager->persist($cash);
+                        }
 
             $entityManager->remove($memberShip);
             $entityManager->flush();
