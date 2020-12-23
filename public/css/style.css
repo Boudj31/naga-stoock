@@ -1002,21 +1002,6 @@ select::-ms-expand {
   border-top: 5px solid var(--dark);
 }
 
-.accessibility .donne {
-  color: var(--dark);
-  background-color: var(--light-grey);
-}
-
-.accessibility .asso {
-  background-color: #ffbf00 !important;
-  color: var(--light-grey) !important;
-}
-
-.accessibility .demonte {
-  background-color: #4e3633;
-  color: var(--light-grey);
-}
-
 .accessibility .page-item.disabled {
   background-color: #000;
 }
@@ -1061,6 +1046,40 @@ select::-ms-expand {
 .accessibility select {
   background: var(--light-grey) url(../../images/triangle-contrast.png) no-repeat right 0.9375rem center;
   background-size: 0.5625rem;
+}
+
+.accessibility .btn-primary,
+.accessibility .btn-secondary {
+  background-color: var(--dark);
+  color: var(--light-grey);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+  transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+}
+
+.accessibility .btn-primary:hover,
+.accessibility .btn-secondary:hover {
+  background-color: #d4d406 !important;
+}
+
+.accessibility .btn-third,
+.accessibility .donne,
+.accessibility .asso,
+.accessibility .stock,
+.accessibility .demonte {
+  background-color: var(--light-grey);
+  border: 1px solid var(--dark);
+  color: var(--dark);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+  transition: all 0.3s cubic-bezier(0.25, 1.15, 0.35, 1.15);
+}
+
+.accessibility .btn-third:hover,
+.accessibility .donne:hover,
+.accessibility .asso:hover,
+.accessibility .stock:hover,
+.accessibility .demonte:hover {
+  background-color: var(--dark);
+  color: var(--light-grey);
 }
 
 .lang-wrapper {
@@ -1130,7 +1149,7 @@ select::-ms-expand {
   height: 0;
   width: 0;
   right: 11%;
-  top: -7%;
+  top: -4%;
   border-right: 4px solid transparent;
   border-bottom: 10px solid var(--white);
   border-left: 6px solid transparent;

@@ -48,8 +48,8 @@
 						</td>
 						<td>{{ member_ship.beginAt ? member_ship.beginAt|date('Y-m-d') : '' }}</td>
 						<td>{{ member_ship.type }}</td>
-						<td>{{ member.mail }}</td>
-						<td>{{ member.phone }}</td>
+						<td><a href="mailto:{{ member.mail }}">{{ member.mail }}</a></td>
+						<td><a href="tel:{{ member.phone }}">{{ member.phone }}</a></td>
 						<td>
 							{% if member_ship.computer %}
 								{{ member_ship.computer.serial }}

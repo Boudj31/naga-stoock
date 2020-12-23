@@ -47,7 +47,7 @@
 								</div>
 							</div>
 						</td>
-						<td>{{ contact.phone }}</td>
+						<td><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></td>
 						<td>{{ contact.adress ? contact.adress.adressLine1 : ""}}</td>
 						<td>{{ contact.adress ? contact.adress.city : ""}}</td>
 						<td>{{ contact.adress ? contact.adress.zipCode : ""}}</td>
