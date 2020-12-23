@@ -80,21 +80,6 @@
         }
     }
 
-    .donne {
-        color: var(--dark);
-        background-color: var(--light-grey);
-    }
-
-    .asso {
-        background-color: #ffbf00 !important;
-        color: var(--light-grey) !important;
-    }
-
-    .demonte {
-        background-color: #4e3633;
-        color: var(--light-grey);
-    }
-
     // Pagination
     .page-item.disabled {
         background-color: #000;
@@ -141,6 +126,33 @@
     select {
         background: var(--light-grey) url(../../images/triangle-contrast.png) no-repeat right 0.9375rem center;
         background-size: size(9)+rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        background-color: var(--dark);
+        color: var(--light-grey);
+        transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
+
+        &:hover {
+            background-color: rgb(212, 212, 6) !important;
+        }
+    }
+
+    .btn-third,
+    .donne,
+    .asso, 
+    .stock,
+    .demonte {
+        background-color: var(--light-grey);
+        border: 1px solid var(--dark);
+        color: var(--dark);
+        transition: all .3s cubic-bezier(.25, 1.15, .35, 1.15);
+
+        &:hover {
+            background-color: var(--dark);
+            color: var(--light-grey);
+        }
     }
 
 }
